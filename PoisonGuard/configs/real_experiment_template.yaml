@@ -6,6 +6,20 @@ seed: 42
 output_dir: outputs/real_xiaomi13t
 mode: real_protocol
 
+provenance:
+  code_repository: https://github.com/ivakavych-kartoshka/PoisonGuard.git
+  code_commit: 4a7526552269abc0f68ef33c1c56ac11c31430ca
+  trainer_repository: D:/NCKH/MobileSYS/MobileFineTuner
+  trainer_commit: be95a289d9cd5ecd93b6fab7fdc3c4551c3f9fb1
+  attack_repositories:
+    agentpoison: https://github.com/AI-secure/AgentPoison
+    minja: https://github.com/dsh3n77/MINJA
+    memghost: null  # no public implementation; CSA research note only
+    memorygraft: https://github.com/Jacobhhy/MemoryGraft
+  baseline_repositories:
+    amemguard: https://github.com/TangciuYueng/AMemGuard
+    npo: https://github.com/OPTML-Group/Unlearn-Simple
+
 data:
   root: datas/aeslc
   channels:
@@ -27,14 +41,14 @@ external:
 
   attacks:
     agentpoison:
-      repository_root: null
+      repository_root: D:/NCKH/MobileSYS/attack_baselines/AgentPoison
       command: []
-      expected_commit: null
+      expected_commit: 7b02e28f5e477052bd16c778fef7c1f78f7c9d7c
       expected_archive_sha256: null
     minja:
-      repository_root: null
+      repository_root: D:/NCKH/MobileSYS/attack_baselines/MINJA
       command: []
-      expected_commit: null
+      expected_commit: a3ec8da0f7740b3fe629f6706e1c14296ee6861d
       expected_archive_sha256: null
     memghost:
       repository_root: null
@@ -42,21 +56,21 @@ external:
       expected_commit: null
       expected_archive_sha256: null
     memorygraft:
-      repository_root: null
+      repository_root: D:/NCKH/MobileSYS/attack_baselines/MemoryGraft
       command: []
-      expected_commit: null
+      expected_commit: 823662058d1e0fe49306d1820d7947297ef3c252
       expected_archive_sha256: null
 
   baselines:
     amemguard:
-      repository_root: null
+      repository_root: D:/NCKH/MobileSYS/attack_baselines/AMemGuard
       command: []
-      expected_commit: null
+      expected_commit: dd92f7ff21b9a904a703141be3d5b80170e57228
       expected_archive_sha256: null
     npo:
-      repository_root: null
+      repository_root: D:/NCKH/MobileSYS/attack_baselines/Unlearn-Simple
       command: []
-      expected_commit: null
+      expected_commit: 3083017cb317753725f35cc404c2d5aede1242ef
       expected_archive_sha256: null
 
   telemetry:

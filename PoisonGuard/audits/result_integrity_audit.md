@@ -42,6 +42,15 @@ The delivered run used seed 17 and configuration `configs/synthetic_demo.yaml`. 
 - Energy is `null`: no external power monitor was available. Android counter data is not used as an energy claim.
 - Summary values are medians/IQRs over 15 steps and three runs; they are feasibility/timeout evidence only.
 
+## Pinned source provenance
+
+- PoisonGuard code repository: `https://github.com/ivakavych-kartoshka/PoisonGuard.git`, commit `4a7526552269abc0f68ef33c1c56ac11c31430ca`.
+- MobileFineTuner repository: `D:\NCKH\MobileSYS\MobileFineTuner`, commit `be95a289d9cd5ecd93b6fab7fdc3c4551c3f9fb1`.
+- Working tree caveat: normalized data roots `PoisonGuard/datas/aeslc` and `PoisonGuard/datas/LaMP` are untracked; `PoisonGuard/datas/persona-chat` submodule is dirty from generated normalized events. These are data artifacts, not code changes.
+- Working tree caveat: the provenance config additions and this audit section are not yet committed. After committing, update `provenance.code_commit` to the new commit so the pin matches the shipped code.
+- Attack/baseline repositories are pinned by URL, commit, local root, and clean-tree check; see `audits/external_provenance.md`.
+- No attack/baseline executable command is pinned (`command: []`), so wrappers fail loudly instead of emulating a published method. No published implementation has been run.
+
 ## Real protocol and aggregation gates
 
 - `configs/real_experiment_template.yaml` requires explicit paths/commands for trainer, attacks, baselines, telemetry, and measured result files. Missing pins raise `RealExperimentNotReady` or `ExternalDependencyUnavailable`.

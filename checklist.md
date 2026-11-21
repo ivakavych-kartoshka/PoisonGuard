@@ -76,9 +76,9 @@ Cập nhật theo trạng thái hiện tại của repo: manuscript thiết kế
 ## 5. Attacks và baselines
 
 - [x] Adapter boundary cho AgentPoison, MINJA, MemGhost, MemoryGraft, A-MemGuard, NPO/unlearning đã thêm; chưa pin repo/command nên mọi run sẽ fail loud.
-- [ ] Pin + adapt AgentPoison, MINJA, MemGhost, GhostWriter, MemoryGraft (chỉ nếu normalize được vào event schema).
-- [ ] Pin A-MemGuard implementation hoặc ghi rõ không reproduce được.
-- [ ] Pin NPO/RMU/unlearning implementation + adaptation cho task/model.
+- [ ] Pin + adapt AgentPoison, MINJA, MemGhost, GhostWriter, MemoryGraft (chỉ nếu normalize được vào event schema). AgentPoison `7b02e28f`, MINJA `a3ec8da0`, MemoryGraft `82366205` đã pin URL+commit+clean tree; MemGhost không có code public; GhostWriter chưa pin. Command vẫn để trống nên wrapper fail loud, chưa adapt output schema.
+- [ ] Pin A-MemGuard implementation hoặc ghi rõ không reproduce được. Đã pin `TangciuYueng/AMemGuard` @ `dd92f7ff21b9a904a703141be3d5b80170e57228`, MIT.
+- [ ] Pin NPO/RMU/unlearning implementation + adaptation cho task/model. Đã pin `OPTML-Group/Unlearn-Simple` @ `3083017cb317753725f35cc404c2d5aede1242ef`, MIT.
 - [ ] Implement behavioral probe construction, clean-utility metrics, layer/spectral audit, optional influence approximations.
 - [ ] Chạy 4 attack families: memory retrieval, external-content persistence, LoRA data poisoning, adaptive retyping.
 - [ ] Ablations: remove provenance, least-trust inheritance, shared vs separate lineage, behavioral audit, update audit, quarantine, checkpoint interval, replay horizon, env pinning.
