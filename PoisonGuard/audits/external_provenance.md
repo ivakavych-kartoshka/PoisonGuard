@@ -26,6 +26,15 @@ clean tree, and remote before any command is allowed to run.
   `.git` internals and would be unstable across ordinary git operations. Commit
   pin plus clean-tree check is the integrity gate.
 
+## Execution prerequisites still missing
+
+- AgentPoison: DPR/ctx encoder checkpoint and GPU for trigger optimization; GPT-3.5 or equivalent API for end-to-end StrategyQA/ReAct ASR. No API key configured.
+- MINJA: LLM backend for query-only injection (GPT-4o-mini or local equivalent). No API key configured.
+- MemoryGraft: `pip install -e ".[rag]"` plus an LLM agent/judge backend. No API key configured.
+- A-MemGuard: vLLM not installed; documented backend uses Llama-3.1-8B-Instruct. Available GPU is RTX 4060 Laptop 8 GB.
+- Unlearn-Simple: TOFU/MUSE/WMDP model and dataset snapshots not provisioned; 8 GB GPU insufficient for the larger unlearning settings.
+- No repo has a bridge that converts its native output into PoisonGuard's measured-result schema, so `command: []` stays intentional.
+
 ## Clone caveats
 
 - MINJA carries a `post-checkout` git-lfs hook. Clone checkout was retried with

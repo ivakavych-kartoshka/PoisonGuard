@@ -57,4 +57,13 @@ The delivered run used seed 17 and configuration `configs/synthetic_demo.yaml`. 
 - `poisonguard real --stage run` writes immutable input, attack, baseline, trainer, telemetry, and run manifests. It computes no ASR, utility, rollback, or systems metric.
 - `poisonguard real --stage aggregate` reads only explicitly configured measured result files. Missing fields stay missing unless listed in `metrics.required_fields`, in which case loading fails.
 - `energy_j_external` is populated only when a measured file declares `energy.source: external_power_monitor`. Android counter values are kept in `energy_j_android_secondary` and excluded from energy claims.
-- External wrappers validate repository provenance and never emulate a published attack or baseline. No external repository is currently pinned with a commit/hash and executable adapter command.
+- External wrappers validate repository provenance and never emulate a published attack or baseline. Repositories are pinned by commit; executable adapter commands remain empty, so no published implementation has been run.
+
+## Three-seed device systems measurement (not a paper result)
+
+- Three real `--stage run` executions on Xiaomi 13T, seeds `1`, `2`, `3`, 100 AESLC normalized events each, MobileFineTuner device trainer via ADB.
+- Run manifests: `outputs/sys_run_seed{1,2,3}/real_run_manifest.json`; asset gates: `outputs/sys_assets_seed{1,2,3}/real_asset_check.json`.
+- Measured result files: `outputs/measured_systems_seed{1,2,3}.json`, each labelled `not a paper result`. Fields: median step time and peak RSS from the trainer probe logcat.
+- Aggregation config `outputs/aggregate_systems_config.yaml` requires only systems fields; output `outputs/aggregate_systems/real_metrics_aggregate.json`.
+- Aggregated median step time `3919 ms` (IQR `9.5`, n=3); median peak RSS `2174692 kB` (IQR `2010`, n=3). No energy, ASR, utility, or rollback value exists in these files (`count: 0`).
+- Trainer workload remains synthetic token ids; these numbers are device systems evidence only.

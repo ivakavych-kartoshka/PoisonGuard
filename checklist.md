@@ -41,7 +41,7 @@ Cập nhật theo trạng thái hiện tại của repo: manuscript thiết kế
 - [ ] Implement mobile provenance capture + state transitions (Android ingress, UID, channel, sender, user-authored evidence).
 - [ ] Implement real trainer interface (Qwen2.5-0.5B / Gemma-3-1B-class) + hashing adapter/checkpoint + deterministic replay validation. Đã có ADB probe wrapper `scripts/run_mobilefinetuner_probe.py` và probe thành công; chưa có training trên normalized data/attack manifests.
 - [ ] Chạy toàn bộ direct baselines và ablations với seed độc lập (≥5 training seeds + user-level bootstrap).
-- [ ] Đo rollback equality, ASR, clean utility, false quarantine, storage, latency, energy, memory, thermal.
+- [ ] Đo rollback equality, ASR, clean utility, false quarantine, storage, latency, energy, memory, thermal. Đã có 3-seed device systems measurement (step time median 3919 ms, peak RSS median 2174692 kB) tại `PoisonGuard/outputs/aggregate_systems/real_metrics_aggregate.json`; energy/ASR/utility/rollback vẫn `count: 0`.
 - [ ] Hoàn thành adaptive user-retyping/confirmation evaluation.
 - [ ] Thay thế mọi cell `--` trong bảng kết quả và 2 đường PGFPlots conceptual bằng dữ liệu thật.
 - [ ] Pre-register seeds, pilot/power analysis, thresholds, equivalence margins, attack budgets, exclusion rules, ethics controls.
