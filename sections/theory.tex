@@ -1,0 +1,97 @@
+\section{Security and Systems Analysis}
+\label{sec:theory}
+
+The results below state sufficient conditions for the designed state machine. They do not claim that behavioral auditors detect all poisons. Full proofs appear in \cref{app:proofs}.
+
+\begin{assumption}[Sound lineage construction]
+\label{ass:lineage}
+For each transition, the runtime adds an edge from every direct input whose value can affect an output object. Parent closure is preserved across derivations, selection, training, audit, and promotion.
+\end{assumption}
+
+\begin{assumption}[Policy monotonicity]
+\label{ass:monotonicity}
+Without a recorded declassification vertex, a derived object cannot receive a more permissive learning decision than any influencing parent. A declassification remains a descendant of those parents.
+\end{assumption}
+
+\begin{lemma}[Provenance closure]
+\label{lem:closure}
+Under \cref{ass:identity,ass:lineage}, if event $e$ affects persistent object $v$ through any finite sequence of registered transitions, then $e\leadsto v$ in $\Graph$.
+\end{lemma}
+
+\begin{theorem}[Non-laundering under complete mediation]
+\label{thm:nonlaundering}
+Assume \cref{ass:tcb,ass:mediation,ass:identity,ass:lineage,ass:monotonicity}. Let $e$ be an event for which adapter policy returns $\Deny$, and suppose no valid declassification of $e$ exists. Then no checkpoint influenced by $e$ can be promoted. If $e$ is revoked after an erroneous prior admission, every influenced promoted checkpoint lies in $\operatorname{Desc}_{\Graph}(e)$ and is excluded from the recovered active branch.
+\end{theorem}
+
+\begin{remark}
+The theorem is an enforcement result, not a detector guarantee. If provenance says that socially engineered text is user-authored and policy admits it, the premise $\pi_{\mathsf{train}}(e)=\Deny$ is false.
+\end{remark}
+
+\begin{assumption}[Versioned deterministic execution]
+\label{ass:determinism}
+For a fixed state, event sequence, version record, and randomness record, memory and training transitions are deterministic. All admissible events required for replay remain available and ordered.
+\end{assumption}
+
+\begin{theorem}[Exact rollback-and-replay]
+\label{thm:rollback}
+Let $R$ be a revoked vertex set and $c_j$ the newest checkpoint whose source closure is disjoint from $\operatorname{Desc}_{\Graph}(R)$. Under \cref{ass:mediation,ass:lineage,ass:determinism}, restoring $c_j$ and replaying, in original logical order, exactly the later admissible events outside the invalidated closure yields the same memory and adapter state as a counterfactual execution in which those invalidated events never occurred.
+\end{theorem}
+
+\begin{corollary}[Post-recovery poison removal]
+\label{cor:removal}
+If all behavior attributable to a poison set $R$ enters through registered transitions and the hypotheses of \cref{thm:rollback} hold, the recovered state contains no causal influence from $R$.
+\end{corollary}
+
+This corollary is intentionally causal rather than behavioral. A clean model may independently produce the same output as a poisoned model; conversely, replay without the poison may alter unrelated stochastic outcomes unless deterministic execution is enforced.
+
+\begin{assumption}[Bounded quarantined update]
+\label{ass:bounded}
+For each training example $z$, the clipped gradient satisfies $\|g(z)\|_2\le G$. A candidate uses step sizes $\eta_1,\ldots,\eta_H$, and the promotion pointer does not expose the candidate to ordinary inference before audit completion.
+\end{assumption}
+
+\begin{proposition}[Bound on pre-promotion contaminated displacement]
+\label{prop:influence}
+If at most a fraction $\alpha$ of each minibatch is contaminated, then the difference between candidate parameters trained with and without those examples is bounded by
+\begin{equation}
+\|q_H-q_H^{\Clean}\|_2\le 2\alpha G\sum_{h=1}^{H}\eta_h
+\label{eq:influence-bound}
+\end{equation}
+under a coupled update sequence and nonexpansive clean update map. This displacement cannot affect ordinary inference before promotion.
+\end{proposition}
+
+The proposition is a conservative algorithmic bound, not a bound on attack success. Neural behavior can change sharply for small parameter displacement; this is why audit and lineage remain necessary.
+
+\begin{proposition}[Storage bound]
+\label{prop:storage}
+Suppose $N$ source/derived records contribute at most $d$ lineage edges each, each vertex and edge consumes at most $b_v$ and $b_e$ bytes, a LoRA checkpoint contains $p_L$ scalar values stored in $b_p$ bytes each, and at most $K$ checkpoints are retained. Then
+\begin{equation}
+C_S\le Nb_v+Ndb_e+Kp_Lb_p+C_{\mathrm{index}}+C_{\mathrm{replay}},
+\label{eq:storage-bound}
+\end{equation}
+where the last two terms are measured implementation overheads. With bounded $d$, structural lineage is $O(N)$ and checkpoints are $O(Kp_L)$.
+\end{proposition}
+
+\begin{proposition}[Replay-work bound]
+\label{prop:replay}
+If checkpoints occur every $I$ admissible events and a revocation does not invalidate a checkpoint earlier than the most recent unaffected interval boundary, recovery reprocesses at most $I-1$ ordinary events plus every later event whose previous derived state depended on the revoked item. In the worst case, a poison ancestor of all later checkpoints requires replay of the entire retained suffix.
+\end{proposition}
+
+The worst case is important: checkpoint frequency alone does not cap recovery if every later checkpoint consumed the poison. The shared graph lets the system identify that fact; it cannot make the causal dependency disappear.
+
+\begin{theorem}[Recovery linearizability]
+\label{thm:linearizable}
+Under the recovery barrier and compare-and-swap promotion rule, concurrent arrivals can be ordered after the recovered suffix so that clients observe either the pre-recovery active checkpoint or the completely installed recovered checkpoint, but never a partially replayed state.
+\end{theorem}
+
+\begin{figure}[t]
+  \centering
+  \input{figures/tikz_theory_diagram}
+  \caption{Dependency structure of the formal results. Purple nodes are assumptions/results; green nodes are operational consequences. Routed arrows avoid implying that detector quality is a premise of exact rollback.}
+  \label{fig:theory}
+\end{figure}
+
+\subsection{Failure cases}
+
+The guarantees fail cleanly rather than silently. An unrecorded write violates complete mediation. A summary without parents violates sound lineage. A changed tokenizer or nondeterministic kernel violates replay determinism. Erasing replay payloads beyond the horizon makes exact restoration unavailable for older checkpoints. A compromised policy key breaks immutable provenance. A socially engineered typed example falls outside automatic origin-based denial. The implementation must surface each case as a guarantee downgrade.
+
+\paragraph{Topic-alignment checkpoint.} The theorem directions match the locked signature: non-laundering, exact restoration, bounded pre-promotion influence, and storage/replay cost. No theorem asserts optimality, a sharp threshold, or universal attack detection.

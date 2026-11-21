@@ -1,0 +1,24 @@
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[node distance=6mm]
+  \node[honest, text width=20mm] (s1) {Capture\\OS origin};
+  \node[defense, text width=20mm, right=of s1] (s2) {Select per\\sink};
+  \node[honest, text width=20mm, right=of s2] (s3) {Memory and\\window};
+  \node[infra, text width=20mm, right=of s3] (s4) {Train in\\quarantine};
+  \node[defense, text width=20mm, right=of s4] (s5) {Audit then\\promote};
+  \node[stage] at ($(s1.north west)+(1mm,-1mm)$) {1};
+  \node[stage] at ($(s2.north west)+(1mm,-1mm)$) {2};
+  \node[stage] at ($(s3.north west)+(1mm,-1mm)$) {3};
+  \node[stage] at ($(s4.north west)+(1mm,-1mm)$) {4};
+  \node[stage] at ($(s5.north west)+(1mm,-1mm)$) {5};
+  \draw[dataflow] (s1.east)--(s2.west);
+  \draw[dataflow] (s2.east)--(s3.west);
+  \draw[dataflow] (s3.east)--(s4.west);
+  \draw[dataflow] (s4.east)--(s5.west);
+
+  \node[attack, text width=26mm, below=12mm of s2] (revoke) {Later verdict or\\deletion};
+  \node[defense, text width=33mm, below=12mm of s4] (rollback) {Invalidate descendants,\\rollback, clean replay};
+  \node[stage] at ($(rollback.north west)+(1mm,-1mm)$) {6};
+  \draw[attackflow] (revoke.east)--(rollback.west);
+  \draw[controlflow] (s5.south) |- (rollback.north);
+\end{tikzpicture}%
+}

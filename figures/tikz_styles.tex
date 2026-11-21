@@ -1,0 +1,26 @@
+\definecolor{pgblue}{HTML}{2F6F9F}
+\definecolor{pgbluelight}{HTML}{DCECF6}
+\definecolor{pgorange}{HTML}{C95F20}
+\definecolor{pgorangelight}{HTML}{F8E2D2}
+\definecolor{pggreen}{HTML}{37845A}
+\definecolor{pggreenlight}{HTML}{DCEFE3}
+\definecolor{pgpurple}{HTML}{76549A}
+\definecolor{pgpurplelight}{HTML}{E9E0F2}
+\definecolor{pggray}{HTML}{5E6872}
+\definecolor{pggraylight}{HTML}{ECEFF1}
+
+\tikzset{
+  pgbox/.style={draw=pggray, rounded corners=2pt, line width=.6pt, align=center, font=\footnotesize, minimum height=8mm, inner sep=4pt},
+  honest/.style={pgbox, fill=pgbluelight, draw=pgblue},
+  attack/.style={pgbox, fill=pgorangelight, draw=pgorange, pattern=north east lines, pattern color=pgorange!28},
+  defense/.style={pgbox, fill=pggreenlight, draw=pggreen, double},
+  theory/.style={pgbox, fill=pgpurplelight, draw=pgpurple},
+  infra/.style={pgbox, fill=pggraylight, draw=pggray},
+  dataflow/.style={-{Stealth[length=2.2mm]}, draw=pgblue, line width=.8pt, shorten >=2pt, shorten <=2pt},
+  attackflow/.style={-{Stealth[length=2.2mm]}, draw=pgorange, dashed, line width=.8pt, shorten >=2pt, shorten <=2pt},
+  controlflow/.style={-{Stealth[length=2.2mm]}, draw=pggreen, double, line width=.55pt, shorten >=2pt, shorten <=2pt},
+  theoryflow/.style={-{Stealth[length=2.2mm]}, draw=pgpurple, line width=.7pt, shorten >=2pt, shorten <=2pt},
+  flowlabel/.style={font=\scriptsize, fill=white, inner sep=1.5pt, text=black},
+  stage/.style={circle, fill=pgpurple, text=white, font=\bfseries\scriptsize, inner sep=1.5pt},
+  group/.style={draw=pggray!65, rounded corners=4pt, dashed, inner sep=5pt}
+}

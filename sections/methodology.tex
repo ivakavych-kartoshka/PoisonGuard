@@ -1,0 +1,79 @@
+\section{PoisonGuard Design}
+\label{sec:method}
+
+\subsection{Provenance capture}
+
+At ingress, the tagger normalizes content into a canonical representation and collects attributes from the operating system. For a notification, these include package UID, post time, notification category, and whether the content was generated through a trusted user-input surface. For shared files, they include sending package, content URI grant, MIME type, and digest. For calendar and messaging channels, an account-scoped sender identifier is used when available. Clipboard and screenshot provenance is necessarily weaker; the system records the foreground application or capture source and marks uncertainty rather than inventing a sender.
+
+Each event receives a monotonically increasing logical identifier and an authenticated digest. Large payloads can remain in application storage; the lineage store keeps a digest and a protected reference. Derived objects use Merkle-style parent commitments so that a summary, embedding, or formatted training example cannot be detached from its parents without changing identity. Cryptographic binding protects integrity, not truthfulness.
+
+\subsection{Sink-specific policy}
+
+The policy evaluates a vector of evidence rather than a single trusted bit. A compact rule table can be audited by users and reviewers:
+
+\begin{table}[t]
+\centering
+\caption{Illustrative default policy. Deployments must validate the choices; they are not empirical results.}
+\label{tab:policy}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lll}
+\toprule
+Origin & Memory sink & Training sink \\
+\midrule
+Verified typed input & allow & quarantine/allow \\
+Received message & quarantine & deny by default \\
+Notification/calendar & quarantine & deny \\
+Shared file & quarantine & deny \\
+Clipboard/screenshot & quarantine & deny \\
+Derived from mixed parents & least-trust inheritance & quarantine/deny \\
+User-confirmed promotion & allow with record & quarantine then audit \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+``Least-trust inheritance'' means a derived item cannot receive a more permissive label than every influencing parent unless a distinct, recorded declassification action occurs. Declassification is not silent relabelling: it creates a vertex signed by the policy principal and remains revocable through the original parents.
+
+Received content need not become useless. It can be retrieved in a data-delimited inference context, temporarily summarized, or proposed to the user for explicit adoption. The policy distinguishes serving content from learning it. This distinction prevents a security rule from collapsing into ``ignore all communications.''
+
+\subsection{Shared lineage across sinks}
+
+The lineage store uses typed vertices and append-only adjacency lists. A memory record links to all source events used to construct it. A training example links either to a source event or to the memory record and, transitively, its sources. A window vertex links to its selected examples, a candidate to its window and parent checkpoint, an audit to the candidate and probe set, and a promotion to candidate, audit decision, and previous active pointer.
+
+Reference counts support garbage collection but do not replace reachability. A source may feed multiple records and windows; deleting one edge must not erase another consumer. The graph stores policy and version hashes so that replay can reconstruct both data and decision context. Sensitive payloads can be separately encrypted or erased while retaining non-reversible hashes and structural edges needed to identify affected checkpoints.
+
+\subsection{Quarantine-then-promote}
+
+Training always writes a candidate namespace. The currently active adapter remains immutable while $q_k$ is computed. The audit gate contains three layers.
+
+\begin{enumerate}
+  \item \textbf{Lineage audit:} confirm that every selected example has a valid envelope, policy decision, and path to the window; reject denied or unresolved parents.
+  \item \textbf{Behavioral audit:} compare clean-task utility, refusal/format stability, and a channel-specific trigger-probe battery between the active and candidate adapters. Probes include lexical variants so the check is not restricted to one exact trigger.
+  \item \textbf{Update audit:} record per-layer and per-module norm changes, low-rank singular spectra, and optional per-example influence approximations. Spectral and influence methods are signals, not certificates \cite{tran2018spectral,koh2017influence,lelle2026token}.
+\end{enumerate}
+
+The candidate is promoted only if all mandatory checks pass and resource/policy state is still current. Promotion uses a compare-and-swap transaction over the active checkpoint pointer. If new revocation information arrives during training, the candidate's policy epoch is stale and it returns to quarantine.
+
+\subsection{Revocation, invalidation, and rollback}
+
+Revocation may originate from a user deleting content, a sender blocklist, a newly detected trigger, a malicious-app verdict, or an audit failure. The system does not automatically equate every deletion with maliciousness: a policy flag controls whether deletion requests require only payload erasure, training invalidation, or both. Security remediation selects both.
+
+Given revoked vertices $R$, PoisonGuard computes $D=\operatorname{Desc}_{\Graph}(R)$. It marks affected memories non-retrievable and candidate/audit/checkpoint descendants invalid. Let $c_j$ be the newest checkpoint not in $D$ and whose own source closure excludes $R$. The system restores $c_j$, reconstructs later allowed events outside $D$, and replays them in logical order using the recorded environment. A newly generated checkpoint becomes the active head of a branch; the contaminated branch remains auditable until retention policy permits deletion.
+
+\subsection{Replay determinism}
+
+Exactness requires more than a random seed. PoisonGuard records base-model and adapter hashes, tokenizer version, optimizer and scheduler state, minibatch order, pseudorandom generator state, precision mode, kernel/backend build, and policy code hash. For hardware kernels with nondeterministic reductions, the deployment either enables deterministic operators or defines a numerical equivalence tolerance and validates behavioral equivalence separately.
+
+\subsection{Crash consistency and concurrency}
+
+Events may arrive while a candidate trains or rollback runs. The lineage store assigns each operation a transaction epoch. Training reads a snapshot. Promotion verifies that its parent checkpoint and policy epoch remain current. Rollback installs a recovery barrier: new events are durably logged but not applied to mutable learned state until the restored suffix catches up. A write-ahead record makes graph edge creation and state mutation atomic under crash recovery.
+
+\subsection{Retention and privacy tension}
+
+Exact replay favors retaining data; privacy and storage minimization favor deletion. PoisonGuard separates payload retention from lineage retention. A deployment can retain encrypted replay capsules for a bounded horizon, store only hashes beyond it, and disclose that exact restoration is then limited to the replay horizon. The theoretical result assumes needed clean events are available. The prototype evaluation varies the horizon to expose this tradeoff rather than hiding it.
+
+\subsection{User interface}
+
+The user-facing unit is a learning receipt, not a raw graph. It states which source classes contributed to the active adapter, how many events remain quarantined, the last promoted checkpoint, and the estimated rollback horizon. High-impact declassification prompts show the original app/channel and proposed learned preference. Repeated prompts are rate-limited to avoid habituation.
+
+\paragraph{Topic-alignment checkpoint.} Every mechanism implements the locked method family: provenance-carried selection, shared memory/adapter lineage, quarantine, promotion, and rollback-and-replay.

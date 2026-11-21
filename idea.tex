@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlist{nosep}
+
+\title{PoisonGuard: Provenance-Carried Data Selection and Lineage Rollback for On-Device SLM Personalization\\
+\large Research concept document (not a paper draft)}
+\author{MobiSys 2027 idea repository, Idea 12}
+\date{Compiled 2026-10-03 from a web literature sweep; PROJECT\_FOLDER contained no PDFs}
+
+\begin{document}
+\maketitle
+
+\section{Title}
+PoisonGuard: Provenance-Carried Data Selection and Lineage Rollback for On-Device SLM Personalization.
+
+\section{Primary Target Venue}
+ACM MobiSys 2027. The contribution is an on-device personalization pipeline that carries source provenance through training-data selection into both memory and adapters, quarantines and promotes locally trained adapters, and rolls back poisoned state via data-keyed lineage, with on-device cost numbers. It is a mobile learning-systems mechanism, which fits the venue's on-device-AI emphasis.
+
+\section{Alternative Venues}
+\begin{itemize}
+  \item USENIX Security (\url{https://www.usenix.org/conferences}): poisoning threat model and defense evaluation.
+  \item IEEE S\&P (\url{https://sp2027.ieee-security.org}): if the attack characterization and guarantees dominate.
+  \item ACM CCS (\url{https://www.sigsac.org/ccs.html}): data-poisoning and provenance.
+  \item NDSS (\url{https://www.ndss-symposium.org}): secondary.
+\end{itemize}
+
+\section{Research Problem}
+When a phone's personalized SLM continuously learns from local data that arrives through many channels of different trust (user-typed text, received messages, notifications, calendar invites, shared files, agent memories), can an attacker inject persistent behavior by poisoning the local information the model learns from, and can an on-device defense carry source provenance through data selection into memory and adapters, then quarantine, audit, and roll back poisoned state at acceptable cost?
+
+\section{Why Mobile?}
+The setting is single-device, multi-channel, continuous personalization under phone compute, energy, and background-execution limits, with no cloud aggregation to hide poison behind and no server to retrain on. The ingestion channels (SMS/RCS, notifications via NotificationListener, calendar invites, shared files, clipboard, screenshots indexed on-device) are mobile, and they differ in trust in a way the OS can see. Federated-learning defenses assume many clients and a server root dataset; on one phone there is neither. On a server, poisoning defenses are robust aggregation or dataset curation, neither of which matches a single device ingesting the user's own mixed-trust data streams.
+
+\section{Motivation}
+Memory poisoning of agents is mature (MINJA, AgentPoison at NeurIPS 2024, MemGhost, Zombie Agents, GhostWriter, MemoryGraft, SPORE); a single email can poison a persistent personal agent (MemGhost, 87.5\% on a strong model). SkillJack shows poisoned trajectories become durable learned artifacts whose detectability drops from 98.5\% to 11.4\% and that survive source deletion 80\% of the time. Federated instruction-tuning work shows under 10\% poison spread across benign clients beats client-level defenses (arXiv 2602.15671), i.e., an honest device with poisoned data. On-device personalization is emerging (PocketLLM, MobiZO, MobileFineTuner on real phones; EMG-RAG deployed; Apple's Sep 2026 opt-in to improve Siri; Gemini personal context on by default). Crucially, "Machine Unlearning Fails to Remove Data Poisoning" (ICLR 2025) shows unlearning gives limited benefit, so lineage rollback, not unlearning, is the credible remediation. No work studies poisoning of a single-device, multi-channel, mixed memory-plus-adapter personalizer.
+
+\section{Closest Prior Work}
+\begin{itemize}
+  \item \textbf{MINJA} (arXiv 2503.03704), \textbf{AgentPoison} (NeurIPS 2024), \textbf{MemGhost} (arXiv 2607.05189), \textbf{Zombie Agents} (arXiv 2602.15654), \textbf{MemoryGraft} (arXiv 2512.16962), \textbf{GhostWriter} (arXiv 2607.06595), \textbf{SPORE} (arXiv 2607.23444): memory and experience poisoning of agents; cloud/desktop, text memory.
+  \item \textbf{SkillJack} (arXiv 2608.03509): poisoned trajectories become durable skills; detection collapses; survives source deletion; calls for provenance-aware skill lifecycle.
+  \item \textbf{LoRATK} (arXiv 2403.00108), token-level LoRA backdoors (arXiv 2605.30189), gradient-assembly FL-LoRA poisoning (arXiv 2601.00566): adapter poisoning.
+  \item \textbf{Federated instruction-tuning backdoors} (arXiv 2602.15671): thinly spread poison across benign clients beats client-level defenses.
+  \item \textbf{Machine Unlearning Fails to Remove Data Poisoning} (ICLR 2025): unlearning is weak remediation.
+  \item \textbf{Defenses}: trust-score plus temporal-decay memory sanitization (arXiv 2601.05504), A-MemGuard (arXiv 2510.02373), AgentSys isolation (arXiv 2602.07398), DASGuard file-provenance tracing (arXiv 2605.31042), Spotlighting, StruQ, CaMeL; FL robust aggregation (Krum, FLTrust, FLAME) as "what you cannot do on one device".
+  \item \textbf{On-device personalization}: PocketLLM (arXiv 2407.01031), MobiZO, MobileFineTuner (arXiv 2512.08211), Crayon, PortLLM, EMG-RAG; Apple adapters (developer-trained), AICore per-app LoRA, Gboard FL with DP.
+\end{itemize}
+
+\section{Research Gap}
+No work addresses poisoning of a single-device, multi-channel, mixed memory-plus-adapter personalizer. Missing: (1) carrying source provenance (app UID, channel type, sender, user-authored vs received) through the training-data selection step, not just at memory write; (2) cross-sink laundering, where a poisoned memory record is later selected as fine-tuning data so deleting the memory does nothing (SkillJack shows this for skills; nobody measures it for on-device weights); (3) quarantine-then-promote for locally trained adapters with checkpoint lineage keyed to data provenance, and the on-device cost of rollback; (4) behavior of per-sample gradient/spectral filters at phone batch scale with non-IID personal data and energy limits; (5) evaluation against an adaptive attacker who social-engineers the user into typing the trigger.
+
+\section{Threat Model or Privacy Model}
+\textbf{Trusted}: the OS and the on-device training runtime; the user's device is honest. \textbf{Untrusted}: the content arriving through non-user channels (received messages, notifications, calendar invites, shared files, screenshots), a malicious app that plants such content, and agent memories derived from it. \textbf{Attacker goal}: inject persistent behavior into the personalized SLM (a backdoor or a false learned preference) that survives across sessions and source deletion. \textbf{Attacker capabilities}: control content in one or more ingestion channels; optionally social-engineer the user into reproducing a trigger in user-authored text. \textbf{Assets}: the integrity of the personalized model's behavior. \textbf{Goal}: no content from an untrusted channel changes model behavior unless it passes a provenance-aware selection policy; any state learned from later-identified poison can be rolled back exactly via lineage; the "trusted-only learning" policy's residual risk under an adaptive attacker is measured. Utility goal: personalization quality is preserved.
+
+\section{Core Idea}
+A \emph{provenance-carried personalization pipeline}. Every candidate training item (for memory or for adapter fine-tuning) carries a provenance record from its ingestion channel: app UID, channel type, sender identity, and a user-authored-vs-received bit. A \emph{selection policy} decides what may influence learning: user-authored text is trusted; received content is admitted only under constraints (quarantine, rate limit, or exclusion), with the policy explicit rather than implicit. Adapters are trained in a \emph{quarantine-then-promote} regime: a candidate adapter trained on a recent data window is held, audited (behavioral probes plus norm/spectral checks), and promoted only if it passes; checkpoints form a lineage keyed to the provenance of the data that produced them, so if an item is later identified as poison, the pipeline rolls back to the pre-poison checkpoint and replays clean data, rather than attempting unlearning (which ICLR 2025 shows fails). Memory and adapter sinks share one provenance graph with reference counts, so a poisoned memory record cannot be laundered into weights without carrying its taint, and deleting it also invalidates the adapter checkpoints that consumed it. The design measures the on-device cost (storage for lineage, energy and latency for rollback and replay) within Android's background-execution limits.
+
+\section{Preliminary System Architecture}
+\begin{itemize}
+  \item \textbf{Provenance Tagger} (middleware at ingestion; integrates with NotificationListener, SMS pipeline, file-share, clipboard, screenshot index): attaches provenance to candidate items.
+  \item \textbf{Selection Policy} (system service): admits/quarantines/excludes items for memory and for adapter training by provenance.
+  \item \textbf{Quarantine-Promote Trainer} (on-device training runtime; MobileFineTuner/MobiZO/llama.cpp-based, SLM integration): trains candidate adapters, runs behavioral and norm/spectral audits, promotes on pass.
+  \item \textbf{Lineage Store} (system service): provenance graph with reference counts over memory records, data windows, and adapter checkpoints; supports rollback-and-replay.
+  \item \textbf{Audit Harness}: per-sample gradient/spectral filters sized for phone batches; adaptive-attacker evaluation.
+  \item \textbf{Hardware}: NPU/GPU for training and audit; none special.
+\end{itemize}
+
+\section{Novelty Boundary}
+\textbf{What is fundamentally new}: provenance carried through data selection into both memory and adapters on a single device, measurement of cross-sink laundering (poison surviving memory deletion once in weights), quarantine-then-promote for locally trained adapters, and lineage rollback keyed to data provenance as remediation instead of unlearning. Prior memory-poisoning attacks and defenses are cloud/desktop and text-memory only; FL defenses assume aggregation; SkillJack shows the laundering effect for skills but not on-device weights; unlearning is shown to fail. \textbf{What would not exist otherwise}: the first on-device, multi-channel poisoning study for mixed memory-plus-adapter personalization and a rollback-based defense with phone cost numbers. Novelty requires further literature verification; the search budget was exhausted, so an arXiv recheck for an on-device personalization-poisoning paper is needed.
+
+\section{Expected Contributions}
+\begin{enumerate}
+  \item A characterization of on-device personalization poisoning through real mobile ingestion channels, including a measurement of cross-sink laundering (poison persisting after source deletion once in weights).
+  \item A provenance-carried data-selection policy spanning memory and adapter training.
+  \item Quarantine-then-promote for locally trained adapters with provenance-keyed checkpoint lineage.
+  \item Lineage rollback-and-replay as remediation, with on-device storage, energy, and latency costs under background-execution limits.
+  \item An evaluation against MINJA, AgentPoison, MemGhost-style channel payloads, LoRA data poisoning, and an adaptive attacker, reporting attack success, utility, and device cost.
+\end{enumerate}
+
+\section{Evaluation Plan}
+\begin{itemize}
+  \item \textbf{Platform}: on-device fine-tuning (MobileFineTuner or MobiZO) of Qwen2.5-0.5B / Gemma 3 1B-class models on Pixel 7/8 and OnePlus 12; memory via a local store.
+  \item \textbf{Workloads}: reply suggestion and preference personalization over LaMP, PersonaChat, Enron/AESLC, SMS corpora; agent memory from screenshots and messages.
+  \item \textbf{Channels}: SMS/RCS, notifications, calendar invites, shared files, clipboard, screenshot index as poison vectors; measure poison rate needed per channel.
+  \item \textbf{Attacks}: MINJA and AgentPoison (adapted), MemGhost-style email/message payloads, LoRA data-poisoning (token-level backdoors), and an adaptive attacker who induces the user to type a trigger.
+  \item \textbf{Baselines}: no defense; trust-score plus temporal-decay memory sanitization (2601.05504); A-MemGuard; FL robust aggregation as an inapplicable reference; unlearning (NPO/RMU) as remediation.
+  \item \textbf{Metrics}: attack success rate and persistence after source deletion (the laundering metric), personalization utility (LaMP/F1), rollback latency and energy, lineage storage overhead, adaptive-attacker success, false-quarantine rate on benign received content.
+  \item \textbf{Ablations}: provenance selection on/off; quarantine-promote on/off; shared vs separate provenance graph for memory and adapters; rollback vs unlearning.
+\end{itemize}
+
+\section{Feasibility}
+Medium. On-device fine-tuning frameworks run on commodity phones; the provenance tagger hooks existing ingestion APIs; the lineage store and rollback are standard systems engineering; the audits reuse published detectors. The research risk is the premise (phones do not yet parametrically personalize at scale), which the paper answers with the on-device fine-tuning literature, the deployed EMG-RAG assistant, and the fact that memory and indexes already are learned state. Effort: two engineers, six months.
+
+\section{Potential Risks}
+\begin{itemize}
+  \item "MINJA/AgentPoison already did memory poisoning": attack novelty must come from the mobile ingestion channels and cross-sink laundering, not a new injection trick; defense novelty is provenance-through-selection plus lineage rollback.
+  \item "Just do not train on untrusted data": that is a provenance policy no platform documents, user-authored text is itself contaminable, and the useful signal is often received content; the paper must quantify the trusted-only policy's utility cost and residual risk.
+  \item "Phones do not fine-tune on-device": answer with the frameworks, deployed systems, and the fact that memory/indexes are learned state.
+  \item Unlearning-fails result means rollback must be exact; lineage storage cost could be high.
+  \item Adaptive attacker may defeat trusted-only learning; report honestly.
+\end{itemize}
+
+\section{Killer Experiment}
+Personalize an on-device SLM with a LoRA adapter, inject a backdoor trigger through a received-message channel so it enters first the memory and then, via the usual selection step, the adapter; delete the poisoned memory record and show the backdoor persists in the weights (the laundering effect, measured as attack success after source deletion). Then enable PoisonGuard: show the shared provenance graph blocks the laundering (the tainted item is excluded from adapter training, or its deletion rolls back the consuming checkpoint) at a measured rollback cost under one minute and acceptable energy, while personalization utility is preserved. If laundering is real and lineage rollback removes it where unlearning cannot, the paper has both its threat and its defense.
+
+\section{Publication Readiness}
+\begin{itemize}
+  \item ACM MobiSys: 7/10. On-device learning-systems mechanism with device cost; premise must be argued.
+  \item ACM MobiCom: 6/10.
+  \item ACM SenSys: 3/10.
+  \item IEEE S\&P: 7/10. Poisoning threat plus a remediation that beats unlearning.
+  \item USENIX Security: 7/10.
+  \item ACM CCS: 6/10.
+  \item NDSS: 6/10.
+  \item PETS/PoPETs: 4/10.
+\end{itemize}
+
+\end{document}

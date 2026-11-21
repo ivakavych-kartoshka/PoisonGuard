@@ -1,0 +1,70 @@
+\section{System and Threat Model}
+\label{sec:system}
+
+\subsection{Personalization lifecycle}
+
+The device runs a frozen or infrequently updated base SLM and maintains two mutable forms of personalization. First, a local memory service stores selected records and retrieves them into inference context. Second, a trainer periodically forms a window $W_k$ and produces a candidate LoRA adapter $q_k$. A promotion pointer selects at most one candidate as the active adapter. The two sinks may operate at different cadences, but they share a lineage service and policy state.
+
+\Cref{fig:architecture} separates the data plane from the control plane. Raw content is captured at a trusted ingress boundary. The provenance tagger canonicalizes the payload, retrieves OS-observable attributes, and creates an authenticated envelope. The policy engine issues sink-specific decisions. Derived summaries inherit all parents rather than receiving a fresh ``trusted'' label. The memory service and trainer emit lineage edges transactionally with their state changes. The audit harness evaluates a candidate without exposing it as the active model. Promotion commits the candidate, audit report, and lineage root atomically.
+
+\subsection{Trust assumptions}
+
+\begin{assumption}[Trusted computing base]
+\label{ass:tcb}
+The mobile OS kernel, provenance service, secure storage used for graph roots, base-model loader, policy engine, lineage recorder, and training runtime execute as specified. Untrusted applications cannot forge another app identity or rewrite a committed event envelope.
+\end{assumption}
+
+\begin{assumption}[Complete mediation]
+\label{ass:mediation}
+Every state-changing operation on memory, training data, candidate adapters, audit decisions, and promoted checkpoints is mediated by the policy/lineage layer. There is no side channel that writes persistent learned state without producing the corresponding lineage edges.
+\end{assumption}
+
+\begin{assumption}[Append-only event identity]
+\label{ass:identity}
+Each event and derived object has a collision-resistant content identifier over its canonical payload, provenance envelope, parent identifiers, and version. Mutation creates a new object rather than changing the old identifier.
+\end{assumption}
+
+These assumptions are strong but inspectable. If a vendor allows an application to write directly to the training cache, or if a summarizer discards its parent list, the main guarantee does not apply. PoisonGuard is therefore a system architecture, not a classifier that compensates for arbitrary implementation bypasses.
+
+\subsection{Adversary}
+
+The adversary controls content delivered through one or more non-user channels. It may send messages or calendar invitations, trigger notifications through a malicious app, share files, place text on a synchronized clipboard, or induce content that later appears in a screenshot index. It knows the broad policy and may adapt payloads after observing normal model behavior. It can attempt a memory attack, a training-data backdoor, or a two-stage laundering attack.
+
+The adversary may also socially engineer the user into reproducing a trigger in typed text. This capability is treated separately because the resulting OS evidence legitimately records user authorship. A defense that silently equates ``typed'' with ``benign'' would conceal this residual risk. Our evaluation therefore reports direct-channel and induced-user attacks separately.
+
+The attacker cannot compromise the TCB in \cref{ass:tcb}, forge event authentication, extract secure storage, alter the experiment harness, or physically modify the device. Denial of service through unbounded incoming content is rate-limited but is not the central goal.
+
+\subsection{Assets and security properties}
+
+The principal asset is behavioral integrity of the personalized SLM. Confidentiality and privacy remain important but are not the theorem target. We require four properties.
+
+\begin{definition}[Provenance preservation]
+For every persistent object $v$, the graph contains a path from each direct or indirect source event that influenced $v$ to $v$.
+\end{definition}
+
+\begin{definition}[Non-laundering]
+If policy denies event $e$ for adapter training, then no promoted checkpoint may be a descendant of $e$. If $e$ is later revoked, no checkpoint descendant may remain active after recovery completes.
+\end{definition}
+
+\begin{definition}[Quarantine safety]
+A candidate adapter cannot serve ordinary user inference before a successful audit and an atomic promotion that records its lineage closure.
+\end{definition}
+
+\begin{definition}[Counterfactual restoration]
+After revoking $R_t$, the recovered state equals the state obtained by executing the same versioned personalization pipeline on the admissible event subsequence with the revoked lineage closure removed.
+\end{definition}
+
+Counterfactual restoration is stronger than ``attack success decreased'' and narrower than semantic repair. Equality may be bitwise for deterministic integer kernels or within a declared tolerance for deterministic floating-point schedules. The experiment must state which form it checks.
+
+\subsection{Deployment boundary}
+
+The design fits a system service, a privileged personalization framework, or a research runtime. A third-party application can implement a weaker variant, but cannot reliably attribute cross-application content without OS support. For that reason, application identity and user-authorship evidence are observations from the trusted ingress boundary rather than strings supplied by the text producer.
+
+\paragraph{Topic-alignment checkpoint.} The architecture remains single-device and mobile. Federated workers, cloud aggregation, and differential privacy are outside the state machine.
+
+\begin{figure}[t]
+  \centering
+  \input{figures/tikz_threat_privacy_robustness}
+  \caption{Threat and control boundary. Orange patterned sources are untrusted; blue sources are directly user-authored; green shield stages mediate both persistent sinks. The adaptive retyping path is intentionally shown outside the automatic provenance guarantee.}
+  \label{fig:threat}
+\end{figure}

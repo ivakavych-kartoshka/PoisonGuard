@@ -1,0 +1,31 @@
+# Idea Fidelity Report
+
+Source locked from `idea.pdf` and the matching `idea.tex` on 2026-10-03.
+
+## Canonical extraction
+
+1. **Working title:** *PoisonGuard: Provenance-Carried Data Selection and Lineage Rollback for On-Device SLM Personalization*.
+2. **Core field:** mobile systems security for continuous, on-device small-language-model (SLM) personalization.
+3. **Core technical keywords:** on-device personalization; data poisoning; provenance; mixed memory-plus-adapter state; LoRA; quarantine-then-promote; checkpoint lineage; rollback-and-replay; cross-sink laundering; mobile ingestion channels.
+4. **System entities:** a trusted mobile OS and personalization runtime; an on-device SLM; provenance tagger; policy engine; memory store; candidate and promoted LoRA adapters; lineage store; audit harness; users; benign and malicious apps/senders; SMS/RCS, notification, calendar, shared-file, clipboard, and screenshot-index channels.
+5. **Main mathematical objects:** provenance-labelled items and data windows; trust classes and admission decisions; memory records; checkpoint-consumption graph; adapter update map; taint reachability; rollback frontier; replay sequence; attack-success and clean-utility risks; audit statistics; storage, latency, and energy costs.
+6. **Proposed algorithm name:** PoisonGuard. Its two principal procedures are provenance-aware admission and lineage rollback-and-replay, embedded in a quarantine-then-promote adapter lifecycle.
+7. **Theorem directions:** the concept document names no formal theorem. It implies four defensible directions: (i) provenance non-laundering under complete mediation and immutable labels; (ii) exact state restoration by rollback-and-clean-replay under deterministic/versioned execution; (iii) bounded contaminated influence under quarantine and bounded per-window updates; and (iv) explicit storage/replay-cost bounds. These are sufficient-condition results, not universal optimality or impossibility claims.
+8. **Experiment plan:** on-device fine-tuning of Qwen2.5-0.5B/Gemma-3-1B-class models on Pixel 7/8 and OnePlus 12; reply/preference personalization; LaMP, PersonaChat, Enron/AESLC, SMS-like corpora, and local memory; poison introduced through mobile channels; measure attack success, persistence after deletion, clean utility, false quarantine, rollback latency/energy, and lineage storage; ablate provenance, quarantine, shared lineage, and rollback.
+9. **Baselines:** no defense; trust-score/temporal-decay memory sanitization; memory defenses such as A-MemGuard where verifiable; approximate unlearning/remediation baselines (including NPO/RMU only when implementations and applicability are confirmed); and FL robust aggregation only as an explicitly inapplicable contrast, not as a directly comparable single-device baseline.
+10. **Seed references:** MINJA (arXiv:2503.03704); AgentPoison (NeurIPS 2024); LoRATK (arXiv:2403.00108); PocketLLM (arXiv:2407.01031); MobileFineTuner (arXiv:2512.08211); *Machine Unlearning Fails to Remove Data Poisoning Attacks* (ICLR 2025); memory-poisoning defense (arXiv:2601.05504); plus several 2025--2026 works named in the idea that require individual verification before use.
+11. **Explicit risks/assumptions:** OS and training runtime are trusted; provenance capture is complete and tamper-resistant; some useful received content is untrusted; exact replay requires versioned code/model/optimizer/randomness; adapter checkpoints and clean events remain available; phone energy/storage/background limits matter; user-authored data can be socially engineered; large-scale deployed phone fine-tuning is still emerging; real experimental results are absent.
+12. **The paper is not about:** federated aggregation as the primary system; cloud multi-client learning; incentive or mechanism design; differential privacy as the main contribution; generic prompt injection without persistent learned state; merely detecting malicious LoRA files downloaded from a hub; or claiming that provenance alone defeats compromised OS/runtime or user-origin social engineering.
+
+## LOCKED PAPER SPECIFICATION
+
+- **Locked topic:** preventing and remediating persistent data poisoning in single-device, multi-channel SLM personalization by carrying source provenance through both memory and adapter-training sinks.
+- **Locked problem statement:** received mobile content can be stored as memory and later selected for local LoRA training; after deletion of the source or memory record, poisoned behavior can persist in adapter weights. The system must mediate learning by provenance, quarantine candidate state, and restore a clean lineage at measurable mobile cost.
+- **Locked method family:** OS-visible provenance labels, policy-based admission, shared cross-sink lineage, candidate-adapter quarantine and audit, checkpoint promotion, invalidation, rollback, and clean replay.
+- **Locked theoretical goals:** give precise sufficient conditions for non-laundering and exact restoration; characterize residual attacker surface; and bound lineage storage and replay work without claiming optimality.
+- **Locked experiment family:** controlled mobile-channel poisoning and cross-sink laundering on commodity Android-class devices or a clearly identified emulator/prototype; memory-plus-LoRA personalization; adaptive source-deletion and user-retyping tests; on-device systems costs.
+- **Locked baseline family:** undefended personalization, memory-only filtering/sanitization, provenance without shared lineage, quarantine without rollback, approximate unlearning/retraining, and clearly labelled non-applicable FL aggregation references.
+- **Terms required in title/abstract/introduction:** PoisonGuard; on-device SLM personalization; provenance; data poisoning; memory; adapters/LoRA; quarantine; lineage rollback; cross-sink laundering.
+- **Terms that must not dominate unless directly justified:** federated learning, differential privacy, incentive design, blockchain/ledger, cloud training, generic RAG security, or universal prompt-injection defense.
+
+Any manuscript section that changes the primary domain, removes either memory or adapter state, treats approximate unlearning as exact rollback, or presents planned results as measured results violates this lock and must be revised.

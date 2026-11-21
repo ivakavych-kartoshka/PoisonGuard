@@ -1,0 +1,10 @@
+seed: 42
+output_dir: outputs/real_policy_simulation_lamp4_dev
+data:
+  root: datas/LaMP/data/LaMP_4/dev
+model:
+  hash: unspecified
+policy:
+  typed_training: allow
+  remote_memory: quarantine
+  remote_training: deny

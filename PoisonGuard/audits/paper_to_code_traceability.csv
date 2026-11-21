@@ -1,0 +1,26 @@
+paper_section,page_or_algorithm_or_equation,paper_object,implementation_file,class_or_function_name,test_file,implementation_status,notes
+Preliminaries,Eq. 1,Provenance-labelled event,src/poisonguard/data/schemas.py,Event.create,tests/test_schemas.py,implemented,Canonical digest binds metadata and parents
+Preliminaries,Eq. 2,LoRA update,src/poisonguard/models/adapters.py,apply_lora,tests/test_models.py,implemented,Numpy reference implementation only
+Preliminaries,Eq. 3,Sink-specific policy,src/poisonguard/methods/policy.py,DefaultPolicy.decide,tests/test_policy.py,implemented,Rule choices are configurable
+Preliminaries,Lineage definition,Typed lineage DAG,src/poisonguard/methods/lineage.py,LineageGraph,tests/test_lineage.py,implemented,In-memory serializable reference implementation
+Problem formulation,Eq. 6,Versioned transition,src/poisonguard/methods/core.py,PoisonGuardEngine.ingest,tests/test_core.py,implemented_with_synthetic_demo,Version and randomness are recorded
+Problem formulation,Eq. 7,Memory update,src/poisonguard/methods/core.py,PoisonGuardEngine.ingest,tests/test_core.py,implemented_with_synthetic_demo,Deterministic reference transform
+Problem formulation,Eq. 8,Training update,src/poisonguard/models/adapters.py,DeterministicAdapterTrainer.train,tests/test_models.py,implemented_with_synthetic_demo,Numerical simulator not an SLM trainer
+Problem formulation,Eq. 10,ASR and laundering persistence,src/poisonguard/metrics/metrics.py,attack_success_rate;laundering_persistence,tests/test_metrics.py,implemented,Safe empty-denominator behavior
+Problem formulation,Eq. 9,Cross-sink laundering path,src/poisonguard/methods/core.py,PoisonGuardEngine.create_training_example_from_memory,tests/test_core.py,implemented_with_synthetic_demo,Explicit event-to-memory-to-example-to-window-to-candidate-to-checkpoint path
+Problem formulation,Eq. 11,False quarantine rate,src/poisonguard/metrics/metrics.py,false_quarantine_rate,tests/test_metrics.py,implemented,Deny counts as rejection
+Problem formulation,Eq. 12,Deployment objective,src/poisonguard/metrics/metrics.py,deployment_objective,tests/test_metrics.py,implemented,Evaluator only
+Algorithms,Algorithm 1,Provenance-Aware Admission and Quarantine,src/poisonguard/methods/core.py,PoisonGuardEngine.ingest/train_candidate/audit_and_promote,tests/test_core.py,implemented_with_synthetic_demo,Atomicity simulated under a process lock
+Algorithms,Algorithm 2,Lineage Rollback-and-Replay,src/poisonguard/methods/rollback.py,rollback_and_replay,tests/test_rollback.py,implemented_with_synthetic_demo,Requires EnvironmentRecord equality
+Theory,Eq. 13,Contaminated displacement bound,src/poisonguard/metrics/metrics.py,contaminated_displacement_bound,tests/test_metrics.py,implemented,Not interpreted as an ASR bound
+Theory,Eq. 14,Storage bound,src/poisonguard/metrics/metrics.py,storage_upper_bound,tests/test_metrics.py,implemented,Measured overhead terms supplied by caller
+Experiments,Metrics,Security policy utility recovery and systems metrics,src/poisonguard/metrics/metrics.py,metric functions,tests/test_metrics.py,implemented_with_synthetic_demo,Hardware energy and thermal readings require external telemetry
+Experiments,Protocol,Clean/attacked branches and remediation,src/poisonguard/experiments/run_evaluation.py,run_evaluation,tests/test_experiments.py,implemented_with_synthetic_demo,No real model or benchmark
+Experiments,Baselines,Direct baselines,src/poisonguard/baselines/simple.py,baseline classes,tests/test_baselines.py,implemented_with_synthetic_demo,Policy/state-machine comparisons
+Experiments,External baselines,A-MemGuard and approximate unlearning,src/poisonguard/baselines/external_wrappers.py,ExternalBaseline,tests/test_baselines.py,adapter_stub_waiting_for_external_dependency,No invented external APIs
+Experiments,Datasets,LaMP PersonaChat AESLC Enron/SMS,src/poisonguard/data/adapters.py,dataset adapters,tests/test_data.py,not_implemented_requires_manual_data,Validation only; no downloads
+Experiments,Mobile harness,Android channels and telemetry,src/poisonguard/data/adapters.py,AndroidIngressAdapter,,adapter_stub_waiting_for_external_dependency,Requires instrumented Android runtime
+Experiments,Attack families,Published attack adaptations,src/poisonguard/baselines/external_wrappers.py,ExternalAttackAdapter,,adapter_stub_waiting_for_external_dependency,Synthetic marker attack is not those methods
+Experiments,Federated contrasts,Krum Bulyan FLTrust FLAME RFA FoolsGold,docs/baseline_adapters.md,N/A,,intentionally_out_of_scope,Multi-client assumptions do not match paper state machine
+Experiments,Placeholder table/curves,Unmeasured paper results,audits/result_integrity_audit.md,N/A,tests/test_result_integrity.py,intentionally_out_of_scope,Never copied or fabricated
+Experiments,External trainer adapter,Pinned on-device trainer boundary,src/poisonguard/models/external_trainer.py,MobileFineTunerTrainer,tests/test_external_trainer.py,implemented,Failure-loud adapter and output hashing only; no model math or paper result

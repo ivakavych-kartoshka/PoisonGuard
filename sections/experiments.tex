@@ -1,0 +1,112 @@
+\section{Experimental Design}
+\label{sec:experiments}
+
+This section is a preregistration-quality protocol. The source project contains no measurements, logs, or trained adapters. Consequently, \emph{no numeric defense result is claimed}. Every empty result cell and conceptual curve is labelled for replacement before submission.
+
+\subsection{Research questions}
+
+\begin{description}
+  \item[RQ1: Threat.] Can content delivered through a mobile channel enter memory, be selected for LoRA training, and preserve a trigger-conditioned behavior after source and memory deletion?
+  \item[RQ2: Mediation.] How much does provenance-aware sink selection reduce direct and cross-sink attacks, and what useful received content does it exclude or quarantine?
+  \item[RQ3: Lifecycle.] Does quarantine catch candidate anomalies before exposure, and which combinations of behavioral, norm, and spectral checks are useful at phone batch sizes?
+  \item[RQ4: Recovery.] For identified poison, does lineage rollback-and-replay match a clean counterfactual more reliably than approximate unlearning?
+  \item[RQ5: Systems cost.] What storage, training latency, rollback latency, energy, memory, and thermal costs arise on commodity phones?
+  \item[RQ6: Adaptation.] How often can an attacker bypass an origin policy by inducing the user to retype or explicitly approve a poisoned pattern?
+\end{description}
+
+\subsection{Platforms and models}
+
+The primary devices are Pixel 7/8-class and OnePlus 12-class phones, subject to laboratory availability and exact model disclosure. Report SoC, RAM, Android build, battery health, ambient temperature, accelerator backend, governor state, and whether the device is charging. At least one older and one current device should be included to avoid a single-phone systems claim.
+
+Candidate models are Qwen2.5-0.5B and a Gemma-3-1B-class checkpoint when licensing and framework support permit \cite{qwen2024qwen,gemma2025gemma}. PocketLLM and MobileFineTuner establish useful comparison points for on-device training design \cite{peng2024pocketllm,geng2025mobilefinetuner}; the concrete implementation must pin a commit and verify supported operators. LoRA rank $r\in\{4,8,16\}$, quantization mode, trainable modules, sequence length, optimizer, precision, and gradient accumulation are independent variables.
+
+\subsection{Workloads and datasets}
+
+LaMP supplies personalization tasks and user histories \cite{salemi2023lamp}. PersonaChat supports persona-conditioned dialogue \cite{zhang2018personachat}. AESLC provides email bodies and subject lines suitable for message-like summarization or reply scenarios \cite{zhang2019aeslc}. Any Enron-derived or SMS corpus must be cited to its exact licensed release after acquisition; it is currently a planned source and appears in \texttt{citation\_todo.md}. Synthetic calendar invitations, notifications, clipboard items, and screenshot text are generated from task templates but paired with public benign content distributions.
+
+The split unit is a user or conversation, not an individual sentence, to reduce leakage. Each experiment records clean histories, poison-bearing histories, trigger-free evaluation, trigger evaluation, and a post-deletion phase. Data that may contain personal information are processed under the applicable ethics and licensing review.
+
+\subsection{Mobile ingestion harness}
+
+The harness exposes six channels: SMS/RCS-like message, notification, calendar invitation, shared file, clipboard, and screenshot index. Where stock APIs cannot provide the required research hook, a test application or instrumented Android build emulates ingestion while preserving the intended metadata. The paper reports which paths are real OS integrations and which are controlled emulations.
+
+For each payload, the harness stores the source application's UID, channel, synthetic or account-scoped sender identifier, timestamps, user interaction, and resulting memory/training descendants. Re-running the same payload through different channels tests whether policy differences, rather than text-only detection, explain results.
+
+\subsection{Attacks}
+
+Four attack families are included.
+
+\begin{enumerate}
+  \item \textbf{Memory retrieval attacks:} adapt AgentPoison and MINJA-style payloads to locally stored memory \cite{chen2024agentpoison,dong2025minja}. The adaptation is documented; published numbers are not copied as local results.
+  \item \textbf{External-content persistence:} adapt MemGhost/GhostWriter-style email or message payloads and MemoryGraft-style experience insertion \cite{zhang2026memghost,torres2026ghostwriter,srivastava2025memorygraft}.
+  \item \textbf{LoRA data poisoning:} insert trigger-target examples into selected windows, informed by textual and adapter backdoor literature \cite{kurita2020weightpoison,liu2024loratk,lelle2026token}.
+  \item \textbf{Adaptive retyping:} present content that asks or persuades the user/test operator to type or approve a trigger. This changes provenance legitimately and measures the residual risk of trusted-only policies.
+\end{enumerate}
+
+Attack budgets vary poison count, fraction, repetition, channel diversity, trigger rarity, semantic naturalness, timing relative to checkpoint boundaries, and knowledge of the audit probes. Each experiment includes clean-trigger collision tests.
+
+\subsection{Baselines and ablations}
+
+The direct baselines are: no defense; memory-only trust/temporal sanitization inspired by Sunil et al. \cite{sunil2026memorypoison}; A-MemGuard when its implementation can be reproduced \cite{wei2025amemguard}; provenance selection without shared cross-sink lineage; shared lineage without candidate quarantine; quarantine without rollback; full clean retraining; and applicable approximate-unlearning methods including NPO-style objectives or other released implementations \cite{zhang2024npo,pawelczyk2025unlearning}. Baselines are not described as equivalent if their model/task assumptions differ.
+
+Krum, Bulyan, FLTrust, FLAME, geometric-median aggregation, and FoolsGold are discussed as non-applicable multi-client contrasts \cite{blanchard2017krum,mhamdi2018bulyan,cao2020fltrust,nguyen2021flame,pillutla2019rfa,fung2018sybil}. They are not plotted beside single-device methods unless an explicit synthetic multi-source reinterpretation is added and labelled exploratory.
+
+Key ablations remove one component at a time: provenance at ingestion; least-trust inheritance; separate versus shared lineage; behavioral audit; update audit; quarantine; checkpoint interval; replay capsule horizon; and exact environment pinning. A component is credited only when the corresponding delta is measured.
+
+\subsection{Metrics}
+
+Security metrics are attack success rate, clean-trigger false activation, injection/admission rate, retrieval rate, and laundering persistence $\mathrm{LP}$ from \cref{eq:laundering-metric}. Recovery reports parameter/checkpoint hash equality when meaningful, numerical distance, output-distribution distance on a fixed probe set, residual ASR, and clean utility. Policy reports false quarantine, false admission, and user-confirmation burden.
+
+Utility uses the task's official metric where possible: accuracy/F1 for classification, ranking metrics for retrieval, and generation metrics supplemented by blinded human judgment for replies. Security success and benign utility receive bootstrap confidence intervals across users and random seeds.
+
+Systems metrics are wall-clock and active compute time, peak resident memory, serialized adapter and lineage bytes, bytes per event/edge, battery energy through an external power monitor when available, Android energy counters as a secondary signal, average and peak temperature, throttling state, and job completion under background limits. Report median, interquartile range, and trial count; do not treat vendor battery percentages as precise joules.
+
+\subsection{Protocol}
+
+For each user/workload seed, train a clean counterfactual branch and an attacked branch from the same base state. In the attacked branch: ingest poison through a designated channel; allow memory use; select the window; train a candidate; audit and conditionally promote; measure ASR and utility; delete/revoke the source and memory; measure post-deletion ASR; then run each remediation method. PoisonGuard recovery is compared to the clean branch, not merely to the pre-recovery attacked model.
+
+At least five training seeds and a user-level bootstrap are recommended; final power analysis must be based on pilot variance. Audit probe construction is separated from attack evaluation. Adaptive attackers receive a held-out description of detector families but not the exact probe instances.
+
+\begin{table*}[t]
+\centering
+\caption{Result table template. \textbf{Placeholder / expected trend only; replace with actual experimental results before submission.}}
+\label{tab:placeholder-results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+Method & ASR before deletion & ASR after deletion & Clean utility & False quarantine & Rollback time & Energy \\
+\midrule
+No defense & -- & -- & -- & n/a & n/a & -- \\
+Memory-only sanitization & -- & -- & -- & -- & n/a & -- \\
+Approximate unlearning & -- & -- & -- & n/a & -- & -- \\
+Provenance without lineage & -- & -- & -- & -- & n/a & -- \\
+PoisonGuard & -- & -- & -- & -- & -- & -- \\
+Clean counterfactual & -- & -- & -- & n/a & n/a & -- \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+\begin{figure}[t]
+  \centering
+  \input{figures/tikz_experimental_setup}
+  \caption{Experimental setup from channel payloads to metrics. Each attack is replayed through each feasible channel while holding text constant, enabling provenance-policy effects to be separated from content detection.}
+  \label{fig:experimental-setup}
+\end{figure}
+
+\begin{figure*}[t]
+  \centering
+  \input{figures/pgfplots_placeholder_results}
+  \caption{\textbf{Conceptual expected trends, not experimental results.} The panels illustrate hypotheses to test: deletion alone may leave adapter ASR, whereas exact rollback should track the clean counterfactual; shorter checkpoint intervals trade storage for replay work. Replace both curves and this caption with measured data before submission.}
+  \label{fig:placeholder-trends}
+\end{figure*}
+
+\subsection{Reproducibility checklist}
+
+Release, subject to ethics and licensing: source code; Android build and app packages; model/adapters hashes; policy configuration; event schemas; synthetic channel templates; split manifests; attack parameters; audit probes or their generation process; seeds; training logs; power/thermal traces; lineage database snapshots with private content removed; and analysis scripts. Document every failure, excluded run, and manual intervention. Report exact library and driver versions. Preserve a manifest connecting each plot point to raw runs.
+
+\subsection{Ethics and containment}
+
+Experiments use researcher-owned devices and accounts. Payloads target test behaviors, not real users or services. Malicious examples and triggers are withheld or transformed when release would materially enable abuse. The study avoids sending unsolicited messages and does not scrape private phone content. Any human evaluation requires consent and institutional review as applicable.
+
+\paragraph{Topic-alignment checkpoint.} Datasets, channels, attacks, baselines, metrics, and device costs follow the idea document. All unmeasured outcomes remain placeholders.

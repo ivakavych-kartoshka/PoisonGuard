@@ -1,0 +1,393 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\HyPL@Entry{0<</S/D>>}
+\Newlabel{inst1}{a}
+\citation{hu2021lora}
+\citation{dettmers2023qlora}
+\citation{peng2024pocketllm,geng2025mobilefinetuner}
+\citation{salemi2023lamp}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{2}{Introduction}{section.1}{}}
+\newlabel{sec:introduction@cref}{{[section][1][]1}{[1][2][]2}}
+\citation{chen2024agentpoison}
+\citation{dong2025minja}
+\citation{zhang2026memghost,yang2026zombie,srivastava2025memorygraft}
+\citation{ying2026skilljack}
+\citation{sunil2026memorypoison,wei2025amemguard}
+\citation{wen2026agentsys}
+\citation{qi2020onion,yang2021rap}
+\citation{tran2018spectral,chen2018activation}
+\citation{blanchard2017krum,yin2018byzantine,pillutla2019rfa,cao2020fltrust}
+\citation{pawelczyk2025unlearning}
+\@writefile{toc}{\contentsline {paragraph}{Contributions.}{4}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Scope and non-goals.}{4}{section*.3}\protected@file@percent }
+\citation{lewis2020rag}
+\citation{park2023generativeagents}
+\citation{zhong2023memorybank}
+\citation{packer2023memgpt}
+\citation{shinn2023reflexion}
+\citation{zhang2024memorysurvey}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces PoisonGuard architecture. Blue solid arrows carry ordinary data, orange dashed arrows show potential adversarial flow, and green double-line arrows denote policy or recovery control. Provenance remains attached across both memory and adapter sinks.\relax }}{5}{figure.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:architecture}{{1}{5}{PoisonGuard architecture. Blue solid arrows carry ordinary data, orange dashed arrows show potential adversarial flow, and green double-line arrows denote policy or recovery control. Provenance remains attached across both memory and adapter sinks.\relax }{figure.caption.5}{}}
+\newlabel{fig:architecture@cref}{{[figure][1][]1}{[1][5][]5}}
+\@writefile{toc}{\contentsline {paragraph}{Road map.}{5}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work and Novelty Boundary}{5}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{5}{Related Work and Novelty Boundary}{section.2}{}}
+\newlabel{sec:related@cref}{{[section][2][]2}{[1][5][]5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Persistent memory and retrieval poisoning}{5}{subsection.2.1}\protected@file@percent }
+\citation{zou2024poisonedrag}
+\citation{chen2024agentpoison}
+\citation{dong2025minja}
+\citation{srivastava2025memorygraft}
+\citation{yang2026zombie}
+\citation{torres2026ghostwriter}
+\citation{zhang2026memghost}
+\citation{gao2026spore}
+\citation{ying2026skilljack}
+\citation{sunil2026memorypoison}
+\citation{wei2025amemguard}
+\citation{wen2026agentsys}
+\citation{tan2026dasguard}
+\citation{hines2024spotlighting}
+\citation{chen2024struq}
+\citation{debenedetti2024agentdojo}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Memory and prompt-injection defenses}{6}{subsection.2.2}\protected@file@percent }
+\citation{vaswani2017attention}
+\citation{hu2021lora}
+\citation{dettmers2023qlora}
+\citation{liu2024loratk}
+\citation{lelle2026token}
+\citation{dong2026gap}
+\citation{gu2017badnets}
+\citation{chen2017targetedbackdoor,shafahi2018poisonfrogs}
+\citation{kurita2020weightpoison}
+\citation{zhang2021neuba}
+\citation{tran2018spectral}
+\citation{chen2018activation}
+\citation{koh2017influence}
+\citation{gao2019strip}
+\citation{qi2020onion,yang2021rap}
+\citation{sun2020mobilebert}
+\citation{peng2024pocketllm}
+\citation{geng2025mobilefinetuner}
+\citation{wang2025xpert}
+\citation{augenstein2026hyperlora}
+\citation{salemi2023lamp}
+\citation{zhang2018personachat,zhang2019aeslc}
+\citation{qwen2024qwen,gemma2025gemma}
+\citation{bourtoule2021machineunlearning}
+\citation{guo2020certified}
+\citation{goel2022adversarialunlearning}
+\citation{eldan2023harry,zhang2024npo}
+\citation{pawelczyk2025unlearning}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Adapter poisoning and textual backdoors}{7}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}On-device personalization}{7}{subsection.2.4}\protected@file@percent }
+\citation{mcmahan2017fedavg}
+\citation{blanchard2017krum,yin2018byzantine,mhamdi2018bulyan,pillutla2019rfa}
+\citation{cao2020fltrust}
+\citation{nguyen2021flame}
+\citation{fung2018sybil}
+\citation{bhagoji2018federated,bagdasaryan2020backdoorfl}
+\citation{zhao2026fedbit}
+\citation{chen2024agentpoison,dong2025minja,zou2024poisonedrag}
+\citation{zhang2026memghost,ying2026skilljack}
+\citation{sunil2026memorypoison,wei2025amemguard}
+\citation{tran2018spectral,lelle2026token}
+\citation{eldan2023harry,zhang2024npo}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Unlearning, rollback, and provenance}{8}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Federated robustness as an inapplicable contrast}{8}{subsection.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Preliminaries and Notation}{8}{section.3}\protected@file@percent }
+\newlabel{sec:preliminaries}{{3}{8}{Preliminaries and Notation}{section.3}{}}
+\newlabel{sec:preliminaries@cref}{{[section][3][]3}{[1][8][]8}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Novelty boundary. A checkmark means the cited family makes the object explicit, not that every implementation provides a guarantee.\relax }}{9}{table.caption.6}\protected@file@percent }
+\newlabel{tab:boundary}{{1}{9}{Novelty boundary. A checkmark means the cited family makes the object explicit, not that every implementation provides a guarantee.\relax }{table.caption.6}{}}
+\newlabel{tab:boundary@cref}{{[table][1][]1}{[1][8][]9}}
+\newlabel{eq:event}{{1}{9}{Provenance-labelled event}{equation.3.1}{}}
+\newlabel{eq:event@cref}{{[equation][1][]1}{[1][8][]9}}
+\newlabel{eq:lora}{{3}{9}{Preliminaries and Notation}{equation.3.3}{}}
+\newlabel{eq:lora@cref}{{[equation][3][]3}{[1][9][]9}}
+\newlabel{eq:policy}{{4}{9}{Preliminaries and Notation}{equation.3.4}{}}
+\newlabel{eq:policy@cref}{{[equation][4][]4}{[1][9][]9}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Frequently used notation.\relax }}{10}{table.caption.7}\protected@file@percent }
+\newlabel{tab:notation}{{2}{10}{Frequently used notation.\relax }{table.caption.7}{}}
+\newlabel{tab:notation@cref}{{[table][2][]2}{[1][10][]10}}
+\@writefile{toc}{\contentsline {paragraph}{Topic-alignment checkpoint.}{10}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}System and Threat Model}{10}{section.4}\protected@file@percent }
+\newlabel{sec:system}{{4}{10}{System and Threat Model}{section.4}{}}
+\newlabel{sec:system@cref}{{[section][4][]4}{[1][10][]10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Personalization lifecycle}{10}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Trust assumptions}{11}{subsection.4.2}\protected@file@percent }
+\newlabel{ass:tcb}{{1}{11}{Trusted computing base}{assumption.1}{}}
+\newlabel{ass:tcb@cref}{{[assumption][1][]1}{[1][11][]11}}
+\newlabel{ass:mediation}{{2}{11}{Complete mediation}{assumption.2}{}}
+\newlabel{ass:mediation@cref}{{[assumption][2][]2}{[1][11][]11}}
+\newlabel{ass:identity}{{3}{11}{Append-only event identity}{assumption.3}{}}
+\newlabel{ass:identity@cref}{{[assumption][3][]3}{[1][11][]11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Adversary}{12}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Assets and security properties}{12}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Threat and control boundary. Orange patterned sources are untrusted; blue sources are directly user-authored; green shield stages mediate both persistent sinks. The adaptive retyping path is intentionally shown outside the automatic provenance guarantee.\relax }}{13}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:threat}{{2}{13}{Threat and control boundary. Orange patterned sources are untrusted; blue sources are directly user-authored; green shield stages mediate both persistent sinks. The adaptive retyping path is intentionally shown outside the automatic provenance guarantee.\relax }{figure.caption.10}{}}
+\newlabel{fig:threat@cref}{{[figure][2][]2}{[1][13][]13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Deployment boundary}{13}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Topic-alignment checkpoint.}{13}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Problem Formulation}{13}{section.5}\protected@file@percent }
+\newlabel{sec:problem}{{5}{13}{Problem Formulation}{section.5}{}}
+\newlabel{sec:problem@cref}{{[section][5][]5}{[1][13][]13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}State transition model}{13}{subsection.5.1}\protected@file@percent }
+\newlabel{eq:transition}{{6}{13}{State transition model}{equation.5.6}{}}
+\newlabel{eq:transition@cref}{{[equation][6][]6}{[1][13][]13}}
+\newlabel{eq:memory-update}{{7}{14}{State transition model}{equation.5.7}{}}
+\newlabel{eq:memory-update@cref}{{[equation][7][]7}{[1][13][]14}}
+\newlabel{eq:training-update}{{8}{14}{State transition model}{equation.5.8}{}}
+\newlabel{eq:training-update@cref}{{[equation][8][]8}{[1][14][]14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Cross-sink laundering}{14}{subsection.5.2}\protected@file@percent }
+\newlabel{eq:laundering-path}{{9}{14}{Cross-sink laundering path}{equation.5.9}{}}
+\newlabel{eq:laundering-path@cref}{{[equation][9][]9}{[1][14][]14}}
+\newlabel{eq:laundering-metric}{{11}{14}{Cross-sink laundering}{equation.5.11}{}}
+\newlabel{eq:laundering-metric@cref}{{[equation][11][]11}{[1][14][]14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Utility and systems objectives}{14}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces PoisonGuard method pipeline. Numbered stages correspond to capture, sink-specific selection, derived-state construction, quarantined training, audit/promotion, and revocation-driven rollback.\relax }}{15}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:pipeline}{{3}{15}{PoisonGuard method pipeline. Numbered stages correspond to capture, sink-specific selection, derived-state construction, quarantined training, audit/promotion, and revocation-driven rollback.\relax }{figure.caption.11}{}}
+\newlabel{fig:pipeline@cref}{{[figure][3][]3}{[1][15][]15}}
+\newlabel{eq:objective}{{13}{15}{Utility and systems objectives}{equation.5.13}{}}
+\newlabel{eq:objective@cref}{{[equation][13][]13}{[1][14][]15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Design requirements}{15}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Non-objectives and impossibility boundary}{15}{subsection.5.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Illustrative default policy. Deployments must validate the choices; they are not empirical results.\relax }}{16}{table.caption.12}\protected@file@percent }
+\newlabel{tab:policy}{{3}{16}{Illustrative default policy. Deployments must validate the choices; they are not empirical results.\relax }{table.caption.12}{}}
+\newlabel{tab:policy@cref}{{[table][3][]3}{[1][16][]16}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}PoisonGuard Design}{16}{section.6}\protected@file@percent }
+\newlabel{sec:method}{{6}{16}{PoisonGuard Design}{section.6}{}}
+\newlabel{sec:method@cref}{{[section][6][]6}{[1][15][]16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Provenance capture}{16}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Sink-specific policy}{16}{subsection.6.2}\protected@file@percent }
+\citation{tran2018spectral,koh2017influence,lelle2026token}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Shared lineage across sinks}{17}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Quarantine-then-promote}{17}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Revocation, invalidation, and rollback}{18}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Replay determinism}{18}{subsection.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Crash consistency and concurrency}{18}{subsection.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8}Retention and privacy tension}{19}{subsection.6.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.9}User interface}{19}{subsection.6.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Topic-alignment checkpoint.}{19}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Security and Systems Analysis}{19}{section.7}\protected@file@percent }
+\newlabel{sec:theory}{{7}{19}{Security and Systems Analysis}{section.7}{}}
+\newlabel{sec:theory@cref}{{[section][7][]7}{[1][19][]19}}
+\newlabel{ass:lineage}{{4}{19}{Sound lineage construction}{assumption.4}{}}
+\newlabel{ass:lineage@cref}{{[assumption][4][]4}{[1][19][]19}}
+\newlabel{ass:monotonicity}{{5}{19}{Policy monotonicity}{assumption.5}{}}
+\newlabel{ass:monotonicity@cref}{{[assumption][5][]5}{[1][19][]19}}
+\newlabel{lem:closure}{{1}{19}{Provenance closure}{lemma.1}{}}
+\newlabel{lem:closure@cref}{{[lemma][1][]1}{[1][19][]19}}
+\newlabel{thm:nonlaundering}{{1}{20}{Non-laundering under complete mediation}{theorem.1}{}}
+\newlabel{thm:nonlaundering@cref}{{[theorem][1][]1}{[1][19][]20}}
+\newlabel{ass:determinism}{{6}{20}{Versioned deterministic execution}{assumption.6}{}}
+\newlabel{ass:determinism@cref}{{[assumption][6][]6}{[1][20][]20}}
+\newlabel{thm:rollback}{{2}{20}{Exact rollback-and-replay}{theorem.2}{}}
+\newlabel{thm:rollback@cref}{{[theorem][2][]2}{[1][20][]20}}
+\newlabel{cor:removal}{{1}{20}{Post-recovery poison removal}{corollary.1}{}}
+\newlabel{cor:removal@cref}{{[corollary][1][]1}{[1][20][]20}}
+\newlabel{ass:bounded}{{7}{20}{Bounded quarantined update}{assumption.7}{}}
+\newlabel{ass:bounded@cref}{{[assumption][7][]7}{[1][20][]20}}
+\newlabel{prop:influence}{{1}{20}{Bound on pre-promotion contaminated displacement}{proposition.1}{}}
+\newlabel{prop:influence@cref}{{[proposition][1][]1}{[1][20][]20}}
+\newlabel{eq:influence-bound}{{14}{21}{Bound on pre-promotion contaminated displacement}{equation.7.14}{}}
+\newlabel{eq:influence-bound@cref}{{[equation][14][]14}{[1][20][]21}}
+\newlabel{prop:storage}{{2}{21}{Storage bound}{proposition.2}{}}
+\newlabel{prop:storage@cref}{{[proposition][2][]2}{[1][21][]21}}
+\newlabel{eq:storage-bound}{{15}{21}{Storage bound}{equation.7.15}{}}
+\newlabel{eq:storage-bound@cref}{{[equation][15][]15}{[1][21][]21}}
+\newlabel{prop:replay}{{3}{21}{Replay-work bound}{proposition.3}{}}
+\newlabel{prop:replay@cref}{{[proposition][3][]3}{[1][21][]21}}
+\newlabel{thm:linearizable}{{3}{21}{Recovery linearizability}{theorem.3}{}}
+\newlabel{thm:linearizable@cref}{{[theorem][3][]3}{[1][21][]21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Dependency structure of the formal results. Purple nodes are assumptions/results; green nodes are operational consequences. Routed arrows avoid implying that detector quality is a premise of exact rollback.\relax }}{22}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:theory}{{4}{22}{Dependency structure of the formal results. Purple nodes are assumptions/results; green nodes are operational consequences. Routed arrows avoid implying that detector quality is a premise of exact rollback.\relax }{figure.caption.14}{}}
+\newlabel{fig:theory@cref}{{[figure][4][]4}{[1][21][]22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Failure cases}{22}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Topic-alignment checkpoint.}{22}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Algorithms and Implementation Blueprint}{22}{section.8}\protected@file@percent }
+\newlabel{sec:algorithms}{{8}{22}{Algorithms and Implementation Blueprint}{section.8}{}}
+\newlabel{sec:algorithms@cref}{{[section][8][]8}{[1][22][]22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Complexity}{22}{subsection.8.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Provenance-Aware Admission and Quarantine\relax }}{23}{algorithm.1}\protected@file@percent }
+\newlabel{alg:admission}{{1}{23}{Provenance-Aware Admission and Quarantine\relax }{algorithm.1}{}}
+\newlabel{alg:admission@cref}{{[algorithm][1][]1}{[1][22][]23}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Lineage Rollback-and-Replay\relax }}{24}{algorithm.2}\protected@file@percent }
+\newlabel{alg:rollback}{{2}{24}{Lineage Rollback-and-Replay\relax }{algorithm.2}{}}
+\newlabel{alg:rollback@cref}{{[algorithm][2][]2}{[1][22][]24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Android-oriented implementation}{24}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Recovery certificate}{24}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Safe degradation}{25}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Topic-alignment checkpoint.}{25}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Experimental Design}{25}{section.9}\protected@file@percent }
+\newlabel{sec:experiments}{{9}{25}{Experimental Design}{section.9}{}}
+\newlabel{sec:experiments@cref}{{[section][9][]9}{[1][25][]25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Research questions}{25}{subsection.9.1}\protected@file@percent }
+\citation{qwen2024qwen,gemma2025gemma}
+\citation{peng2024pocketllm,geng2025mobilefinetuner}
+\citation{salemi2023lamp}
+\citation{zhang2018personachat}
+\citation{zhang2019aeslc}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Platforms and models}{26}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Workloads and datasets}{26}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Mobile ingestion harness}{26}{subsection.9.4}\protected@file@percent }
+\citation{chen2024agentpoison,dong2025minja}
+\citation{zhang2026memghost,torres2026ghostwriter,srivastava2025memorygraft}
+\citation{kurita2020weightpoison,liu2024loratk,lelle2026token}
+\citation{sunil2026memorypoison}
+\citation{wei2025amemguard}
+\citation{zhang2024npo,pawelczyk2025unlearning}
+\citation{blanchard2017krum,mhamdi2018bulyan,cao2020fltrust,nguyen2021flame,pillutla2019rfa,fung2018sybil}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5}Attacks}{27}{subsection.9.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.6}Baselines and ablations}{27}{subsection.9.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.7}Metrics}{28}{subsection.9.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.8}Protocol}{28}{subsection.9.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Result table template. \textbf  {Placeholder / expected trend only; replace with actual experimental results before submission.}\relax }}{29}{table.caption.17}\protected@file@percent }
+\newlabel{tab:placeholder-results}{{4}{29}{Result table template. \textbf {Placeholder / expected trend only; replace with actual experimental results before submission.}\relax }{table.caption.17}{}}
+\newlabel{tab:placeholder-results@cref}{{[table][4][]4}{[1][28][]29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Experimental setup from channel payloads to metrics. Each attack is replayed through each feasible channel while holding text constant, enabling provenance-policy effects to be separated from content detection.\relax }}{29}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:experimental-setup}{{5}{29}{Experimental setup from channel payloads to metrics. Each attack is replayed through each feasible channel while holding text constant, enabling provenance-policy effects to be separated from content detection.\relax }{figure.caption.18}{}}
+\newlabel{fig:experimental-setup@cref}{{[figure][5][]5}{[1][29][]29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.9}Reproducibility checklist}{29}{subsection.9.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.10}Ethics and containment}{29}{subsection.9.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textbf  {Conceptual expected trends, not experimental results.} The panels illustrate hypotheses to test: deletion alone may leave adapter ASR, whereas exact rollback should track the clean counterfactual; shorter checkpoint intervals trade storage for replay work. Replace both curves and this caption with measured data before submission.\relax }}{30}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:placeholder-trends}{{6}{30}{\textbf {Conceptual expected trends, not experimental results.} The panels illustrate hypotheses to test: deletion alone may leave adapter ASR, whereas exact rollback should track the clean counterfactual; shorter checkpoint intervals trade storage for replay work. Replace both curves and this caption with measured data before submission.\relax }{figure.caption.19}{}}
+\newlabel{fig:placeholder-trends@cref}{{[figure][6][]6}{[1][29][]30}}
+\@writefile{toc}{\contentsline {paragraph}{Topic-alignment checkpoint.}{30}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Discussion}{30}{section.10}\protected@file@percent }
+\newlabel{sec:discussion}{{10}{30}{Discussion}{section.10}{}}
+\newlabel{sec:discussion@cref}{{[section][10][]10}{[1][30][]30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Why provenance must survive selection}{30}{subsection.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Why quarantine and rollback are complementary}{30}{subsection.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Deleting data versus deleting influence}{31}{subsection.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Policy as a product decision}{31}{subsection.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5}Interaction with model updates}{31}{subsection.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6}Privacy and storage}{31}{subsection.10.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7}Relation to federated learning}{32}{subsection.10.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8}Expected reviewer questions}{32}{subsection.10.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{``Why not train only on typed text?''}{32}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{``Is exact replay practical?''}{32}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{``Is the attack just prompt injection?''}{32}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{``Does provenance prove content is safe?''}{32}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}Limitations}{32}{section.11}\protected@file@percent }
+\newlabel{sec:limitations}{{11}{32}{Limitations}{section.11}{}}
+\newlabel{sec:limitations@cref}{{[section][11][]11}{[1][32][]32}}
+\@writefile{toc}{\contentsline {section}{\numberline {12}Conclusion}{33}{section.12}\protected@file@percent }
+\newlabel{sec:conclusion}{{12}{33}{Conclusion}{section.12}{}}
+\newlabel{sec:conclusion@cref}{{[section][12][]12}{[1][33][]33}}
+\@writefile{toc}{\let\numberline\tmptocnumberline}
+\@writefile{toc}{\contentsline {section}{\numberline {Appendix \nobreakspace  {}A}Detailed Proofs}{34}{appendix.A}\protected@file@percent }
+\newlabel{app:proofs}{{Appendix \nobreakspace  {}A}{34}{Detailed Proofs}{appendix.A}{}}
+\newlabel{app:proofs@cref}{{[appendix][1][2147483647]Appendix \nobreakspace  {}A}{[1][34][]34}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.1}Proof of \cref  {lem:closure}}{34}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.2}Proof of \cref  {thm:nonlaundering}}{35}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Dependencies and limitation.}{35}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.3}Proof of \cref  {thm:rollback}}{35}{subsection.A.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Floating-point qualification.}{35}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.4}Proof of \cref  {cor:removal}}{36}{subsection.A.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.5}Proof of \cref  {prop:influence}}{36}{subsection.A.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Limitation.}{36}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.6}Proof of \cref  {prop:storage}}{36}{subsection.A.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.7}Proof of \cref  {prop:replay}}{37}{subsection.A.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.8}Proof of \cref  {thm:linearizable}}{37}{subsection.A.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {Appendix \nobreakspace  {}B}Additional Formal Checks}{37}{appendix.B}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}B.1}Dimensional consistency}{37}{subsection.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}B.2}Guarantee matrix}{37}{subsection.B.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {Appendix \nobreakspace  {}C}Additional Experimental Protocols}{37}{appendix.C}\protected@file@percent }
+\newlabel{app:experiments}{{Appendix \nobreakspace  {}C}{37}{Additional Experimental Protocols}{appendix.C}{}}
+\newlabel{app:experiments@cref}{{[appendix][3][2147483647]Appendix \nobreakspace  {}C}{[1][37][]37}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}C.1}Factorial design}{37}{subsection.C.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {B.5}{\ignorespaces Guarantees and the assumptions that can invalidate them.\relax }}{38}{table.caption.30}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {C.6}{\ignorespaces Planned experimental factors. Values are protocol settings, not results.\relax }}{38}{table.caption.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}C.2}Cross-sink laundering validation}{38}{subsection.C.2}\protected@file@percent }
+\bibstyle{elsarticle-num}
+\bibdata{references_verified}
+\bibcite{hu2021lora}{{1}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}C.3}Rollback validation}{39}{subsection.C.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}C.4}Systems measurement controls}{39}{subsection.C.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}C.5}Statistical analysis}{39}{subsection.C.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}C.6}Result integrity checklist}{39}{subsection.C.6}\protected@file@percent }
+\bibcite{dettmers2023qlora}{{2}{}{{}}{{}}}
+\bibcite{peng2024pocketllm}{{3}{}{{}}{{}}}
+\bibcite{geng2025mobilefinetuner}{{4}{}{{}}{{}}}
+\bibcite{salemi2023lamp}{{5}{}{{}}{{}}}
+\bibcite{chen2024agentpoison}{{6}{}{{}}{{}}}
+\bibcite{dong2025minja}{{7}{}{{}}{{}}}
+\bibcite{zhang2026memghost}{{8}{}{{}}{{}}}
+\bibcite{yang2026zombie}{{9}{}{{}}{{}}}
+\bibcite{srivastava2025memorygraft}{{10}{}{{}}{{}}}
+\bibcite{ying2026skilljack}{{11}{}{{}}{{}}}
+\bibcite{sunil2026memorypoison}{{12}{}{{}}{{}}}
+\bibcite{wei2025amemguard}{{13}{}{{}}{{}}}
+\bibcite{wen2026agentsys}{{14}{}{{}}{{}}}
+\bibcite{qi2020onion}{{15}{}{{}}{{}}}
+\bibcite{yang2021rap}{{16}{}{{}}{{}}}
+\bibcite{tran2018spectral}{{17}{}{{}}{{}}}
+\bibcite{chen2018activation}{{18}{}{{}}{{}}}
+\bibcite{blanchard2017krum}{{19}{}{{}}{{}}}
+\bibcite{yin2018byzantine}{{20}{}{{}}{{}}}
+\bibcite{pillutla2019rfa}{{21}{}{{}}{{}}}
+\bibcite{cao2020fltrust}{{22}{}{{}}{{}}}
+\bibcite{pawelczyk2025unlearning}{{23}{}{{}}{{}}}
+\bibcite{lewis2020rag}{{24}{}{{}}{{}}}
+\bibcite{park2023generativeagents}{{25}{}{{}}{{}}}
+\bibcite{zhong2023memorybank}{{26}{}{{}}{{}}}
+\bibcite{packer2023memgpt}{{27}{}{{}}{{}}}
+\bibcite{shinn2023reflexion}{{28}{}{{}}{{}}}
+\bibcite{zhang2024memorysurvey}{{29}{}{{}}{{}}}
+\bibcite{zou2024poisonedrag}{{30}{}{{}}{{}}}
+\bibcite{torres2026ghostwriter}{{31}{}{{}}{{}}}
+\bibcite{gao2026spore}{{32}{}{{}}{{}}}
+\bibcite{tan2026dasguard}{{33}{}{{}}{{}}}
+\bibcite{hines2024spotlighting}{{34}{}{{}}{{}}}
+\bibcite{chen2024struq}{{35}{}{{}}{{}}}
+\bibcite{debenedetti2024agentdojo}{{36}{}{{}}{{}}}
+\bibcite{vaswani2017attention}{{37}{}{{}}{{}}}
+\bibcite{liu2024loratk}{{38}{}{{}}{{}}}
+\bibcite{lelle2026token}{{39}{}{{}}{{}}}
+\bibcite{dong2026gap}{{40}{}{{}}{{}}}
+\bibcite{gu2017badnets}{{41}{}{{}}{{}}}
+\bibcite{chen2017targetedbackdoor}{{42}{}{{}}{{}}}
+\bibcite{shafahi2018poisonfrogs}{{43}{}{{}}{{}}}
+\bibcite{kurita2020weightpoison}{{44}{}{{}}{{}}}
+\bibcite{zhang2021neuba}{{45}{}{{}}{{}}}
+\bibcite{koh2017influence}{{46}{}{{}}{{}}}
+\bibcite{gao2019strip}{{47}{}{{}}{{}}}
+\bibcite{sun2020mobilebert}{{48}{}{{}}{{}}}
+\bibcite{wang2025xpert}{{49}{}{{}}{{}}}
+\bibcite{augenstein2026hyperlora}{{50}{}{{}}{{}}}
+\bibcite{zhang2018personachat}{{51}{}{{}}{{}}}
+\bibcite{zhang2019aeslc}{{52}{}{{}}{{}}}
+\bibcite{qwen2024qwen}{{53}{}{{}}{{}}}
+\bibcite{gemma2025gemma}{{54}{}{{}}{{}}}
+\bibcite{bourtoule2021machineunlearning}{{55}{}{{}}{{}}}
+\bibcite{guo2020certified}{{56}{}{{}}{{}}}
+\bibcite{goel2022adversarialunlearning}{{57}{}{{}}{{}}}
+\bibcite{eldan2023harry}{{58}{}{{}}{{}}}
+\bibcite{zhang2024npo}{{59}{}{{}}{{}}}
+\bibcite{mcmahan2017fedavg}{{60}{}{{}}{{}}}
+\bibcite{mhamdi2018bulyan}{{61}{}{{}}{{}}}
+\bibcite{nguyen2021flame}{{62}{}{{}}{{}}}
+\bibcite{fung2018sybil}{{63}{}{{}}{{}}}
+\bibcite{bhagoji2018federated}{{64}{}{{}}{{}}}
+\bibcite{bagdasaryan2020backdoorfl}{{65}{}{{}}{{}}}
+\bibcite{zhao2026fedbit}{{66}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\gdef \@abspage@last{48}

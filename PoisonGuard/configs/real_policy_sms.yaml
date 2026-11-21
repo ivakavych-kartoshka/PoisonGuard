@@ -1,0 +1,10 @@
+seed: 42
+output_dir: outputs/real_policy_simulation_sms
+data:
+  root: datas/sms+spam+collection
+model:
+  hash: unspecified
+policy:
+  typed_training: allow
+  remote_memory: quarantine
+  remote_training: deny

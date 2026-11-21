@@ -1,0 +1,14 @@
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[node distance=6mm]
+  \node[infra, text width=23mm] (data) {Datasets\\LaMP, dialogue, email};
+  \node[attack, text width=23mm, right=of data] (attack) {Attacks\\memory, LoRA, adaptive};
+  \node[honest, text width=23mm, right=of attack] (channels) {Six mobile\\channels};
+  \node[defense, text width=23mm, right=of channels] (methods) {Baselines and\\PoisonGuard};
+  \node[infra, text width=24mm, right=of methods] (metrics) {ASR, utility,\\time, energy, bytes};
+  \draw[dataflow] (data.east)--(attack.west);
+  \draw[attackflow] (attack.east)--(channels.west);
+  \draw[dataflow] (channels.east)--(methods.west);
+  \draw[dataflow] (methods.east)--(metrics.west);
+  \node[font=\scriptsize, text width=110mm, align=center, below=7mm of channels] {Paired clean/attacked branches $\rightarrow$ source deletion $\rightarrow$ remediation $\rightarrow$ clean-counterfactual comparison};
+\end{tikzpicture}%
+}

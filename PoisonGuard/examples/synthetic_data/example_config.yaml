@@ -1,0 +1,3 @@
+seed: 17
+config: ../../configs/synthetic_demo.yaml
+label: synthetic smoke-test output, not a paper result

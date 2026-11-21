@@ -1,0 +1,73 @@
+\section{Algorithms and Implementation Blueprint}
+\label{sec:algorithms}
+
+\begin{algorithm}[t]
+\caption{Provenance-Aware Admission and Quarantine}
+\label{alg:admission}
+\begin{algorithmic}[1]
+\Require Raw item $x$, OS context $o$, active checkpoint $c$, policy epoch $r$
+\State $e\gets\textsc{CaptureAndBind}(x,o)$; append source vertex $e$
+\For{$z\in\{\mathsf{mem},\mathsf{train}\}$}
+  \State $d_z\gets\pi_z(e,\sigma_r)$; append decision vertex $(e,d_z,r)$
+\EndFor
+\If{$d_{\mathsf{mem}}=\Allow$}
+  \State $m\gets f_M(e)$; atomically append $e\rightarrow m$ and commit $m$
+\ElsIf{$d_{\mathsf{mem}}=\Quarantine$}
+  \State store $e$ in non-retrievable quarantine
+\EndIf
+\If{$d_{\mathsf{train}}\ne\Deny$}
+  \State add $e$ to an eligible or quarantined training pool according to $d_{\mathsf{train}}$
+\EndIf
+\State \textbf{When} training budget permits, form $W_k$ from eligible events and their closures
+\State $q_k\gets T(c,W_k;v_k,\rho_k)$ in candidate namespace
+\State $a_k\gets\textsc{Audit}(q_k,c,W_k)$
+\If{$a_k=\mathsf{pass}$ and policy epoch still equals $r$}
+  \State atomically commit lineage and compare-and-swap active pointer from $c$ to $q_k$
+\Else
+  \State retain $q_k$ as quarantined evidence or garbage-collect under policy
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[t]
+\caption{Lineage Rollback-and-Replay}
+\label{alg:rollback}
+\begin{algorithmic}[1]
+\Require Revoked vertices $R$, active head $c_h$, lineage graph $\Graph$
+\State acquire recovery barrier; durably queue new arrivals
+\State $D\gets\operatorname{Desc}_{\Graph}(R)$
+\State mark memory, window, candidate, audit, and checkpoint vertices in $D$ invalid
+\State $c_j\gets$ newest retained checkpoint on active ancestry with $\operatorname{Anc}(c_j)\cap D=\varnothing$
+\If{no such checkpoint exists}
+  \State $c_j\gets$ pristine base state
+\EndIf
+\State verify hashes for $c_j$, code, tokenizer, optimizer, policy, and randomness records
+\State $E'\gets$ later events not in $D$ that pass the selected remediation policy
+\State restore $c_j$; replay $E'$ in original logical order into a recovery namespace
+\State validate graph completeness and post-recovery behavioral probes
+\State atomically install recovered head; append recovery certificate
+\State release barrier; process queued arrivals after the recovered suffix
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Complexity}
+
+Ingestion performs constant-sized metadata capture plus content hashing, $O(|x|)$. With bounded parent degree, appending a vertex is amortized $O(1)$. Descendant invalidation is $O(|V_D|+|E_D|)$ in the affected subgraph. Selecting a rollback frontier is linear in active checkpoint ancestry, or logarithmic with interval indexes followed by closure verification. Replay cost is the actual cost of re-running affected memory transforms and training windows; it cannot be reduced to graph traversal time.
+
+The behavioral audit cost is $O(P\,C_f)$ for $P$ probes and per-probe inference cost $C_f$. Per-layer norm auditing is linear in adapter size. Exact per-example gradients can dominate phone training; an implementation should use microbatches, sketches, or selective audits and report their sensitivity rather than imply that server-scale detection is free.
+
+\subsection{Android-oriented implementation}
+
+A research prototype can split the design into four privileged services: ingress adapters; a policy/lineage daemon backed by SQLite or an append-only log; a memory provider; and a trainer using a phone-native framework. Jobs should use the platform scheduler, require charging for expensive replay by default, and checkpoint before background time limits. The NPU/GPU backend and thermal state are part of the measurement record.
+
+For events that Android does not expose uniformly (notably RCS implementation details and screenshot indexes), the prototype must document whether it uses a system image, accessibility/testing shim, or synthetic replay. A laboratory harness must not be described as a stock-app integration.
+
+\subsection{Recovery certificate}
+
+Each recovery produces a certificate containing revoked roots, invalidated object counts, restored checkpoint hash, replay interval, environment hashes, completion status, and post-recovery probe digest. This certificate is not a proof that the detector identified every poison. It is evidence that, for the identified set, the prescribed causal cleanup executed under a recorded environment.
+
+\subsection{Safe degradation}
+
+If replay data are missing, a version cannot be loaded, or deterministic execution cannot be reproduced, PoisonGuard refuses to label the operation exact. Deployment options are to fall back to an older independently clean checkpoint, reset the adapter while preserving separately reviewed memory, or run approximate unlearning with an explicit weaker status. The UI and logs distinguish these outcomes.
+
+\paragraph{Topic-alignment checkpoint.} Both named algorithms implement the original PoisonGuard idea; neither substitutes a new aggregation or incentive mechanism.

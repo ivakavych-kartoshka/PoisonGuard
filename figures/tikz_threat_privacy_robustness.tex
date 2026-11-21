@@ -1,0 +1,16 @@
+\begin{tikzpicture}[node distance=7mm and 9mm]
+  \node[honest, text width=22mm] (user) {\tikz\draw[pgblue] (0,.16) circle (.12) (-.2,-.3) arc (180:0:.2 and .18);\\User-typed};
+  \node[attack, text width=22mm, below=of user] (attacker) {\tikz\draw[pgorange] (0,.16) circle (.12) (-.22,-.3)--(0,-.05)--(.22,-.3);\\Remote/app attacker};
+  \node[defense, text width=24mm, right=14mm of user, yshift=-8mm] (guard) {Origin binding\\and policy};
+  \node[honest, text width=20mm, above right=8mm and 12mm of guard] (mem) {Memory};
+  \node[infra, text width=20mm, below right=8mm and 12mm of guard] (lora) {LoRA};
+  \node[defense, text width=23mm, right=12mm of guard] (lineage) {Shared lineage\\shield};
+
+  \draw[dataflow] (user.east) -| (guard.north west);
+  \draw[attackflow] (attacker.east) -| (guard.south west);
+  \draw[dataflow] (guard.east) -| (mem.west);
+  \draw[dataflow] (guard.east) -| (lora.west);
+  \draw[controlflow] (mem.south) -- (lineage.north);
+  \draw[controlflow] (lora.north) -- (lineage.south);
+  \draw[attackflow] (attacker.north) to[bend left=42] node[flowlabel,left]{induced action} (user.south);
+\end{tikzpicture}

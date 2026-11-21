@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.poisonguard.service">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application android:label="PoisonGuard Service Skeleton">
+        <!-- This is a skeleton. A real service declaration and foreground
+             notification are required before device experiments. -->
+    </application>
+</manifest>

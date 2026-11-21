@@ -1,0 +1,92 @@
+# Real experiment template. Every null must be replaced by a manually
+# provisioned path/command before `poisonguard real --stage run` will proceed.
+# The runner never downloads data, models, or repositories.
+
+seed: 42
+output_dir: outputs/real_xiaomi13t
+mode: real_protocol
+
+data:
+  root: datas/aeslc
+  channels:
+    - typed
+  event_limit: null
+
+model:
+  root: C:\Users\Lenovo\.cache\huggingface\hub\models--Qwen--Qwen2.5-0.5B-Instruct\snapshots\7ae557604adf67be50417f59c2c2f167def9a775
+  hash: FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE
+  tokenizer_hash: C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539
+  lora_rank: 4
+  sequence_length: 8
+  batch_size: 1
+
+external:
+  trainer_binary: null
+  trainer_args: []
+  timeout_seconds: 3600
+
+  attacks:
+    agentpoison:
+      repository_root: null
+      command: []
+      expected_commit: null
+      expected_archive_sha256: null
+    minja:
+      repository_root: null
+      command: []
+      expected_commit: null
+      expected_archive_sha256: null
+    memghost:
+      repository_root: null
+      command: []
+      expected_commit: null
+      expected_archive_sha256: null
+    memorygraft:
+      repository_root: null
+      command: []
+      expected_commit: null
+      expected_archive_sha256: null
+
+  baselines:
+    amemguard:
+      repository_root: null
+      command: []
+      expected_commit: null
+      expected_archive_sha256: null
+    npo:
+      repository_root: null
+      command: []
+      expected_commit: null
+      expected_archive_sha256: null
+
+  telemetry:
+    path: null
+    expected_device: 9DBQFE8LEEWWYHYD
+
+metrics:
+  # Explicit measured result files only. Missing values stay missing.
+  results: []
+  required_fields:
+    - defense
+    - attack_family
+    - seed
+    - metrics.asr_before
+    - metrics.asr_after
+    - metrics.fqr
+    - metrics.clean_utility
+    - metrics.rollback.exact
+  energy:
+    # Only "external_power_monitor" can support an energy claim.
+    source: null
+    note: Android counter values are secondary and are never converted to joules here.
+
+device:
+  name: Xiaomi 13T
+  model: 2306EPN60G
+  device_id: 9DBQFE8LEEWWYHYD
+  android_release: 16
+  android_build: BP2A.250605.031.A3
+  soc: MediaTek Dimensity 8200-Ultra (mt6895)
+  abi: arm64-v8a
+  charging: USB powered, charging policy not controlled
+  energy_monitor: external power monitor required

@@ -1,0 +1,31 @@
+# EC2 template. Set mode/data paths only after assets are manually provisioned.
+seed: 2026
+output_dir: outputs/experiment_template
+mode: synthetic
+data:
+  root: null
+  dataset: synthetic  # later: lamp | personachat | aeslc | licensed_sms
+model:
+  backend: deterministic_vector_reference  # later: external_lora_trainer
+  root: null
+  dimension: 8
+  clip_norm: 1.0
+training:
+  step_size: 0.1
+  lora_rank: 8
+audit:
+  max_behavior_score: 2.0
+  max_update_norm: 2.0
+calibration:
+  quantile: 0.95
+synthetic:
+  benign_count: 8
+  poison_count: 2
+policy:
+  typed_training: allow
+  remote_memory: quarantine
+  remote_training: deny
+external:
+  android_harness_root: null
+  amemguard_root: null
+  approximate_unlearning_root: null

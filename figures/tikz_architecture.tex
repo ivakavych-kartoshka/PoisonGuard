@@ -1,0 +1,36 @@
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[node distance=7mm and 8mm, every node/.style={transform shape}]
+  \node[honest, text width=18mm] (typed) {\tikz\draw[pgblue,line width=.7pt] (0,0)--(.18,.18)--(.55,-.19);\\Typed input};
+  \node[attack, text width=22mm, below=5mm of typed] (remote) {\tikz{\draw[pgorange] (0,0) rectangle (.5,.32); \draw[pgorange] (0,.32)--(.25,.12)--(.5,.32);}\\Messages, apps, files};
+  \node[defense, text width=23mm, right=12mm of typed, yshift=-7mm] (tag) {Provenance\\tagger};
+  \node[defense, text width=23mm, right=of tag] (policy) {Sink-specific\\policy};
+  \node[honest, text width=21mm, above right=7mm and 10mm of policy] (memory) {\tikz{\draw[pgblue] (-.25,-.2) rectangle (.25,.2); \draw[pgblue] (-.25,.05)--(.25,.05) (-.25,-.08)--(.25,-.08);}\\Memory store};
+  \node[infra, text width=21mm, below right=7mm and 10mm of policy] (trainer) {Candidate LoRA\\trainer};
+  \node[defense, text width=20mm, right=10mm of trainer] (audit) {Audit and\\promotion};
+  \node[honest, text width=20mm, above=11mm of audit] (active) {Active\\adapter};
+  \node[defense, text width=22mm, below=11mm of audit] (lineage) {\tikz\draw[pggreen] (0,0) circle (.09) (.38,0) circle (.09) (.19,-.27) circle (.09) (0,0)--(.38,0)--(.19,-.27)--cycle;\\Lineage store};
+
+  \draw[dataflow] (typed.east) -| (tag.north west);
+  \draw[attackflow] (remote.east) -| (tag.south west);
+  \draw[dataflow] (tag.east) -- (policy.west);
+  \draw[dataflow] (policy.east) -| (memory.west);
+  \draw[dataflow] (policy.east) -| (trainer.west);
+  \draw[dataflow] (memory.south) |- (trainer.north);
+  \draw[dataflow] (trainer.east) -- (audit.west);
+  \draw[controlflow] (audit.north) -- node[flowlabel]{promote} (active.south);
+  \draw[controlflow] (tag.south) |- (lineage.west);
+  \draw[controlflow] (policy.south) |- (lineage.west);
+  \draw[controlflow] (memory.east) -| (lineage.north);
+  \draw[controlflow] (audit.south) -- (lineage.north);
+
+  \node[group, fit=(typed)(remote), label={[font=\scriptsize,text=pggray]above:Mobile ingestion}] {};
+  \node[group, fit=(tag)(policy)(memory)(trainer)(audit)(active)(lineage), label={[font=\scriptsize,text=pggray]above:Trusted personalization boundary}] {};
+  \coordinate (leg) at ($(lineage.south)+(0,-8mm)$);
+  \draw[dataflow] ($(leg)+(-38mm,0)$)--($(leg)+(-30mm,0)$);
+  \node[font=\scriptsize, anchor=west] at ($(leg)+(-28mm,0)$) {data/model};
+  \draw[attackflow] ($(leg)+(-5mm,0)$)--($(leg)+(3mm,0)$);
+  \node[font=\scriptsize, anchor=west] at ($(leg)+(5mm,0)$) {untrusted};
+  \draw[controlflow] ($(leg)+(26mm,0)$)--($(leg)+(34mm,0)$);
+  \node[font=\scriptsize, anchor=west] at ($(leg)+(36mm,0)$) {policy/recovery};
+\end{tikzpicture}%
+}

@@ -1,0 +1,58 @@
+\section{Related Work and Novelty Boundary}
+\label{sec:related}
+
+The relevant literature spans persistent agent memory, poisoning and backdoors, parameter-efficient personalization, provenance, unlearning, and federated robustness. The boundary matters: PoisonGuard is neither a new trigger-generation attack nor a federated aggregation rule. It is a lifecycle mechanism for a single device where one source item may influence two persistent sinks.
+
+\subsection{Persistent memory and retrieval poisoning}
+
+Retrieval-augmented generation combines parametric and retrieved knowledge \cite{lewis2020rag}. Agent systems extend this idea into longer-lived state: Generative Agents store and reflect over experience \cite{park2023generativeagents}, MemoryBank maintains long-term conversational memory \cite{zhong2023memorybank}, MemGPT manages context as an operating-system-like hierarchy \cite{packer2023memgpt}, and Reflexion converts feedback into reusable verbal memory \cite{shinn2023reflexion}. A survey by Zhang et al. organizes the growing design space of agent memory \cite{zhang2024memorysurvey}. These systems motivate persistent personalization but do not make mobile channel origin an enforceable training policy.
+
+PoisonedRAG demonstrates that an attacker can corrupt retrieval by injecting carefully chosen texts \cite{zou2024poisonedrag}. AgentPoison optimizes triggers that retrieve malicious demonstrations from an agent memory or knowledge base \cite{chen2024agentpoison}. MINJA injects malicious records through query-only interaction \cite{dong2025minja}. Later work broadens the persistence surface. MemoryGraft targets stored experiences \cite{srivastava2025memorygraft}; Zombie Agents turns one-time external exposure into self-reinforcing memory \cite{yang2026zombie}; GhostWriter plants and later activates memory payloads in tool-using personal agents \cite{torres2026ghostwriter}; and MemGhost studies stealthy single-email delivery into persistent personal agents \cite{zhang2026memghost}. SPORE addresses extraction rather than integrity, but underscores that memory interfaces create cross-session attack paths \cite{gao2026spore}.
+
+SkillJack supplies the closest empirical analogy to laundering: poisoned trajectories are transformed into reusable skills, become less detectable, and can survive deletion of the original records \cite{ying2026skilljack}. PoisonGuard transfers this question to mobile parameter updates and makes the source-to-weight dependency explicit. It does not claim that SkillJack already evaluated LoRA weights; it did not.
+
+\subsection{Memory and prompt-injection defenses}
+
+Recent defenses filter, isolate, or validate persistent content. A trust-score and temporal-decay defense studies realistic memory-bank contamination \cite{sunil2026memorypoison}. A-MemGuard combines consensus-based validation with a dual-memory design \cite{wei2025amemguard}. AgentSys isolates worker contexts and restricts what returns to a privileged context \cite{wen2026agentsys}. DASGuard traces control-like content in files back to its origin before committing state \cite{tan2026dasguard}. These works support the premise that origin and lifecycle control matter, while leaving open the specific relation between mobile ingestion, training-data selection, and adapter checkpoints.
+
+Prompt-injection defenses address a neighboring boundary. Spotlighting marks untrusted data so a model can distinguish it from instructions \cite{hines2024spotlighting}; StruQ separates instructions and data through structured queries \cite{chen2024struq}; AgentDojo supplies realistic tool-use tasks and attack cases \cite{debenedetti2024agentdojo}. PoisonGuard can host these checks inside its audit gate, but its primary invariant is different: no derived persistent state may lose the provenance of an influencing event.
+
+\subsection{Adapter poisoning and textual backdoors}
+
+Modern candidate SLMs inherit the Transformer architecture \cite{vaswani2017attention}. LoRA makes adaptation compact by representing a weight update as a low-rank product \cite{hu2021lora}; QLoRA couples low-rank adaptation with quantization \cite{dettmers2023qlora}. LoRATK shows that malicious LoRAs can retain backdoors when merged with benign task adapters \cite{liu2024loratk}. Token-level adapter experiments show that poisoned local training data can create backdoors while leaving clean task performance largely unchanged, and that behavioral and weight-level statistics offer complementary signals \cite{lelle2026token}. Gradient Assembly Poisoning targets the factorization itself in distributed LoRA systems \cite{dong2026gap}; its federated attacker differs from PoisonGuard's content-origin attacker, so we use it only to motivate factor-aware auditing.
+
+The broader backdoor literature establishes that small poisoned subsets can implant trigger-conditioned behavior. BadNets identifies supply-chain vulnerability \cite{gu2017badnets}; targeted and clean-label attacks show that labels need not be visibly inconsistent \cite{chen2017targetedbackdoor,shafahi2018poisonfrogs}; and weight poisoning targets pretrained NLP models \cite{kurita2020weightpoison}. NeuBA operates at neuron level in pretrained language models \cite{zhang2021neuba}. Detection methods include spectral signatures \cite{tran2018spectral}, activation clustering \cite{chen2018activation}, influence functions \cite{koh2017influence}, STRIP's input perturbations \cite{gao2019strip}, and textual defenses such as ONION and RAP \cite{qi2020onion,yang2021rap}. PoisonGuard does not assume any one detector is complete. It uses detection to decide promotion and uses lineage for recovery after detection.
+
+\subsection{On-device personalization}
+
+MobileBERT demonstrated that language models can be engineered for resource-constrained inference \cite{sun2020mobilebert}. PocketLLM evaluates derivative-free local fine-tuning on a smartphone \cite{peng2024pocketllm}; MobileFineTuner provides a mobile-native framework for full and parameter-efficient training \cite{geng2025mobilefinetuner}; XPerT reduces local personalization cost through model selection \cite{wang2025xpert}; and recent hypernetwork work synthesizes personalized LoRAs on-device \cite{augenstein2026hyperlora}. LaMP supplies personalization tasks \cite{salemi2023lamp}, while PersonaChat and AESLC provide dialogue and email-like text workloads \cite{zhang2018personachat,zhang2019aeslc}. Qwen2.5 and Gemma 3 define candidate compact model families \cite{qwen2024qwen,gemma2025gemma}. This literature establishes feasibility, not deployed prevalence. Accordingly, our evaluation claims a prototype study rather than universal production coverage.
+
+\subsection{Unlearning, rollback, and provenance}
+
+Machine unlearning seeks to remove the effect of designated examples. SISA partitions training to limit retraining scope \cite{bourtoule2021machineunlearning}; certified removal provides model-specific guarantees \cite{guo2020certified}; adversarial evaluation exposes weaknesses of inexact methods \cite{goel2022adversarialunlearning}; and approximate LLM methods include task-specific forgetting and negative preference optimization \cite{eldan2023harry,zhang2024npo}. Most importantly for this work, Pawelczyk et al. find that practical approximate methods can fail to eliminate poisoning effects \cite{pawelczyk2025unlearning}. PoisonGuard therefore does not call a gradient-based forgetting step ``rollback.'' It restores a pre-influence checkpoint and re-executes a versioned clean suffix.
+
+Data provenance traditionally records where outputs came from and how they were derived. PoisonGuard adopts that causal viewpoint but narrows it to stateful mobile learning. The lineage graph is not a blockchain and does not require distributed consensus. Its purpose is complete mediation, reachability-based invalidation, and deterministic replay.
+
+\subsection{Federated robustness as an inapplicable contrast}
+
+Federated averaging coordinates many clients through a server \cite{mcmahan2017fedavg}. Krum, coordinate-wise robust statistics, Bulyan, and geometric-median aggregation resist some Byzantine update models \cite{blanchard2017krum,yin2018byzantine,mhamdi2018bulyan,pillutla2019rfa}. FLTrust bootstraps trust from a server dataset \cite{cao2020fltrust}; FLAME clusters and clips updates before adding noise \cite{nguyen2021flame}; and FoolsGold addresses sybil-like similarity \cite{fung2018sybil}. Model-poisoning and backdoor studies illustrate the limits of aggregation \cite{bhagoji2018federated,bagdasaryan2020backdoorfl}. More recent federated instruction-tuning work shows that low-concentration poisoned data spread across nominally benign clients can evade defenses designed for malicious clients \cite{zhao2026fedbit}. These methods assume multiple updates to compare. A single phone learning from its own mixed-trust streams has neither that population nor a server root dataset. PoisonGuard cites them to delimit the problem, not as fair head-to-head baselines.
+
+\begin{table*}[t]
+\centering
+\caption{Novelty boundary. A checkmark means the cited family makes the object explicit, not that every implementation provides a guarantee.}
+\label{tab:boundary}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+Family & Persistent memory & Parameter adapter & Source provenance & Cross-sink lineage & Exact replay target \\
+\midrule
+Memory/RAG attacks \cite{chen2024agentpoison,dong2025minja,zou2024poisonedrag} & \checkmark & -- & limited & -- & -- \\
+Persistent-agent attacks \cite{zhang2026memghost,ying2026skilljack} & \checkmark & skill artifact & motivates & partial & -- \\
+Memory defenses \cite{sunil2026memorypoison,wei2025amemguard} & \checkmark & -- & trust signal & -- & -- \\
+Adapter/backdoor defenses \cite{tran2018spectral,lelle2026token} & -- & \checkmark & -- & -- & -- \\
+Approximate unlearning \cite{eldan2023harry,zhang2024npo} & -- & \checkmark & deletion set & limited & -- \\
+\PG{} (this work) & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}

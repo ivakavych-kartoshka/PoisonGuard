@@ -1,0 +1,67 @@
+{
+  "required_core_terms": [
+    "PoisonGuard",
+    "on-device SLM personalization",
+    "data poisoning",
+    "provenance-carried selection",
+    "memory-plus-adapter state",
+    "LoRA adapter",
+    "quarantine-then-promote",
+    "lineage rollback-and-replay",
+    "cross-sink laundering",
+    "mobile ingestion channels"
+  ],
+  "required_equations": [
+    "provenance-labelled event tuple",
+    "policy admission decision",
+    "memory update",
+    "adapter training update",
+    "lineage reachability and taint propagation",
+    "rollback frontier and clean replay",
+    "attack success and clean utility metrics",
+    "storage, latency, and energy cost"
+  ],
+  "required_algorithm_names": [
+    "PoisonGuard",
+    "Provenance-Aware Admission and Quarantine",
+    "Lineage Rollback-and-Replay"
+  ],
+  "required_theorem_directions": [
+    "non-laundering under complete mediation and immutable provenance",
+    "exact restoration under deterministic versioned replay",
+    "bounded contaminated influence before promotion",
+    "lineage storage and replay-work bounds"
+  ],
+  "required_experiment_variables": [
+    "ingestion channel",
+    "poison rate",
+    "trigger and attack family",
+    "memory-to-adapter consumption",
+    "source deletion",
+    "attack success before and after deletion",
+    "personalization utility",
+    "false-quarantine rate",
+    "rollback latency",
+    "rollback energy",
+    "lineage storage",
+    "adaptive user-retyping attack"
+  ],
+  "required_baselines": [
+    "no defense",
+    "memory-only sanitization",
+    "provenance selection without shared lineage",
+    "quarantine without rollback",
+    "approximate unlearning or retraining",
+    "federated robust aggregation as inapplicable contrast only"
+  ],
+  "forbidden_topic_drifts": [
+    "federated learning as the central architecture",
+    "differential privacy as the central objective",
+    "incentive or mechanism design",
+    "blockchain or distributed ledger",
+    "cloud-only agent security",
+    "generic prompt injection without persistent learned state",
+    "claims of universal, optimal, first, sharp, or state-of-the-art performance without proof and measurements",
+    "fabricated experimental results"
+  ]
+}

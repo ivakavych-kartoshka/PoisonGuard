@@ -1,0 +1,35 @@
+seed: 42
+output_dir: outputs/real_trainer_probe_xiaomi13t
+mode: real_trainer_probe
+
+data:
+  root: datas/aeslc
+
+model:
+  root: C:/Users/Lenovo/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775
+  hash: FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE
+  tokenizer_hash: C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539
+
+external:
+  trainer_binary: C:/Users/Lenovo/AppData/Local/Programs/Python/Python311/python.exe
+  trainer_args:
+    - scripts/run_mobilefinetuner_probe.py
+    - --device
+    - "9DBQFE8LEEWWYHYD"
+    - --package
+    - com.poisonguard.qwenstep
+    - --timeout
+    - "90"
+  android_harness_root: D:/NCKH/MobileSYS/MobileFineTuner
+  amemguard_root: null
+  approximate_unlearning_root: null
+  timeout_seconds: 120
+
+real:
+  timeout_seconds: 120
+  extra_args: []
+
+device:
+  name: Xiaomi 13T
+  device_id: 9DBQFE8LEEWWYHYD
+  android_release: 16

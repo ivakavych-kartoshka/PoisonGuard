@@ -1,0 +1,24 @@
+seed: 17
+output_dir: outputs/synthetic_demo
+mode: synthetic
+data:
+  root: null
+  dataset: synthetic
+model:
+  backend: deterministic_vector_reference
+  dimension: 8
+  clip_norm: 1.0
+training:
+  step_size: 0.15
+audit:
+  max_behavior_score: 2.0
+  max_update_norm: 2.0
+calibration:
+  quantile: 0.95
+synthetic:
+  benign_count: 10
+  poison_count: 2
+policy:
+  typed_training: allow
+  remote_memory: quarantine
+  remote_training: deny

@@ -1,0 +1,11 @@
+{
+    "snapshot":  "C:\\Users\\Lenovo\\.cache\\huggingface\\hub\\models--Qwen--Qwen2.5-0.5B-Instruct\\snapshots\\7ae557604adf67be50417f59c2c2f167def9a775",
+    "source":  "Hugging Face cache (already present on workstation)",
+    "files":  {
+                  "tokenizer.json":  "C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539",
+                  "model.safetensors":  "FDF756FA7FCBE7404D5C60E26BFF1A0C8B8AA1F72CED49E7DD0210FE288FB7FE",
+                  "config.json":  "18E18AFCACCAFADE98DAF13A54092927904649E1DD4EBA8299AB717D5D94FF45"
+              },
+    "model":  "Qwen2.5-0.5B-Instruct",
+    "license":  "Apache-2.0 (verify against model card before final submission)"
+}

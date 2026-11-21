@@ -1,0 +1,48 @@
+\section{Additional Experimental Protocols}
+\label{app:experiments}
+
+\subsection{Factorial design}
+
+A full factorial is expensive, so experiments proceed in stages. Stage A fixes one model/device and crosses six channels with four attacks and two poison budgets. Stage B carries the strongest two attacks across devices, models, and LoRA ranks. Stage C evaluates recovery intervals and replay horizons. Stage D evaluates adaptive retyping with a controlled human or scripted confirmation study. Each stage freezes its analysis plan before inspecting final outcomes.
+
+\begin{table}[h]
+\centering
+\caption{Planned experimental factors. Values are protocol settings, not results.}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lll}
+\toprule
+Factor & Primary levels & Secondary levels \\
+\midrule
+Channel & message, notification, calendar & share, clipboard, screenshot \\
+Model & Qwen2.5-0.5B, Gemma-3-1B-class & framework-permitted compact model \\
+LoRA rank & 4, 8, 16 & module subset \\
+Poison budget & count and percentage & burst versus slow drip \\
+Checkpoint interval & 1, 3, 7 windows & adaptive interval \\
+Replay horizon & short, medium, full study & encrypted capsule off/on \\
+Audit & lineage, behavior, update & combined \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsection{Cross-sink laundering validation}
+
+The killer experiment has four mandatory checkpoints: (1) the payload is present only in an untrusted-channel event; (2) a memory descendant is retrieved; (3) the descendant or its content enters a logged training window; and (4) after source and memory deletion, the active adapter retains trigger-conditioned behavior. A trial lacking the lineage evidence for step (3) is a memory-persistence trial, not a laundering trial.
+
+To rule out cached-context artifacts, restart the process, clear inference caches, disable memory retrieval, and reload the active adapter from disk before the post-deletion measurement. To rule out trigger collision, evaluate the same trigger on the clean base and clean-personalized branches. To establish causal dependence, repeat with the candidate window removed and with a clean replay from the pre-poison checkpoint.
+
+\subsection{Rollback validation}
+
+Compare four states: clean counterfactual $S_C$; attacked $S_A$; approximate-unlearned $S_U$; and PoisonGuard-recovered $S_R$. Check serialized adapter identity where determinism permits, numerical distances $\|\theta_R-\theta_C\|_2$ and $\|\theta_U-\theta_C\|_2$, memory-set equality, fixed-probe logits, ASR, and utility. Exact restoration is accepted only if the predefined state criterion and all lineage completeness checks pass.
+
+\subsection{Systems measurement controls}
+
+Condition batteries to a fixed range, disable unrelated background jobs, randomize method order, allow cool-down, and record ambient temperature. For energy, prefer an external inline monitor; correlate but do not substitute software counters without calibration. Repeat cold- and warm-cache runs. Include failed and thermally throttled trials in an appendix and justify exclusions.
+
+\subsection{Statistical analysis}
+
+Use user-level or conversation-level resampling. Report confidence intervals and the number of independent training seeds. For paired branches, analyze paired differences. Correct for multiple comparisons within each research question or designate a single primary contrast. Avoid declaring ``no utility loss'' from a nonsignificant test; use equivalence margins chosen before measurement.
+
+\subsection{Result integrity checklist}
+
+Before replacing placeholders, verify that every plotted point maps to raw runs; every baseline used its recommended tuning budget; attacks are not tuned on evaluation probes; device and model failures are reported; confidence intervals reflect independent units; and the caption distinguishes measured, derived, and conceptual values. Do not copy performance numbers from cited papers into PoisonGuard result tables.

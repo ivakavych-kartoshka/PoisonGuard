@@ -1,0 +1,35 @@
+\begin{subfigure}[t]{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+ width=\linewidth,height=5.3cm,
+ xlabel={Lifecycle stage},ylabel={Attack success rate},
+ symbolic x coords={ingest,train,delete,recover},xtick=data,
+ ymin=0,ymax=1,grid=major,
+ legend style={font=\scriptsize,at={(.5,-.27)},anchor=north,legend columns=2},
+ tick label style={font=\scriptsize},label style={font=\small}]
+\addplot[pgorange,thick,dashed,mark=triangle*] coordinates {(ingest,.1)(train,.8)(delete,.75)(recover,.7)};
+\addlegendentry{Deletion only}
+\addplot[pggreen,thick,mark=square*] coordinates {(ingest,.1)(train,.8)(delete,.75)(recover,.08)};
+\addlegendentry{Rollback hypothesis}
+\end{axis}
+\end{tikzpicture}
+\caption{Laundering and recovery.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+ width=\linewidth,height=5.3cm,
+ xlabel={Checkpoint interval (events)},ylabel={Normalized cost},
+ xmin=1,xmax=10,ymin=0,ymax=1.05,grid=major,
+ legend style={font=\scriptsize,at={(.5,-.27)},anchor=north,legend columns=2},
+ tick label style={font=\scriptsize},label style={font=\small}]
+\addplot[pgpurple,thick,mark=*] coordinates {(1,.95)(2,.65)(4,.4)(7,.25)(10,.18)};
+\addlegendentry{Storage hypothesis}
+\addplot[pgblue,thick,mark=square*] coordinates {(1,.12)(2,.2)(4,.38)(7,.68)(10,.93)};
+\addlegendentry{Replay hypothesis}
+\end{axis}
+\end{tikzpicture}
+\caption{Storage and replay.}
+\end{subfigure}

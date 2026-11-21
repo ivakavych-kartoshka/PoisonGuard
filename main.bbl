@@ -1,0 +1,444 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{hu2021lora}
+E.~J. Hu, Y.~Shen, P.~Wallis, Z.~Allen-Zhu, Y.~Li, S.~Wang, L.~Wang, W.~Chen,
+  \href{https://arxiv.org/abs/2106.09685}{{LoRA}: Low-rank adaptation of large
+  language models}, in: International Conference on Learning Representations,
+  2022.
+\newline\urlprefix\url{https://arxiv.org/abs/2106.09685}
+
+\bibitem{dettmers2023qlora}
+T.~Dettmers, A.~Pagnoni, A.~Holtzman, L.~Zettlemoyer,
+  \href{https://arxiv.org/abs/2305.14314}{{QLoRA}: Efficient finetuning of
+  quantized {LLM}s}, in: Advances in Neural Information Processing Systems,
+  Vol.~36, 2023.
+\newline\urlprefix\url{https://arxiv.org/abs/2305.14314}
+
+\bibitem{peng2024pocketllm}
+D.~Peng, Z.~Fu, J.~Wang, \href{https://arxiv.org/abs/2407.01031}{{PocketLLM}:
+  Enabling on-device fine-tuning for personalized {LLM}s}, arXiv preprint
+  arXiv:2407.01031 (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2407.01031}
+
+\bibitem{geng2025mobilefinetuner}
+J.~Geng, L.~Zhao, Y.~Lu, B.~Luo,
+  \href{https://arxiv.org/abs/2512.08211}{{MobileFineTuner}: A mobile-native
+  framework for on-device {LLM} fine-tuning in real-world embedded {AI}
+  applications}, arXiv preprint arXiv:2512.08211 (2025).
+\newline\urlprefix\url{https://arxiv.org/abs/2512.08211}
+
+\bibitem{salemi2023lamp}
+A.~Salemi, S.~Mysore, M.~Bendersky, H.~Zamani,
+  \href{https://arxiv.org/abs/2304.11406}{{LaMP}: When large language models
+  meet personalization}, arXiv preprint arXiv:2304.11406 (2023).
+\newline\urlprefix\url{https://arxiv.org/abs/2304.11406}
+
+\bibitem{chen2024agentpoison}
+Z.~Chen, Z.~Xiang, C.~Xiao, D.~Song, B.~Li,
+  \href{https://proceedings.neurips.cc/paper_files/paper/2024/hash/eb113910e9c3f6242541c1652e30dfd6-Abstract-Conference.html}{Agentpoison:
+  Red-teaming llm agents via poisoning memory or knowledge bases}, in: Advances
+  in Neural Information Processing Systems, Vol.~37, 2024.
+\newblock \href {https://doi.org/10.52202/079017-4136}
+  {\path{doi:10.52202/079017-4136}}.
+\newline\urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2024/hash/eb113910e9c3f6242541c1652e30dfd6-Abstract-Conference.html}
+
+\bibitem{dong2025minja}
+S.~Dong, S.~Xu, P.~He, Y.~Li, J.~Tang, T.~Liu, H.~Liu, Z.~Xiang,
+  \href{https://arxiv.org/abs/2503.03704}{Memory injection attacks on llm
+  agents via query-only interaction}, arXiv preprint arXiv:2503.03704 (2025).
+\newline\urlprefix\url{https://arxiv.org/abs/2503.03704}
+
+\bibitem{zhang2026memghost}
+Y.~Zhang, S.~Zhao, J.~Zhang, J.~Zhang, G.~Deng, X.~Liu, C.~Xiao, T.~Zhang,
+  \href{https://arxiv.org/abs/2607.05189}{When claws remember but do not tell:
+  Stealthy memory injection in persistent personal agents}, arXiv preprint
+  arXiv:2607.05189 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2607.05189}
+
+\bibitem{yang2026zombie}
+X.~Yang, Y.~He, S.~Ji, B.~Hooi, J.~S. Dong,
+  \href{https://arxiv.org/abs/2602.15654}{Zombie agents: Persistent control of
+  self-evolving {LLM} agents via self-reinforcing injections}, arXiv preprint
+  arXiv:2602.15654 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2602.15654}
+
+\bibitem{srivastava2025memorygraft}
+S.~S. Srivastava, H.~He, \href{https://arxiv.org/abs/2512.16962}{{MemoryGraft}:
+  Persistent compromise of {LLM} agents via poisoned experience retrieval},
+  arXiv preprint arXiv:2512.16962 (2025).
+\newline\urlprefix\url{https://arxiv.org/abs/2512.16962}
+
+\bibitem{ying2026skilljack}
+Z.~Ying, X.~Wu, H.~Wu, X.~Zheng, H.~Cheng, X.~Shi, J.~Guo,
+  \href{https://arxiv.org/abs/2608.03509}{{SkillJack}: Persistent skill
+  backdoors in self-evolving agents}, arXiv preprint arXiv:2608.03509 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2608.03509}
+
+\bibitem{sunil2026memorypoison}
+B.~D. Sunil, I.~Sinha, P.~Maheshwari, S.~Todmal, S.~Mallik, S.~Mishra,
+  \href{https://arxiv.org/abs/2601.05504}{Memory poisoning attack and defense
+  on memory based {LLM}-agents}, arXiv preprint arXiv:2601.05504 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2601.05504}
+
+\bibitem{wei2025amemguard}
+Q.~Wei, T.~Yang, Y.~Wang, X.~Li, L.~Li, Z.~Yin, Y.~Zhan, T.~Holz, Z.~Lin,
+  X.~Wang, \href{https://arxiv.org/abs/2510.02373}{{A-MemGuard}: A proactive
+  defense framework for {LLM}-based agent memory}, arXiv preprint
+  arXiv:2510.02373 (2025).
+\newline\urlprefix\url{https://arxiv.org/abs/2510.02373}
+
+\bibitem{wen2026agentsys}
+R.~Wen, H.~Li, C.~Xiao, N.~Zhang,
+  \href{https://arxiv.org/abs/2602.07398}{{AgentSys}: Secure and dynamic {LLM}
+  agents through explicit hierarchical memory management}, arXiv preprint
+  arXiv:2602.07398 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2602.07398}
+
+\bibitem{qi2020onion}
+F.~Qi, Y.~Chen, M.~Li, Y.~Yao, Z.~Liu, M.~Sun,
+  \href{https://arxiv.org/abs/2011.10369}{{ONION}: A simple and effective
+  defense against textual backdoor attacks}, arXiv preprint arXiv:2011.10369
+  (2020).
+\newline\urlprefix\url{https://arxiv.org/abs/2011.10369}
+
+\bibitem{yang2021rap}
+W.~Yang, Y.~Lin, P.~Li, J.~Zhou, X.~Sun,
+  \href{https://arxiv.org/abs/2110.07831}{{RAP}: Robustness-aware perturbations
+  for defending against backdoor attacks on {NLP} models}, arXiv preprint
+  arXiv:2110.07831 (2021).
+\newline\urlprefix\url{https://arxiv.org/abs/2110.07831}
+
+\bibitem{tran2018spectral}
+B.~Tran, J.~Li, A.~Madry, \href{https://arxiv.org/abs/1811.00636}{Spectral
+  signatures in backdoor attacks}, in: Advances in Neural Information
+  Processing Systems, Vol.~31, 2018.
+\newline\urlprefix\url{https://arxiv.org/abs/1811.00636}
+
+\bibitem{chen2018activation}
+B.~Chen, W.~Carvalho, N.~Baracaldo, H.~Ludwig, B.~Edwards, T.~Lee, I.~Molloy,
+  B.~Srivastava, \href{https://arxiv.org/abs/1811.03728}{Detecting backdoor
+  attacks on deep neural networks by activation clustering}, arXiv preprint
+  arXiv:1811.03728 (2018).
+\newline\urlprefix\url{https://arxiv.org/abs/1811.03728}
+
+\bibitem{blanchard2017krum}
+P.~Blanchard, E.~M.~E. Mhamdi, R.~Guerraoui, J.~Stainer,
+  \href{https://arxiv.org/abs/1703.02757}{Machine learning with adversaries:
+  Byzantine tolerant gradient descent}, in: Advances in Neural Information
+  Processing Systems, Vol.~30, 2017.
+\newline\urlprefix\url{https://arxiv.org/abs/1703.02757}
+
+\bibitem{yin2018byzantine}
+D.~Yin, Y.~Chen, K.~Ramchandran, P.~Bartlett,
+  \href{https://arxiv.org/abs/1803.01498}{Byzantine-robust distributed
+  learning: Towards optimal statistical rates}, in: Proceedings of the 35th
+  International Conference on Machine Learning, 2018.
+\newline\urlprefix\url{https://arxiv.org/abs/1803.01498}
+
+\bibitem{pillutla2019rfa}
+K.~Pillutla, S.~M. Kakade, Z.~Harchaoui,
+  \href{https://arxiv.org/abs/1912.13445}{Robust aggregation for federated
+  learning}, arXiv preprint arXiv:1912.13445 (2019).
+\newline\urlprefix\url{https://arxiv.org/abs/1912.13445}
+
+\bibitem{cao2020fltrust}
+X.~Cao, M.~Fang, J.~Liu, N.~Z. Gong,
+  \href{https://arxiv.org/abs/2012.13995}{{FLTrust}: Byzantine-robust federated
+  learning via trust bootstrapping}, arXiv preprint arXiv:2012.13995 (2020).
+\newline\urlprefix\url{https://arxiv.org/abs/2012.13995}
+
+\bibitem{pawelczyk2025unlearning}
+M.~Pawelczyk, J.~Z. Di, Y.~Lu, G.~Kamath, A.~Sekhari, S.~Neel,
+  \href{https://proceedings.iclr.cc/paper_files/paper/2025/hash/7e810b2c75d69be186cadd2fe3febeab-Abstract-Conference.html}{Machine
+  unlearning fails to remove data poisoning attacks}, in: International
+  Conference on Learning Representations, 2025.
+\newline\urlprefix\url{https://proceedings.iclr.cc/paper_files/paper/2025/hash/7e810b2c75d69be186cadd2fe3febeab-Abstract-Conference.html}
+
+\bibitem{lewis2020rag}
+P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal,
+  H.~K{\"u}ttler, M.~Lewis, W.~tau Yih, T.~Rockt{\"a}schel, S.~Riedel,
+  D.~Kiela, \href{https://arxiv.org/abs/2005.11401}{Retrieval-augmented
+  generation for knowledge-intensive {NLP} tasks}, in: Advances in Neural
+  Information Processing Systems, Vol.~33, 2020.
+\newline\urlprefix\url{https://arxiv.org/abs/2005.11401}
+
+\bibitem{park2023generativeagents}
+J.~S. Park, J.~C. O'Brien, C.~J. Cai, M.~R. Morris, P.~Liang, M.~S. Bernstein,
+  \href{https://arxiv.org/abs/2304.03442}{Generative agents: Interactive
+  simulacra of human behavior}, arXiv preprint arXiv:2304.03442 (2023).
+\newline\urlprefix\url{https://arxiv.org/abs/2304.03442}
+
+\bibitem{zhong2023memorybank}
+W.~Zhong, L.~Guo, Q.~Gao, H.~Ye, Y.~Wang,
+  \href{https://arxiv.org/abs/2305.10250}{{MemoryBank}: Enhancing large
+  language models with long-term memory}, arXiv preprint arXiv:2305.10250
+  (2023).
+\newline\urlprefix\url{https://arxiv.org/abs/2305.10250}
+
+\bibitem{packer2023memgpt}
+C.~Packer, S.~Wooders, K.~Lin, V.~Fang, S.~G. Patil, I.~Stoica, J.~E. Gonzalez,
+  \href{https://arxiv.org/abs/2310.08560}{{MemGPT}: Towards {LLM}s as operating
+  systems}, arXiv preprint arXiv:2310.08560 (2023).
+\newline\urlprefix\url{https://arxiv.org/abs/2310.08560}
+
+\bibitem{shinn2023reflexion}
+N.~Shinn, F.~Cassano, E.~Berman, A.~Gopinath, K.~Narasimhan, S.~Yao,
+  \href{https://arxiv.org/abs/2303.11366}{Reflexion: Language agents with
+  verbal reinforcement learning}, arXiv preprint arXiv:2303.11366 (2023).
+\newline\urlprefix\url{https://arxiv.org/abs/2303.11366}
+
+\bibitem{zhang2024memorysurvey}
+Z.~Zhang, X.~Bo, C.~Ma, R.~Li, X.~Chen, Q.~Dai, J.~Zhu, Z.~Dong, J.-R. Wen,
+  \href{https://arxiv.org/abs/2404.13501}{A survey on the memory mechanism of
+  large language model based agents}, arXiv preprint arXiv:2404.13501 (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2404.13501}
+
+\bibitem{zou2024poisonedrag}
+W.~Zou, R.~Geng, B.~Wang, J.~Jia,
+  \href{https://arxiv.org/abs/2402.07867}{{PoisonedRAG}: Knowledge corruption
+  attacks to retrieval-augmented generation of large language models}, arXiv
+  preprint arXiv:2402.07867 (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2402.07867}
+
+\bibitem{torres2026ghostwriter}
+G.~Torres, S.~Shrestha, S.~Misra, \href{https://arxiv.org/abs/2607.06595}{When
+  agents remember too much: Memory poisoning attacks on large language model
+  agents}, arXiv preprint arXiv:2607.06595 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2607.06595}
+
+\bibitem{gao2026spore}
+X.~Gao, W.~Chen, X.~Meng, L.~Wang, C.~Zang, J.~Wang, Z.~Li, S.~Guo,
+  \href{https://arxiv.org/abs/2607.23444}{Isolated but exposed:
+  Persistence-based memory extraction attack on {LLM} agents}, arXiv preprint
+  arXiv:2607.23444 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2607.23444}
+
+\bibitem{tan2026dasguard}
+J.~Tan, Z.~Dou, X.~Yang, Y.~Hu, Y.~Cheng, X.~Li, J.-R. Wen,
+  \href{https://arxiv.org/abs/2605.31042}{From prompt injection to persistent
+  control: Defending agentic harness against trojan backdoors}, arXiv preprint
+  arXiv:2605.31042 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2605.31042}
+
+\bibitem{hines2024spotlighting}
+K.~Hines, G.~Lopez, M.~Hall, F.~Zarfati, Y.~Zunger, E.~Kiciman,
+  \href{https://arxiv.org/abs/2403.14720}{Defending against indirect prompt
+  injection attacks with spotlighting}, arXiv preprint arXiv:2403.14720 (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2403.14720}
+
+\bibitem{chen2024struq}
+S.~Chen, J.~Piet, C.~Sitawarin, D.~Wagner,
+  \href{https://arxiv.org/abs/2402.06363}{{StruQ}: Defending against prompt
+  injection with structured queries}, arXiv preprint arXiv:2402.06363 (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2402.06363}
+
+\bibitem{debenedetti2024agentdojo}
+E.~Debenedetti, J.~Zhang, M.~Balunovi{\'c}, L.~Beurer-Kellner, M.~Fischer,
+  F.~Tram{\`e}r,
+  \href{https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html}{{AgentDojo}:
+  A dynamic environment to evaluate prompt injection attacks and defenses for
+  {LLM} agents}, in: Advances in Neural Information Processing Systems,
+  Vol.~37, 2024.
+\newblock \href {https://doi.org/10.52202/079017-2636}
+  {\path{doi:10.52202/079017-2636}}.
+\newline\urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html}
+
+\bibitem{vaswani2017attention}
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
+  L.~Kaiser, I.~Polosukhin, \href{https://arxiv.org/abs/1706.03762}{Attention
+  is all you need}, in: Advances in Neural Information Processing Systems,
+  Vol.~30, 2017.
+\newline\urlprefix\url{https://arxiv.org/abs/1706.03762}
+
+\bibitem{liu2024loratk}
+H.~Liu, S.~Zhong, X.~Sun, M.~Tian, M.~Hariri, Z.~Liu, R.~Tang, Z.~Jiang,
+  J.~Yuan, Y.-N. Chuang, L.~Li, S.-H. Choi, R.~Chen, V.~Chaudhary, X.~Hu,
+  \href{https://arxiv.org/abs/2403.00108}{{LoRATK}: {LoRA} once, backdoor
+  everywhere in the share-and-play ecosystem}, arXiv preprint arXiv:2403.00108
+  (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2403.00108}
+
+\bibitem{lelle2026token}
+T.~Lelle, \href{https://arxiv.org/abs/2605.30189}{Token-level generalization in
+  {LoRA} adapter backdoors: Attack characterization and behavioral detection},
+  arXiv preprint arXiv:2605.30189 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2605.30189}
+
+\bibitem{dong2026gap}
+Y.~Dong, M.~Xu, Q.~Hu, Y.~Xiao, Q.~Luo, Y.~Zhang, Y.~Zhang, X.~Cheng,
+  \href{https://arxiv.org/abs/2601.00566}{Low rank comes with low security:
+  Gradient assembly poisoning attacks against distributed {LoRA}-based {LLM}
+  systems}, arXiv preprint arXiv:2601.00566 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2601.00566}
+
+\bibitem{gu2017badnets}
+T.~Gu, B.~Dolan-Gavitt, S.~Garg,
+  \href{https://arxiv.org/abs/1708.06733}{{BadNets}: Identifying
+  vulnerabilities in the machine learning model supply chain}, arXiv preprint
+  arXiv:1708.06733 (2017).
+\newline\urlprefix\url{https://arxiv.org/abs/1708.06733}
+
+\bibitem{chen2017targetedbackdoor}
+X.~Chen, C.~Liu, B.~Li, K.~Lu, D.~Song,
+  \href{https://arxiv.org/abs/1712.05526}{Targeted backdoor attacks on deep
+  learning systems using data poisoning}, arXiv preprint arXiv:1712.05526
+  (2017).
+\newline\urlprefix\url{https://arxiv.org/abs/1712.05526}
+
+\bibitem{shafahi2018poisonfrogs}
+A.~Shafahi, W.~R. Huang, M.~Najibi, O.~Suciu, C.~Studer, T.~Dumitras,
+  T.~Goldstein, \href{https://arxiv.org/abs/1804.00792}{Poison frogs! targeted
+  clean-label poisoning attacks on neural networks}, in: Advances in Neural
+  Information Processing Systems, Vol.~31, 2018.
+\newline\urlprefix\url{https://arxiv.org/abs/1804.00792}
+
+\bibitem{kurita2020weightpoison}
+K.~Kurita, P.~Michel, G.~Neubig, \href{https://arxiv.org/abs/2004.06660}{Weight
+  poisoning attacks on pre-trained models}, arXiv preprint arXiv:2004.06660
+  (2020).
+\newline\urlprefix\url{https://arxiv.org/abs/2004.06660}
+
+\bibitem{zhang2021neuba}
+Z.~Zhang, G.~Xiao, Y.~Li, T.~Lv, F.~Qi, Z.~Liu, Y.~Wang, X.~Jiang, M.~Sun,
+  \href{https://arxiv.org/abs/2101.06969}{Red alarm for pre-trained models:
+  Universal vulnerability to neuron-level backdoor attacks}, arXiv preprint
+  arXiv:2101.06969 (2021).
+\newline\urlprefix\url{https://arxiv.org/abs/2101.06969}
+
+\bibitem{koh2017influence}
+P.~W. Koh, P.~Liang, \href{https://arxiv.org/abs/1703.04730}{Understanding
+  black-box predictions via influence functions}, in: Proceedings of the 34th
+  International Conference on Machine Learning, 2017.
+\newline\urlprefix\url{https://arxiv.org/abs/1703.04730}
+
+\bibitem{gao2019strip}
+Y.~Gao, C.~Xu, D.~Wang, S.~Chen, D.~C. Ranasinghe, S.~Nepal,
+  \href{https://arxiv.org/abs/1902.06531}{{STRIP}: A defence against trojan
+  attacks on deep neural networks}, arXiv preprint arXiv:1902.06531 (2019).
+\newline\urlprefix\url{https://arxiv.org/abs/1902.06531}
+
+\bibitem{sun2020mobilebert}
+Z.~Sun, H.~Yu, X.~Song, R.~Liu, Y.~Yang, D.~Zhou,
+  \href{https://arxiv.org/abs/2004.02984}{{MobileBERT}: A compact task-agnostic
+  {BERT} for resource-limited devices}, in: Proceedings of ACL, 2020.
+\newline\urlprefix\url{https://arxiv.org/abs/2004.02984}
+
+\bibitem{wang2025xpert}
+H.~Wang, B.~Yang, X.~Yin, W.~Gao, \href{https://arxiv.org/abs/2504.13938}{Never
+  start from scratch: Expediting on-device {LLM} personalization via
+  explainable model selection}, arXiv preprint arXiv:2504.13938 (2025).
+\newline\urlprefix\url{https://arxiv.org/abs/2504.13938}
+
+\bibitem{augenstein2026hyperlora}
+S.~Augenstein, L.~Ding, J.~Lee, K.~Rush, A.~Zhmoginov,
+  \href{https://arxiv.org/abs/2609.24979}{{LoRA}-generating hypernetworks for
+  efficient on-device {LLM} generative personalization}, arXiv preprint
+  arXiv:2609.24979 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2609.24979}
+
+\bibitem{zhang2018personachat}
+S.~Zhang, E.~Dinan, J.~Urbanek, A.~Szlam, D.~Kiela, J.~Weston,
+  \href{https://arxiv.org/abs/1801.07243}{Personalizing dialogue agents: I have
+  a dog, do you have pets too?}, in: Proceedings of ACL, 2018.
+\newline\urlprefix\url{https://arxiv.org/abs/1801.07243}
+
+\bibitem{zhang2019aeslc}
+R.~Zhang, J.~Tetreault, \href{https://aclanthology.org/P19-1043/}{This email
+  could save your life: Introducing the task of email subject line generation},
+  in: Proceedings of ACL, 2019.
+\newline\urlprefix\url{https://aclanthology.org/P19-1043/}
+
+\bibitem{qwen2024qwen}
+{Qwen Team}, \href{https://arxiv.org/abs/2412.15115}{{Qwen2.5} technical
+  report}, arXiv preprint arXiv:2412.15115 (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2412.15115}
+
+\bibitem{gemma2025gemma}
+{Gemma Team}, \href{https://arxiv.org/abs/2503.19786}{{Gemma 3} technical
+  report}, arXiv preprint arXiv:2503.19786 (2025).
+\newline\urlprefix\url{https://arxiv.org/abs/2503.19786}
+
+\bibitem{bourtoule2021machineunlearning}
+L.~Bourtoule, V.~Chandrasekaran, C.~A. Choquette-Choo, H.~Jia, A.~Travers,
+  B.~Zhang, D.~Lie, N.~Papernot,
+  \href{https://arxiv.org/abs/1912.03817}{Machine unlearning}, in: IEEE
+  Symposium on Security and Privacy, 2021.
+\newline\urlprefix\url{https://arxiv.org/abs/1912.03817}
+
+\bibitem{guo2020certified}
+C.~Guo, T.~Goldstein, A.~Hannun, L.~van~der Maaten,
+  \href{https://arxiv.org/abs/1911.03030}{Certified data removal from machine
+  learning models}, in: Proceedings of the 37th International Conference on
+  Machine Learning, 2020.
+\newline\urlprefix\url{https://arxiv.org/abs/1911.03030}
+
+\bibitem{goel2022adversarialunlearning}
+S.~Goel, A.~Prabhu, A.~Sanyal, S.-N. Lim, P.~Torr, P.~Kumaraguru,
+  \href{https://arxiv.org/abs/2201.06640}{Towards adversarial evaluations for
+  inexact machine unlearning}, arXiv preprint arXiv:2201.06640 (2022).
+\newline\urlprefix\url{https://arxiv.org/abs/2201.06640}
+
+\bibitem{eldan2023harry}
+R.~Eldan, M.~Russinovich, \href{https://arxiv.org/abs/2310.02238}{Who's {Harry
+  Potter}? approximate unlearning in {LLM}s}, arXiv preprint arXiv:2310.02238
+  (2023).
+\newline\urlprefix\url{https://arxiv.org/abs/2310.02238}
+
+\bibitem{zhang2024npo}
+R.~Zhang, L.~Lin, Y.~Bai, S.~Mei,
+  \href{https://arxiv.org/abs/2404.05868}{Negative preference optimization:
+  From catastrophic collapse to effective unlearning}, arXiv preprint
+  arXiv:2404.05868 (2024).
+\newline\urlprefix\url{https://arxiv.org/abs/2404.05868}
+
+\bibitem{mcmahan2017fedavg}
+H.~B. McMahan, E.~Moore, D.~Ramage, S.~Hampson, B.~A. y~Arcas,
+  \href{https://arxiv.org/abs/1602.05629}{Communication-efficient learning of
+  deep networks from decentralized data}, in: Proceedings of AISTATS, 2017.
+\newline\urlprefix\url{https://arxiv.org/abs/1602.05629}
+
+\bibitem{mhamdi2018bulyan}
+E.~M.~E. Mhamdi, R.~Guerraoui, S.~Rouault,
+  \href{https://arxiv.org/abs/1802.07927}{The hidden vulnerability of
+  distributed learning in byzantium}, in: Proceedings of the 35th International
+  Conference on Machine Learning, 2018.
+\newline\urlprefix\url{https://arxiv.org/abs/1802.07927}
+
+\bibitem{nguyen2021flame}
+T.~D. Nguyen, P.~Rieger, H.~Chen, H.~Yalame, H.~M{\"o}llering, H.~Fereidooni,
+  S.~Marchal, M.~Miettinen, A.~Mirhoseini, S.~Zeitouni, F.~Koushanfar, A.-R.
+  Sadeghi, T.~Schneider, \href{https://arxiv.org/abs/2101.02281}{{FLAME}:
+  Taming backdoors in federated learning}, arXiv preprint arXiv:2101.02281
+  (2021).
+\newline\urlprefix\url{https://arxiv.org/abs/2101.02281}
+
+\bibitem{fung2018sybil}
+C.~Fung, C.~J.~M. Yoon, I.~Beschastnikh,
+  \href{https://arxiv.org/abs/1808.04866}{Mitigating sybils in federated
+  learning poisoning}, arXiv preprint arXiv:1808.04866 (2018).
+\newline\urlprefix\url{https://arxiv.org/abs/1808.04866}
+
+\bibitem{bhagoji2018federated}
+A.~N. Bhagoji, S.~Chakraborty, P.~Mittal, S.~Calo,
+  \href{https://arxiv.org/abs/1811.12470}{Analyzing federated learning through
+  an adversarial lens}, arXiv preprint arXiv:1811.12470 (2018).
+\newline\urlprefix\url{https://arxiv.org/abs/1811.12470}
+
+\bibitem{bagdasaryan2020backdoorfl}
+E.~Bagdasaryan, A.~Veit, Y.~Hua, D.~Estrin, V.~Shmatikov,
+  \href{https://arxiv.org/abs/1807.00459}{How to backdoor federated learning},
+  in: Proceedings of AISTATS, 2020.
+\newline\urlprefix\url{https://arxiv.org/abs/1807.00459}
+
+\bibitem{zhao2026fedbit}
+H.~Zhao, J.~Hu, G.~Liu, \href{https://arxiv.org/abs/2602.15671}{Revisiting
+  backdoor threat in federated instruction tuning from a signal aggregation
+  perspective}, arXiv preprint arXiv:2602.15671 (2026).
+\newline\urlprefix\url{https://arxiv.org/abs/2602.15671}
+
+\end{thebibliography}

@@ -1,0 +1,70 @@
+\section{Problem Formulation}
+\label{sec:problem}
+
+\subsection{State transition model}
+
+Let $S_t=(M_t,\theta_t,\Graph_t,\sigma_t)$ denote the personalization state. Processing event $e_t$ applies a versioned transition
+\begin{equation}
+S_t=F_{v_t}(S_{t-1},e_t;\rho_t),
+\label{eq:transition}
+\end{equation}
+where $v_t$ identifies code, model, tokenizer, hyperparameters, and numerical backend, and $\rho_t$ is an explicit randomness record. A memory transform $f_M$ may produce one or more derived records,
+\begin{equation}
+M_t=f_M(M_{t-1},e_t;\pi_{\mathsf{mem}}),
+\label{eq:memory-update}
+\end{equation}
+while a trainer periodically computes
+\begin{equation}
+q_k=T(\theta_{k-1},W_k;v_k,\rho_k),\qquad
+W_k\subseteq \{e_i\}\cup M_t.
+\label{eq:training-update}
+\end{equation}
+The lineage graph records every membership and transformation relation needed to interpret these maps.
+
+\subsection{Cross-sink laundering}
+
+\begin{definition}[Cross-sink laundering path]
+A laundering path for source $e$ is a directed path
+\begin{equation}
+e\leadsto m\leadsto w\leadsto q\leadsto \theta
+\label{eq:laundering-path}
+\end{equation}
+where $m$ is a memory or derived record, $w$ is a training example/window, $q$ is a candidate adapter, and $\theta$ is a promoted checkpoint. The path is successful when deleting $e$ and $m$ leaves trigger-conditioned behavior in $\theta$ above a declared success threshold.
+\end{definition}
+
+The empirical laundering score separates persistence from initial compromise. For trigger distribution $\mathcal{T}$, malicious target predicate $g$, active state $S$, and post-deletion state $S^{-e}$,
+\begin{align}
+\mathrm{ASR}(S)&=\Pr_{z\sim\mathcal{T}}[g(f_S(z))=1],\\
+\mathrm{LP}(e)&=\mathrm{ASR}(S^{-e})-\mathrm{ASR}(S_{\mathrm{clean}}).
+\label{eq:laundering-metric}
+\end{align}
+$\mathrm{LP}$ is not inferred from a single example; it is estimated across triggers, seeds, and workloads with confidence intervals after actual experiments.
+
+\subsection{Utility and systems objectives}
+
+Let $D_{\mathrm{clean}}$ be a held-out benign personalization set and $U(S;D_{\mathrm{clean}})$ its task-appropriate utility. False quarantine rate is
+\begin{equation}
+\mathrm{FQR}=\frac{|\{e\in D_{\mathrm{benign}}:\pi(e)=\Quarantine\text{ or }\Deny\}|}{|D_{\mathrm{benign}}|}.
+\end{equation}
+The defense aims to reduce attack risk subject to explicit utility and resource budgets:
+\begin{equation}
+\min_{\pi,A,I} \ \Risk_{\mathrm{attack}}+\lambda_U\Delta U+\lambda_Q\mathrm{FQR}
+\quad\text{s.t.}\quad C_S\le B_S,\ C_E\le B_E,\ C_T\le B_T,
+\label{eq:objective}
+\end{equation}
+where $A$ is the audit gate, $I$ is the checkpoint interval, and the $\lambda$ values express deployment preferences rather than universal constants.
+
+\subsection{Design requirements}
+
+The problem produces six requirements. R1: preserve origin and derivation across transformations. R2: mediate each sink separately. R3: make unpromoted adapters non-serving. R4: connect deletion/revocation to every consuming checkpoint. R5: restore from a known unaffected state rather than trusting approximate parameter surgery. R6: expose storage, latency, energy, and benign-content costs on phones.
+
+\subsection{Non-objectives and impossibility boundary}
+
+No content-only policy can guarantee that an authenticated user-authored example reflects an unmanipulated preference. If the adversary persuades the user to type the exact poisoned example, the provenance tuple legitimately changes. PoisonGuard can require confirmation for high-impact learning or rate-limit repeated patterns, but cannot infer intent perfectly. Similarly, if the TCB is compromised, the attacker can forge or suppress edges. These are model boundaries, not implementation footnotes.
+
+\begin{figure}[t]
+  \centering
+  \input{figures/tikz_method_pipeline}
+  \caption{PoisonGuard method pipeline. Numbered stages correspond to capture, sink-specific selection, derived-state construction, quarantined training, audit/promotion, and revocation-driven rollback.}
+  \label{fig:pipeline}
+\end{figure}

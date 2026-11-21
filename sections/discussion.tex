@@ -1,0 +1,40 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Why provenance must survive selection}
+
+Logging an item's origin at write time is insufficient if the selector later emits a plain text example. The selector is a security boundary because it converts passive content into an optimization input. PoisonGuard's main design choice is to make the training window itself a lineage object whose members retain their source closures. This prevents ``the model saw it in memory'' from becoming an unauditable explanation.
+
+\subsection{Why quarantine and rollback are complementary}
+
+Quarantine reduces exposure before confidence is established; rollback repairs state after new evidence appears. Neither subsumes the other. A perfect pre-promotion detector would make rollback rare, but current backdoor detectors are distribution-sensitive. Rollback without quarantine allows a candidate to harm users before diagnosis. The architecture therefore treats audits as fallible risk reduction and lineage as a deterministic response to identified causes.
+
+\subsection{Deleting data versus deleting influence}
+
+Payload deletion, retrieval suppression, and influence removal are distinct operations. Removing a message satisfies neither retrievability nor model-state questions by itself. A deletion interface should state which operations completed: payload erased; memory hidden; descendants invalidated; active checkpoint restored; clean suffix replayed; or approximate mitigation applied. This vocabulary avoids presenting a database deletion as machine unlearning.
+
+\subsection{Policy as a product decision}
+
+The conservative table in \cref{tab:policy} denies received content for training by default, but useful personalization often depends on how others address the user, appointments they accept, or files they repeatedly edit. A deployment may permit such signals after confirmation or within bounded feature extractors. PoisonGuard's contribution is not one universal trust score; it is an enforceable place to express and audit the decision.
+
+\subsection{Interaction with model updates}
+
+Base-model or tokenizer updates can break replay equivalence. The simplest rule treats a vendor model update as a new lineage root and retains the previous environment through the replay horizon. A migration can replay clean personalization into the new base, but that creates a new branch rather than reconstructing the old one. Cross-version behavioral testing remains necessary.
+
+\subsection{Privacy and storage}
+
+Provenance can itself be sensitive: sender identifiers and application histories reveal behavior. The lineage service should minimize fields, pseudonymize remote principals, encrypt payload references, enforce retention, and expose access logs. Exact recovery and data minimization form a real tradeoff. The system should never claim both unlimited exact replay and immediate irreversible deletion without explaining retained information.
+
+\subsection{Relation to federated learning}
+
+A future device might participate in federated training while also personalizing locally. PoisonGuard would govern what local data may influence its local update; a server-side robust aggregator would govern how client updates influence a global model. These are composable trust boundaries, not competing implementations. The present paper evaluates only the single-device boundary.
+
+\subsection{Expected reviewer questions}
+
+\paragraph{``Why not train only on typed text?''} That is a valid, highly conservative policy and must be measured as a baseline. It can lose useful signal and still fails under induced retyping. PoisonGuard generalizes the policy and makes residual risk visible.
+
+\paragraph{``Is exact replay practical?''} The answer is empirical. LoRA checkpoints are smaller than full models, but event retention and retraining can still be costly. The paper therefore treats storage, energy, and latency as primary results, not engineering afterthoughts.
+
+\paragraph{``Is the attack just prompt injection?''} No. The defining outcome is persistent learned influence after the immediate content and memory are removed. Immediate tool misuse is relevant background but is not sufficient to establish laundering.
+
+\paragraph{``Does provenance prove content is safe?''} No. It proves origin/derivation statements under the TCB and enables policy and rollback. Semantic safety remains probabilistic.

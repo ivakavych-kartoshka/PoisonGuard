@@ -1,0 +1,68 @@
+\section{Preliminaries and Notation}
+\label{sec:preliminaries}
+
+We consider a single physical device. Time is divided into ingestion events rather than synchronized training rounds. Let $\Events=(e_1,e_2,\ldots)$ be the append-only logical event sequence. An event is not merely text; it includes content, origin, and integrity metadata.
+
+\begin{definition}[Provenance-labelled event]
+An event is a tuple
+\begin{equation}
+e_i=(x_i,\tau_i,a_i,c_i,s_i,u_i,h_i,P_i),
+\label{eq:event}
+\end{equation}
+where $x_i$ is content or a content digest, $\tau_i$ is capture time, $a_i$ is the producing application identity, $c_i$ is a channel class, $s_i$ is a sender or remote principal when available, $u_i\in\{0,1,\bot\}$ records verified user authorship, $h_i$ binds the canonical payload and metadata, and $P_i\subseteq\{e_j:j<i\}$ are derivation parents.
+\end{definition}
+
+The channel set is
+\begin{equation}
+\mathcal{K}=\{\textsf{typed},\textsf{sms},\textsf{notification},\textsf{calendar},\textsf{share},\textsf{clipboard},\textsf{screenshot},\textsf{derived}\}.
+\end{equation}
+The concrete Android mechanism used to populate each field is an implementation choice; the formal requirement is that the field cannot be rewritten by the untrusted producer after capture.
+
+The system has two persistent learning sinks. A memory state $M_t$ contains records used at inference time. An adapter state $\theta_t=\theta_0+\Delta_t$ augments a frozen base model with a low-rank update. For a weight matrix $W\in\mathbb{R}^{d_o\times d_i}$, LoRA represents
+\begin{equation}
+W'=W+\alpha B A/r,\qquad A\in\mathbb{R}^{r\times d_i},\quad B\in\mathbb{R}^{d_o\times r}.
+\label{eq:lora}
+\end{equation}
+The dimension statement is important: the lineage mechanism tracks the data that produced the pair $(A,B)$ and the resulting effective update $BA$, not only a serialized adapter filename.
+
+For sink $z\in\{\mathsf{mem},\mathsf{train}\}$, the policy
+\begin{equation}
+\pi_z(e,\sigma_t)\in\{\Allow,\Quarantine,\Deny\}
+\label{eq:policy}
+\end{equation}
+maps an event and policy state $\sigma_t$ to a decision. Decisions can differ by sink: a received email may be retrievable under an untrusted-data wrapper yet prohibited from training.
+
+\begin{definition}[Lineage graph]
+The lineage graph at time $t$ is a directed acyclic graph $\Graph_t=(V_t,E_t)$ whose typed vertices are source events, derived memory records, training examples, windows, audit records, candidate adapters, and promoted checkpoints. An edge $(v,w)$ states that $w$ was computed using $v$ or that $w$'s validity depends on $v$.
+\end{definition}
+
+For $S\subseteq V_t$, let $\operatorname{Desc}_{\Graph_t}(S)$ include $S$ and every vertex reachable from it. A revocation set $R_t$ invalidates this descendant closure. The clean event set after revocation is
+\begin{equation}
+\Clean_t(R_t)=\{e_i:i\le t,\ e_i\notin\operatorname{Desc}_{\Graph_t}(R_t),\ \pi(e_i,\sigma_t)\ne\Deny\}.
+\end{equation}
+
+\begin{table}[t]
+\centering
+\caption{Frequently used notation.}
+\label{tab:notation}
+\begin{tabularx}{\linewidth}{lX}
+\toprule
+Symbol & Meaning \\
+\midrule
+$e_i,x_i,\Prov(e_i)$ & event, payload, and provenance envelope \\
+$M_t,\theta_t$ & memory and promoted adapter after logical time $t$ \\
+$\pi_z$ & sink-specific admission policy \\
+$\Graph_t$ & shared typed lineage graph \\
+$W_k$ & $k$th adapter-training window \\
+$q_k,\hat\theta_k$ & candidate checkpoint and audited/promotion state \\
+$R_t$ & revoked vertices or sources \\
+$\operatorname{Desc}(R_t)$ & invalidated lineage closure \\
+$\mathcal{A}$ & attack procedure and trigger distribution \\
+$\mathrm{ASR}$ & trigger-conditioned attack success rate \\
+$U$ & clean personalization utility \\
+$C_S,C_T,C_E$ & storage, elapsed-time, and energy costs \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Topic-alignment checkpoint.} This section defines every object required by the locked signature: mobile-channel provenance, memory, LoRA state, per-sink selection, shared lineage, and rollback inputs. It introduces no federated or privacy objective.

@@ -1,0 +1,84 @@
+\section{Detailed Proofs}
+\label{app:proofs}
+
+\subsection{Proof of \cref{lem:closure}}
+
+\begin{proof}
+Order registered transitions by their commit index. The base case is an object directly computed from $e$. By \cref{ass:lineage}, the commit adds edge $e\rightarrow v$, so the path exists. For the induction step, suppose every input object $u$ affected by an earlier event $e$ contains a path $e\leadsto u$. If a later transition computes $v$ from such a $u$, sound lineage adds $u\rightarrow v$. Concatenating the induction path with that edge gives $e\leadsto v$. Immutable object identity prevents a transition from replacing $u$'s committed parents without creating a new object. Every finite registered derivation therefore preserves reachability.
+\end{proof}
+
+\subsection{Proof of \cref{thm:nonlaundering}}
+
+\begin{proof}
+Assume for contradiction that a checkpoint $c$ influenced by denied event $e$ is promoted without a valid declassification. By \cref{lem:closure}, $e\leadsto c$. The path crosses a training-example or window admission because complete mediation requires every trainer input to be selected by $\pi_{\mathsf{train}}$. Policy monotonicity prevents any descendant of $e$ from becoming train-admissible without a declassification vertex, while the premise excludes such a vertex. Hence the window cannot be valid and promotion must reject it, contradicting the assumption.
+
+For late revocation, sound lineage again gives $e\leadsto c$ for every influenced checkpoint. Descendant invalidation therefore includes $c$. The rollback procedure chooses a recovery frontier whose ancestry is disjoint from the invalidated closure and never activates an invalid checkpoint. Thus an influenced checkpoint cannot remain on the recovered active branch.
+\end{proof}
+
+\paragraph{Dependencies and limitation.} The proof uses no statistical property of the content or audit. It fails if the trainer reads an unregistered cache, if the graph omits a parent, or if a privileged actor silently relabels a descendant.
+
+\subsection{Proof of \cref{thm:rollback}}
+
+\begin{proof}
+Let the original event order after $c_j$ be $(e_{j+1},\ldots,e_t)$ and let $E'$ be the subsequence retained by remediation. Consider the counterfactual execution initialized at $c_j$ and applying $E'$ under recorded versions and randomness. PoisonGuard initializes the same checkpoint and applies the same ordered sequence with the same transition parameters. We prove equality by induction over $E'$.
+
+Before the first event, states are equal by checkpoint restoration and hash verification. Suppose the recovered and counterfactual states are equal before event $e_i\in E'$. By \cref{ass:determinism}, the same $F_{v_i}$, randomness record $\rho_i$, and input event map equal states to equal next states. The states remain equal. Induction yields equality after the final event. Sound lineage ensures that excluded descendants are not hidden inputs to retained derived objects; if a derived object depends on a revoked item it is itself in the invalidated closure and must be recomputed or excluded. Therefore both memory and adapter outputs match the counterfactual execution.
+\end{proof}
+
+\paragraph{Floating-point qualification.} If the implementation only guarantees deterministic scheduling up to numerical tolerance $\epsilon$, replace equality with the implementation's declared state distance and propagate the transition stability bound. The main manuscript claims exactness only when the recorded backend makes the deterministic premise true.
+
+\subsection{Proof of \cref{cor:removal}}
+
+\begin{proof}
+By complete mediation, every causal path from $R$ into learned state is represented in the graph. The rollback execution removes the descendant closure of $R$. By \cref{thm:rollback}, the resulting state equals an execution without that closure. Hence no registered causal influence from $R$ remains. This does not imply that the recovered model cannot coincidentally exhibit the same output.
+\end{proof}
+
+\subsection{Proof of \cref{prop:influence}}
+
+\begin{proof}
+Couple contaminated and clean candidate runs at the same initial parameter and minibatch order. At step $h$, replace the contaminated fraction by clean examples. Each clipped example gradient has norm at most $G$; replacing one convex-average component can change the batch gradient by at most $2G$ times its weight. With contaminated weight at most $\alpha$, the gradient difference is at most $2\alpha G$. Multiplying by $\eta_h$ bounds the direct displacement introduced at step $h$. Under the stated nonexpansive clean update map, previous displacement is not amplified. Applying the triangle inequality and summing over $H$ steps gives \cref{eq:influence-bound}. Quarantine safety follows independently from the serving-pointer rule: the candidate namespace is not selected for ordinary inference before promotion.
+\end{proof}
+
+\paragraph{Limitation.} Momentum, Adam state, and nonconvex maps can violate nonexpansiveness. In such implementations the result requires a Lipschitz factor product and may become loose. The bound is retained as a design-facing sufficient condition, not reported as a measured robustness guarantee.
+
+\subsection{Proof of \cref{prop:storage}}
+
+\begin{proof}
+At most $N$ source/derived vertices consume $Nb_v$ bytes. Bounded out-degree $d$ yields at most $Nd$ stored edges, consuming $Ndb_e$. Each of $K$ LoRA checkpoints has $p_L$ values at $b_p$ bytes, consuming $Kp_Lb_p$. Adding implementation-specific indexes and retained replay capsules gives \cref{eq:storage-bound}. The asymptotic statements follow when $d$ and scalar width are bounded.
+\end{proof}
+
+\subsection{Proof of \cref{prop:replay}}
+
+\begin{proof}
+If the newest unaffected checkpoint precedes the current head by fewer than $I$ admissible events and no later object outside that interval depends on the revoked vertex, replay traverses only that suffix, at most $I-1$ ordinary events. If later derived objects or checkpoints depend on the revoked item, sound lineage invalidates them, so they must be recomputed from the recovery frontier. In the extreme, the revoked item is an ancestor of every retained checkpoint after the base; then no later checkpoint is an admissible frontier and the entire retained clean suffix must be replayed. This establishes both the conditional interval bound and the worst case.
+\end{proof}
+
+\subsection{Proof of \cref{thm:linearizable}}
+
+\begin{proof}
+The recovery barrier prevents newly arriving events from mutating the active state while replay is in progress; they are only appended to a durable queue. Replay occurs in a private namespace. The sole externally visible state change is an atomic compare-and-swap of the active head after validation. Therefore an inference beginning before the swap resolves the old immutable head, and one beginning after it resolves the complete recovered head. No active pointer names an intermediate replay state. Queued events are ordered after the swap, yielding a sequential history consistent with real-time observation.
+\end{proof}
+
+\section{Additional Formal Checks}
+
+\subsection{Dimensional consistency}
+
+In \cref{eq:lora}, $BA\in\mathbb{R}^{d_o\times d_i}$ and can be added to $W$. In \cref{eq:influence-bound}, $G$ has gradient units, $\eta_h$ has parameter-per-gradient units, and the product has parameter units. Storage terms in \cref{eq:storage-bound} are bytes. The objective in \cref{eq:objective} requires normalized or explicitly weighted dimensionless risk and utility terms; resource constraints retain their natural units.
+
+\subsection{Guarantee matrix}
+
+\begin{table}[h]
+\centering
+\caption{Guarantees and the assumptions that can invalidate them.}
+\begin{tabularx}{\linewidth}{lXX}
+\toprule
+Result & Requires & Does not establish \\
+\midrule
+Non-laundering & complete mediation, sound lineage, monotone policy & semantic truth, social-engineering resistance \\
+Exact replay & retained events, pinned versions/randomness, deterministic runtime & discovery of unknown poison \\
+Influence bound & clipping, coupled batches, nonexpansive update & low ASR, detector completeness \\
+Storage bound & bounded edge degree and retention & acceptable phone energy \\
+Linearizability & barrier and atomic head swap & uninterrupted availability \\
+\bottomrule
+\end{tabularx}
+\end{table}
