@@ -8,7 +8,7 @@ mode: real_protocol
 
 provenance:
   code_repository: https://github.com/ivakavych-kartoshka/PoisonGuard.git
-  code_commit: 4a7526552269abc0f68ef33c1c56ac11c31430ca
+  code_commit: a624d52a69489dc1a4b7258f1c32f2e0007e40e5
   trainer_repository: D:/NCKH/MobileSYS/MobileFineTuner
   trainer_commit: be95a289d9cd5ecd93b6fab7fdc3c4551c3f9fb1
   attack_repositories:

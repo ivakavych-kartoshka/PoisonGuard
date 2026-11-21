@@ -44,10 +44,10 @@ The delivered run used seed 17 and configuration `configs/synthetic_demo.yaml`. 
 
 ## Pinned source provenance
 
-- PoisonGuard code repository: `https://github.com/ivakavych-kartoshka/PoisonGuard.git`, commit `4a7526552269abc0f68ef33c1c56ac11c31430ca`.
+- PoisonGuard code repository: `https://github.com/ivakavych-kartoshka/PoisonGuard.git`, implementation commit `a624d52a69489dc1a4b7258f1c32f2e0007e40e5` (previously `4a7526552269abc0f68ef33c1c56ac11c31430ca`).
 - MobileFineTuner repository: `D:\NCKH\MobileSYS\MobileFineTuner`, commit `be95a289d9cd5ecd93b6fab7fdc3c4551c3f9fb1`.
 - Working tree caveat: normalized data roots `PoisonGuard/datas/aeslc` and `PoisonGuard/datas/LaMP` are untracked; `PoisonGuard/datas/persona-chat` submodule is dirty from generated normalized events. These are data artifacts, not code changes.
-- Working tree caveat: the provenance config additions and this audit section are not yet committed. After committing, update `provenance.code_commit` to the new commit so the pin matches the shipped code.
+- Provenance caveat: a commit cannot contain its own hash. `code_commit` points to `a624d52a69489dc1a4b7258f1c32f2e0007e40e5`, the commit that contains the implementation and pin data. The follow-up metadata-only commit that writes this hash into the config is not included in the pin; it changes no experiment code.
 - Attack/baseline repositories are pinned by URL, commit, local root, and clean-tree check; see `audits/external_provenance.md`.
 - No attack/baseline executable command is pinned (`command: []`), so wrappers fail loudly instead of emulating a published method. No published implementation has been run.
 
