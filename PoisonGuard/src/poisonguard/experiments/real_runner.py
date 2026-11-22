@@ -368,7 +368,10 @@ def run_real_protocol(config_path: str | Path, output_dir: str | Path | None = N
     """
     config_path = Path(config_path)
     config = load_config(config_path)
-    target = Path(output_dir or config.get("output_dir", "outputs/real_protocol"))
+    # External adapters run with cwd set to their pinned repository. Resolve the
+    # target once so rendered output paths stay absolute and cannot be written
+    # into the external repository by accident.
+    target = Path(output_dir or config.get("output_dir", "outputs/real_protocol")).resolve()
     _require_ready(config)
     _require_empty_target(target)
 
