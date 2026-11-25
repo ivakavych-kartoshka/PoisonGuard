@@ -10,17 +10,17 @@
 \definecolor{pggraylight}{HTML}{ECEFF1}
 
 \tikzset{
-  pgbox/.style={draw=pggray, rounded corners=2pt, line width=.6pt, align=center, font=\footnotesize, minimum height=8mm, inner sep=4pt},
+  pgbox/.style={draw=pggray, rounded corners=3pt, line width=.7pt, align=center, font=\small, minimum height=8.5mm, inner sep=4pt},
   honest/.style={pgbox, fill=pgbluelight, draw=pgblue},
   attack/.style={pgbox, fill=pgorangelight, draw=pgorange, pattern=north east lines, pattern color=pgorange!28},
   defense/.style={pgbox, fill=pggreenlight, draw=pggreen, double},
   theory/.style={pgbox, fill=pgpurplelight, draw=pgpurple},
   infra/.style={pgbox, fill=pggraylight, draw=pggray},
-  dataflow/.style={-{Stealth[length=2.2mm]}, draw=pgblue, line width=.8pt, shorten >=2pt, shorten <=2pt},
-  attackflow/.style={-{Stealth[length=2.2mm]}, draw=pgorange, dashed, line width=.8pt, shorten >=2pt, shorten <=2pt},
-  controlflow/.style={-{Stealth[length=2.2mm]}, draw=pggreen, double, line width=.55pt, shorten >=2pt, shorten <=2pt},
-  theoryflow/.style={-{Stealth[length=2.2mm]}, draw=pgpurple, line width=.7pt, shorten >=2pt, shorten <=2pt},
-  flowlabel/.style={font=\scriptsize, fill=white, inner sep=1.5pt, text=black},
-  stage/.style={circle, fill=pgpurple, text=white, font=\bfseries\scriptsize, inner sep=1.5pt},
+  dataflow/.style={-{Stealth[length=2.5mm,width=1.8mm]}, draw=pgblue, line width=1pt, shorten >=2pt, shorten <=2pt},
+  attackflow/.style={-{Stealth[length=2.5mm,width=1.8mm]}, draw=pgorange, dashed, line width=1pt, shorten >=2pt, shorten <=2pt},
+  controlflow/.style={-{Stealth[length=2.5mm,width=1.8mm]}, draw=pggreen, double, line width=.65pt, shorten >=2pt, shorten <=2pt},
+  theoryflow/.style={-{Stealth[length=2.5mm,width=1.8mm]}, draw=pgpurple, line width=.9pt, shorten >=2pt, shorten <=2pt},
+  flowlabel/.style={font=\footnotesize, fill=white, inner sep=1.5pt, text=black},
+  stage/.style={circle, fill=pgpurple, text=white, font=\bfseries\small, inner sep=2pt},
   group/.style={draw=pggray!65, rounded corners=4pt, dashed, inner sep=5pt}
 }

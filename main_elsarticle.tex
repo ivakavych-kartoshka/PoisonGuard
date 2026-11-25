@@ -1,0 +1,104 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,multirow,tabularx,array}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalize,noabbrev]{cleveref}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric,shapes.symbols,decorations.pathreplacing,patterns,matrix,shadows.blur}
+\pgfplotsset{compat=1.18}
+\input{figures/tikz_styles}
+\emergencystretch=2em
+
+\journal{Computer Networks (Elsevier preprint)}
+\biboptions{sort&compress,numbers}
+\setlist{leftmargin=*,itemsep=2pt,topsep=4pt}
+\captionsetup[subfigure]{font=small}
+
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\PG}{\textsc{PoisonGuard}}
+\newcommand{\Prov}{\mathsf{Prov}}
+\newcommand{\Allow}{\mathsf{allow}}
+\newcommand{\Quarantine}{\mathsf{quarantine}}
+\newcommand{\Deny}{\mathsf{deny}}
+\newcommand{\Clean}{\mathcal{C}}
+\newcommand{\Bad}{\mathcal{B}}
+\newcommand{\Events}{\mathcal{E}}
+\newcommand{\Graph}{\mathcal{G}}
+\newcommand{\Loss}{\mathcal{L}}
+\newcommand{\Risk}{\mathcal{R}}
+\newcommand{\ind}{\mathbb{I}}
+
+\begin{document}
+\begin{frontmatter}
+
+\title{PoisonGuard: Provenance-Carried Data Selection and Lineage Rollback for Poison-Resilient On-Device SLM Personalization}
+
+\author[inst1]{Anonymous Author(s)}
+\address[inst1]{Affiliation withheld for review}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{keyword}
+on-device SLM personalization \sep data poisoning \sep provenance \sep agent memory \sep LoRA adapters \sep adapter quarantine \sep lineage rollback
+\end{keyword}
+
+\end{frontmatter}
+
+\section*{Highlights}
+\begin{itemize}
+  \item Defines cross-sink laundering from mobile memory records into personalized LoRA weights.
+  \item Carries OS-visible provenance through selection, memory, training windows, and checkpoints.
+  \item Quarantines candidate adapters and restores clean state by lineage rollback-and-replay.
+  \item Proves sufficient-condition non-laundering, restoration, and systems-cost bounds.
+  \item Specifies a reproducible phone evaluation without presenting placeholder values as results.
+\end{itemize}
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/preliminaries}
+\input{sections/system_model}
+\input{sections/problem_formulation}
+\input{sections/methodology}
+\input{sections/theory}
+\input{sections/algorithm}
+\input{sections/experiments}
+\input{sections/discussion}
+\input{sections/limitations}
+\input{sections/conclusion}
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{Data availability}
+No new measurement data are released with this design manuscript. The evaluation artifacts described in \cref{sec:experiments} remain to be produced; all tables and curves explicitly marked as placeholders must be replaced before submission.
+
+\appendix
+\input{appendix/proofs}
+\input{appendix/additional_experiments}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references_verified}
+
+\end{document}

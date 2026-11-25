@@ -1,14 +1,26 @@
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[node distance=6mm]
-  \node[infra, text width=23mm] (data) {Datasets\\LaMP, dialogue, email};
-  \node[attack, text width=23mm, right=of data] (attack) {Attacks\\memory, LoRA, adaptive};
-  \node[honest, text width=23mm, right=of attack] (channels) {Six mobile\\channels};
-  \node[defense, text width=23mm, right=of channels] (methods) {Baselines and\\PoisonGuard};
-  \node[infra, text width=24mm, right=of methods] (metrics) {ASR, utility,\\time, energy, bytes};
-  \draw[dataflow] (data.east)--(attack.west);
-  \draw[attackflow] (attack.east)--(channels.west);
-  \draw[dataflow] (channels.east)--(methods.west);
-  \draw[dataflow] (methods.east)--(metrics.west);
-  \node[font=\scriptsize, text width=110mm, align=center, below=7mm of channels] {Paired clean/attacked branches $\rightarrow$ source deletion $\rightarrow$ remediation $\rightarrow$ clean-counterfactual comparison};
-\end{tikzpicture}%
-}
+\begin{tikzpicture}[
+  inode/.style={infra, font=\small, text width=32mm, minimum height=10mm, inner sep=3pt},
+  anode/.style={attack, font=\small, text width=32mm, minimum height=10mm, inner sep=3pt},
+  hnode/.style={honest, font=\small, text width=32mm, minimum height=10mm, inner sep=3pt},
+  dnode/.style={defense, font=\small, text width=32mm, minimum height=10mm, inner sep=3pt},
+  wnode/.style={infra, font=\small, text width=74mm, minimum height=10.5mm, inner sep=3pt}
+]
+  % Row 1: Datasets & Attack Vectors (y = 0)
+  \node[inode] (data) at (0, 0) {\textbf{Datasets \& Tasks}\\[0.3mm]\scriptsize StrategyQA, AESLC, PersonaChat};
+  \node[anode] (attack) at (4.4, 0) {\textbf{Attack Vectors}\\[0.3mm]\scriptsize AgentPoison \& MemoryGraft};
+
+  % Row 2: Ingress Channels & Defenses (y = -1.9) -> Gap = 9mm!
+  \node[hnode] (channels) at (0, -1.9) {\textbf{6 Mobile Channels}\\[0.3mm]\scriptsize Typed, SMS, notify, share, etc.};
+  \node[dnode] (methods) at (4.4, -1.9) {\textbf{Evaluated Defenses}\\[0.3mm]\scriptsize Baselines \& \PG{} (Ours)};
+
+  % Row 3: Physical Hardware & Metrics (y = -3.8) -> Gap = 9mm!
+  \node[wnode] (metrics) at (2.2, -3.8) {\textbf{Physical Xiaomi 13T Hardware Measurements}\\[0.3mm]\scriptsize Metrics: ASR, Utility, FQR, Step Latency, Peak RSS, Bit-Exact Recovery};
+
+  % Long, prominent, beautifully visible arrows
+  \draw[dataflow] (data.east) -- (attack.west);
+  \draw[attackflow] (attack.south) -- (methods.north);
+  \draw[dataflow] (data.south) -- (channels.north);
+  \draw[dataflow] (channels.east) -- (methods.west);
+  \draw[controlflow] (methods.south) -- (methods.south |- metrics.north);
+  \draw[dataflow] (channels.south) -- (channels.south |- metrics.north);
+\end{tikzpicture}

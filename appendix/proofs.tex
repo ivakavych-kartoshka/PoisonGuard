@@ -1,5 +1,12 @@
-\section{Detailed Proofs}
+\section{Detailed Proofs and Theory Diagram}
 \label{app:proofs}
+
+\begin{figure}[t]
+  \centering
+  \resizebox{\columnwidth}{!}{\input{figures/tikz_theory_diagram}}
+  \caption{Dependency structure of the formal results. Purple nodes are assumptions/results; green nodes are operational consequences. Routed arrows avoid implying that detector quality is a premise of exact rollback.}
+  \label{fig:theory}
+\end{figure}
 
 \subsection{Proof of \cref{lem:closure}}
 
@@ -69,6 +76,7 @@ In \cref{eq:lora}, $BA\in\mathbb{R}^{d_o\times d_i}$ and can be added to $W$. In
 
 \begin{table}[h]
 \centering
+\small
 \caption{Guarantees and the assumptions that can invalidate them.}
 \begin{tabularx}{\linewidth}{lXX}
 \toprule

@@ -1,0 +1,216 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main_acm.aux
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+The style file: ACM-Reference-Format.bst
+Reallocating 'name_of_file' (item size: 1) to 20 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: references_verified.bib
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Warning--no number and no volume in augenstein2026hyperlora
+Warning--page numbers missing in both pages and numpages fields in augenstein2026hyperlora
+Warning--empty publisher in bagdasaryan2020backdoorfl
+Warning--empty address in bagdasaryan2020backdoorfl
+Warning--page numbers missing in both pages and numpages fields in bagdasaryan2020backdoorfl
+Warning--no number and no volume in bhagoji2018federated
+Warning--page numbers missing in both pages and numpages fields in bhagoji2018federated
+Warning--empty publisher in blanchard2017krum
+Warning--empty address in blanchard2017krum
+Warning--page numbers missing in both pages and numpages fields in blanchard2017krum
+Warning--empty publisher in bourtoule2021machineunlearning
+Warning--empty address in bourtoule2021machineunlearning
+Warning--page numbers missing in both pages and numpages fields in bourtoule2021machineunlearning
+Warning--no number and no volume in cao2020fltrust
+Warning--page numbers missing in both pages and numpages fields in cao2020fltrust
+Warning--no number and no volume in chen2018activation
+Warning--page numbers missing in both pages and numpages fields in chen2018activation
+Warning--no number and no volume in chen2024struq
+Warning--page numbers missing in both pages and numpages fields in chen2024struq
+Warning--no number and no volume in chen2017targetedbackdoor
+Warning--page numbers missing in both pages and numpages fields in chen2017targetedbackdoor
+Warning--empty publisher in chen2024agentpoison
+Warning--empty address in chen2024agentpoison
+Warning--page numbers missing in both pages and numpages fields in chen2024agentpoison
+Warning--empty publisher in debenedetti2024agentdojo
+Warning--empty address in debenedetti2024agentdojo
+Warning--page numbers missing in both pages and numpages fields in debenedetti2024agentdojo
+Warning--empty publisher in dettmers2023qlora
+Warning--empty address in dettmers2023qlora
+Warning--page numbers missing in both pages and numpages fields in dettmers2023qlora
+Warning--no number and no volume in dong2025minja
+Warning--page numbers missing in both pages and numpages fields in dong2025minja
+Warning--no number and no volume in dong2026gap
+Warning--page numbers missing in both pages and numpages fields in dong2026gap
+Warning--no number and no volume in eldan2023harry
+Warning--page numbers missing in both pages and numpages fields in eldan2023harry
+Warning--no number and no volume in fung2018sybil
+Warning--page numbers missing in both pages and numpages fields in fung2018sybil
+Warning--no number and no volume in gao2026spore
+Warning--page numbers missing in both pages and numpages fields in gao2026spore
+Warning--no number and no volume in gao2019strip
+Warning--page numbers missing in both pages and numpages fields in gao2019strip
+Warning--no number and no volume in gemma2025gemma
+Warning--page numbers missing in both pages and numpages fields in gemma2025gemma
+Warning--no number and no volume in geng2025mobilefinetuner
+Warning--page numbers missing in both pages and numpages fields in geng2025mobilefinetuner
+Warning--no number and no volume in goel2022adversarialunlearning
+Warning--page numbers missing in both pages and numpages fields in goel2022adversarialunlearning
+Warning--no number and no volume in gu2017badnets
+Warning--page numbers missing in both pages and numpages fields in gu2017badnets
+Warning--empty publisher in guo2020certified
+Warning--empty address in guo2020certified
+Warning--page numbers missing in both pages and numpages fields in guo2020certified
+Warning--no number and no volume in hines2024spotlighting
+Warning--page numbers missing in both pages and numpages fields in hines2024spotlighting
+Warning--empty publisher in hu2021lora
+Warning--empty address in hu2021lora
+Warning--page numbers missing in both pages and numpages fields in hu2021lora
+Warning--empty publisher in karpukhin2020dpr
+Warning--empty address in karpukhin2020dpr
+Warning--page numbers missing in both pages and numpages fields in karpukhin2020dpr
+Warning--empty publisher in koh2017influence
+Warning--empty address in koh2017influence
+Warning--page numbers missing in both pages and numpages fields in koh2017influence
+Warning--no number and no volume in kurita2020weightpoison
+Warning--page numbers missing in both pages and numpages fields in kurita2020weightpoison
+Warning--no number and no volume in lelle2026token
+Warning--page numbers missing in both pages and numpages fields in lelle2026token
+Warning--empty publisher in lewis2020rag
+Warning--empty address in lewis2020rag
+Warning--page numbers missing in both pages and numpages fields in lewis2020rag
+Warning--no number and no volume in liu2024loratk
+Warning--page numbers missing in both pages and numpages fields in liu2024loratk
+Warning--empty publisher in mcmahan2017fedavg
+Warning--empty address in mcmahan2017fedavg
+Warning--page numbers missing in both pages and numpages fields in mcmahan2017fedavg
+Warning--empty publisher in mhamdi2018bulyan
+Warning--empty address in mhamdi2018bulyan
+Warning--page numbers missing in both pages and numpages fields in mhamdi2018bulyan
+Warning--no number and no volume in nguyen2021flame
+Warning--page numbers missing in both pages and numpages fields in nguyen2021flame
+Warning--no number and no volume in packer2023memgpt
+Warning--page numbers missing in both pages and numpages fields in packer2023memgpt
+Warning--no number and no volume in park2023generativeagents
+Warning--page numbers missing in both pages and numpages fields in park2023generativeagents
+Warning--empty publisher in pawelczyk2025unlearning
+Warning--empty address in pawelczyk2025unlearning
+Warning--page numbers missing in both pages and numpages fields in pawelczyk2025unlearning
+Warning--no number and no volume in peng2024pocketllm
+Warning--page numbers missing in both pages and numpages fields in peng2024pocketllm
+Warning--no number and no volume in pillutla2019rfa
+Warning--page numbers missing in both pages and numpages fields in pillutla2019rfa
+Warning--no number and no volume in qi2020onion
+Warning--page numbers missing in both pages and numpages fields in qi2020onion
+Warning--no number and no volume in qwen2024qwen
+Warning--page numbers missing in both pages and numpages fields in qwen2024qwen
+Warning--no number and no volume in salemi2023lamp
+Warning--page numbers missing in both pages and numpages fields in salemi2023lamp
+Warning--empty publisher in shafahi2018poisonfrogs
+Warning--empty address in shafahi2018poisonfrogs
+Warning--page numbers missing in both pages and numpages fields in shafahi2018poisonfrogs
+Warning--no number and no volume in shinn2023reflexion
+Warning--page numbers missing in both pages and numpages fields in shinn2023reflexion
+Warning--no number and no volume in srivastava2025memorygraft
+Warning--page numbers missing in both pages and numpages fields in srivastava2025memorygraft
+Warning--empty publisher in sun2020mobilebert
+Warning--empty address in sun2020mobilebert
+Warning--page numbers missing in both pages and numpages fields in sun2020mobilebert
+Warning--no number and no volume in sunil2026memorypoison
+Warning--page numbers missing in both pages and numpages fields in sunil2026memorypoison
+Warning--no number and no volume in tan2026dasguard
+Warning--page numbers missing in both pages and numpages fields in tan2026dasguard
+Warning--no number and no volume in torres2026ghostwriter
+Warning--page numbers missing in both pages and numpages fields in torres2026ghostwriter
+Warning--empty publisher in tran2018spectral
+Warning--empty address in tran2018spectral
+Warning--page numbers missing in both pages and numpages fields in tran2018spectral
+Warning--empty publisher in vaswani2017attention
+Warning--empty address in vaswani2017attention
+Warning--page numbers missing in both pages and numpages fields in vaswani2017attention
+Warning--no number and no volume in wang2025xpert
+Warning--page numbers missing in both pages and numpages fields in wang2025xpert
+Warning--no number and no volume in wei2025amemguard
+Warning--page numbers missing in both pages and numpages fields in wei2025amemguard
+Warning--no number and no volume in wen2026agentsys
+Warning--page numbers missing in both pages and numpages fields in wen2026agentsys
+Warning--no number and no volume in yang2021rap
+Warning--page numbers missing in both pages and numpages fields in yang2021rap
+Warning--no number and no volume in yang2026zombie
+Warning--page numbers missing in both pages and numpages fields in yang2026zombie
+Warning--empty publisher in yao2023react
+Warning--empty address in yao2023react
+Warning--page numbers missing in both pages and numpages fields in yao2023react
+Warning--empty publisher in yin2018byzantine
+Warning--empty address in yin2018byzantine
+Warning--page numbers missing in both pages and numpages fields in yin2018byzantine
+Warning--no number and no volume in ying2026skilljack
+Warning--page numbers missing in both pages and numpages fields in ying2026skilljack
+Warning--no number and no volume in zhang2024npo
+Warning--page numbers missing in both pages and numpages fields in zhang2024npo
+Warning--empty publisher in zhang2019aeslc
+Warning--empty address in zhang2019aeslc
+Warning--page numbers missing in both pages and numpages fields in zhang2019aeslc
+Warning--empty publisher in zhang2018personachat
+Warning--empty address in zhang2018personachat
+Warning--page numbers missing in both pages and numpages fields in zhang2018personachat
+Warning--no number and no volume in zhang2026memghost
+Warning--page numbers missing in both pages and numpages fields in zhang2026memghost
+Warning--no number and no volume in zhang2024memorysurvey
+Warning--page numbers missing in both pages and numpages fields in zhang2024memorysurvey
+Warning--no number and no volume in zhang2021neuba
+Warning--page numbers missing in both pages and numpages fields in zhang2021neuba
+Warning--no number and no volume in zhao2026fedbit
+Warning--page numbers missing in both pages and numpages fields in zhao2026fedbit
+Warning--no number and no volume in zhong2023memorybank
+Warning--page numbers missing in both pages and numpages fields in zhong2023memorybank
+Warning--no number and no volume in zou2024poisonedrag
+Warning--page numbers missing in both pages and numpages fields in zou2024poisonedrag
+You've used 69 entries,
+            6335 wiz_defined-function locations,
+            1876 strings with 35080 characters,
+and the built_in function-call counts, 80267 in all, are:
+= -- 10448
+> -- 3535
+< -- 0
++ -- 1222
+- -- 1175
+* -- 6454
+:= -- 7813
+add.period$ -- 323
+call.type$ -- 69
+change.case$ -- 653
+chr.to.int$ -- 67
+cite$ -- 227
+duplicate$ -- 6442
+empty$ -- 4724
+format.name$ -- 1437
+if$ -- 20056
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 298
+newline$ -- 831
+num.names$ -- 481
+pop$ -- 3258
+preamble$ -- 1
+purify$ -- 1201
+quote$ -- 0
+skip$ -- 1948
+stack$ -- 0
+substring$ -- 3965
+swap$ -- 306
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1403
+warning$ -- 158
+while$ -- 238
+width$ -- 0
+write$ -- 1529
+(There were 158 warnings)

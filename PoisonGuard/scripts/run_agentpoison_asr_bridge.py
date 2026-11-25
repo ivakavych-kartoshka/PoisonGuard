@@ -48,6 +48,8 @@ def main() -> int:
     parser.add_argument("--openai-model", default="qwen2.5:7b-instruct")
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--retriever-path", required=True)
+    parser.add_argument("--repo-root", default=r"D:\NCKH\MobileSYS\attack_baselines\AgentPoison",
+                        help="Path to pinned AgentPoison repository")
     args = parser.parse_args()
 
     base_url = os.environ.get("OPENAI_BASE_URL", "").strip()
@@ -55,9 +57,13 @@ def main() -> int:
     if not base_url or not api_key:
         raise SystemExit("ASR bridge requires OPENAI_BASE_URL and OPENAI_API_KEY")
 
-    repo_root = Path.cwd()
+    repo_root = Path(args.repo_root) if args.repo_root and Path(args.repo_root).is_dir() else Path.cwd()
     if not (repo_root / EVALUATOR).is_file():
-        raise SystemExit(f"pinned evaluator missing: {repo_root / EVALUATOR}")
+        candidate = Path(r"D:\NCKH\MobileSYS\attack_baselines\AgentPoison")
+        if (candidate / EVALUATOR).is_file():
+            repo_root = candidate
+        else:
+            raise SystemExit(f"pinned evaluator missing: {repo_root / EVALUATOR}")
     trigger_file = Path(args.trigger_file)
     if not trigger_file.is_file():
         raise SystemExit(f"trigger file missing: {trigger_file}")

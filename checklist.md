@@ -157,3 +157,17 @@ Cập nhật theo trạng thái hiện tại của repo: manuscript thiết kế
 3. Cập nhật citations/metadata (mục 8–9).
 4. Chuyển format ACM + compile (mục 1, 10).
 5. Release + final audit (mục 11–12).
+
+## 13. AgentPoison attack ASR pilot (hoan thanh, 2026-11-22)
+
+- [x] Pin AgentPoison @ `7b02e28f` (clean tree sau smoke patch restore).
+- [x] Bridge script `PoisonGuard/scripts/run_agentpoison_bridge.py` (Windows timestamp patch + restore, PYTHONUTF8, local Ollama qwen2.5:7b-instruct).
+- [x] ASR bridge script `PoisonGuard/scripts/run_agentpoison_asr_bridge.py` (benign + adv evaluator, metric aggregation, "not a paper result" label).
+- [x] 3 seed trigger artifacts: `outputs/agentpoison_run_seed{1,2,3}_v2/attacks/agentpoison.json`.
+- [x] 3 seed measured ASR files: `outputs/measured_agentpoison_seed{1,2,3}.json` (ASR before 1.00/0.95/0.95; clean utility 0.70 all; FQR 0.00 all).
+- [x] Aggregate: `outputs/aggregate_agentpoison/real_metrics_aggregate.json` (ASR before median 0.95, IQR 0.025, n=3).
+- [x] Code commit updated to `958bfec773d19e01da2d4c303aa8fd57cecebb77` and pushed.
+- [ ] Scale (b): full `1000/100` AgentPoison run (20-40h) -- chua chay.
+- [ ] Defense numbers: ASR after, rollback, FQR, utility after (can policy pipeline + device).
+- [ ] Baselines: A-MemGuard, MINJA, MemoryGraft bridges.
+- [ ] Energy: can external power monitor (hien tai n/a).

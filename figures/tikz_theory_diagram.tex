@@ -1,19 +1,33 @@
-\begin{tikzpicture}[node distance=5mm and 9mm]
-  \node[theory, text width=26mm] (a1) {Complete mediation\\immutable IDs};
-  \node[theory, text width=26mm, below=of a1] (a2) {Sound lineage\\monotone policy};
-  \node[theory, text width=26mm, below=of a2] (a3) {Versioned\\deterministic replay};
-  \node[theory, text width=25mm, right=15mm of a1, yshift=-6mm] (l1) {Lemma 1\\provenance closure};
-  \node[theory, text width=25mm, below=8mm of l1] (t2) {Theorem 2\\exact restoration};
-  \node[theory, text width=25mm, above right=0mm and 14mm of l1] (t1) {Theorem 1\\non-laundering};
-  \node[defense, text width=25mm, below=10mm of t1] (c1) {Promotion excludes\\denied ancestry};
-  \node[defense, text width=25mm, below=8mm of c1] (c2) {Recovered state equals\\clean counterfactual};
+\begin{tikzpicture}[
+  node distance=8mm and 12mm,
+  box/.style={theory, text width=28mm, minimum height=10mm, font=\small},
+  guardbox/.style={defense, text width=28mm, minimum height=10mm, font=\small}
+]
+  % Row 1: Non-laundering branch
+  \node[box] (a1) {\textbf{Assumption 1}\\Complete mediation\\\& immutable IDs};
+  \node[box, right=14mm of a1] (t1) {\textbf{Theorem 1}\\Non-laundering\\guarantee};
+  \node[guardbox, right=14mm of t1] (c1) {\textbf{Safety Rule}\\Promotion excludes\\denied ancestry};
 
-  \draw[theoryflow] (a1.east) -| (l1.north);
+  % Row 2: Foundation & Provenance closure hub
+  \node[box, below=9mm of a1] (a2) {\textbf{Assumption 2}\\Sound lineage \&\\monotone policy};
+  \node[box, right=14mm of a2] (l1) {\textbf{Lemma 1}\\Provenance\\closure};
+
+  % Row 3: Exact restoration branch
+  \node[box, below=9mm of a2] (a3) {\textbf{Assumption 3}\\Versioned\\deterministic replay};
+  \node[box, right=14mm of a3] (t2) {\textbf{Theorem 2}\\Exact lineage\\restoration};
+  \node[guardbox, right=14mm of t2] (c2) {\textbf{Bit-Exact Recovery}\\State equals clean\\counterfactual};
+
+  % Direct, straight, non-intersecting flows
+  % Row 1 flows
+  \draw[theoryflow] (a1.east) -- (t1.west);
+  \draw[controlflow] (t1.east) -- (c1.west);
+
+  % Hub inputs & outputs
   \draw[theoryflow] (a2.east) -- (l1.west);
-  \draw[theoryflow] (l1.east) -| (t1.west);
-  \draw[theoryflow] (a2.east) -| (t1.south west);
-  \draw[theoryflow] (a3.east) -- (t2.west);
+  \draw[theoryflow] (l1.north) -- (t1.south);
   \draw[theoryflow] (l1.south) -- (t2.north);
-  \draw[controlflow] (t1.south) -- (c1.north);
-  \draw[controlflow] (t2.east) -| (c2.west);
+
+  % Row 3 flows
+  \draw[theoryflow] (a3.east) -- (t2.west);
+  \draw[controlflow] (t2.east) -- (c2.west);
 \end{tikzpicture}

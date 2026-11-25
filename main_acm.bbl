@@ -1,0 +1,1143 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{69}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter does
+%%% not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+\makeatletter
+\@ifundefined{NAT@parse@date}{}{\let\NAT@parse@date@orig\NAT@parse@date}
+\@ifundefined{NAT@parse@date}{}{\def\NAT@parse@date#1#2#3#4#5#6@@{\NAT@parse@date@orig#1#2#3#4#5#6@@\def\NAT@tempyear{0000}\def\NAT@tempexlab{{?}}\ifx\NAT@year\NAT@tempyear\ifx\NAT@exlab\NAT@tempexlab\def\NAT@date{[n.\,d.]}\else\edef\NAT@date{[n.\,d.]\NAT@exlab}\fi\fi}}
+\makeatother
+
+\bibitem[Augenstein et~al\mbox{.}(2026)]%
+        {augenstein2026hyperlora}
+\bibfield{author}{\bibinfo{person}{Sean Augenstein}, \bibinfo{person}{Li Ding},
+  \bibinfo{person}{Jihwan Lee}, \bibinfo{person}{Keith Rush}, {and}
+  \bibinfo{person}{Andrey Zhmoginov}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{LoRA}-generating Hypernetworks for Efficient
+  On-device {LLM} Generative Personalization}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2609.24979}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2609.24979}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Bagdasaryan et~al\mbox{.}(2020)]%
+        {bagdasaryan2020backdoorfl}
+\bibfield{author}{\bibinfo{person}{Eugene Bagdasaryan},
+  \bibinfo{person}{Andreas Veit}, \bibinfo{person}{Yiqing Hua},
+  \bibinfo{person}{Deborah Estrin}, {and} \bibinfo{person}{Vitaly Shmatikov}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{How To Backdoor Federated Learning}. In
+  \bibinfo{booktitle}{\emph{Proceedings of AISTATS}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1807.00459}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Bhagoji et~al\mbox{.}(2018)]%
+        {bhagoji2018federated}
+\bibfield{author}{\bibinfo{person}{Arjun~Nitin Bhagoji},
+  \bibinfo{person}{Supriyo Chakraborty}, \bibinfo{person}{Prateek Mittal},
+  {and} \bibinfo{person}{Seraphin Calo}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Analyzing Federated Learning through an Adversarial
+  Lens}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1811.12470}}
+  (\bibinfo{year}{2018}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1811.12470}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Blanchard et~al\mbox{.}(2017)]%
+        {blanchard2017krum}
+\bibfield{author}{\bibinfo{person}{Peva Blanchard},
+  \bibinfo{person}{El~Mahdi~El Mhamdi}, \bibinfo{person}{Rachid Guerraoui},
+  {and} \bibinfo{person}{Julien Stainer}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Machine Learning with Adversaries: Byzantine
+  Tolerant Gradient Descent}. In \bibinfo{booktitle}{\emph{Advances in Neural
+  Information Processing Systems}}, Vol.~\bibinfo{volume}{30}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1703.02757}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Bourtoule et~al\mbox{.}(2021)]%
+        {bourtoule2021machineunlearning}
+\bibfield{author}{\bibinfo{person}{Lucas Bourtoule}, \bibinfo{person}{Varun
+  Chandrasekaran}, \bibinfo{person}{Christopher~A. Choquette-Choo},
+  \bibinfo{person}{Hengrui Jia}, \bibinfo{person}{Adelin Travers},
+  \bibinfo{person}{Baiwu Zhang}, \bibinfo{person}{David Lie}, {and}
+  \bibinfo{person}{Nicolas Papernot}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Machine Unlearning}. In
+  \bibinfo{booktitle}{\emph{IEEE Symposium on Security and Privacy}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1912.03817}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Cao et~al\mbox{.}(2020)]%
+        {cao2020fltrust}
+\bibfield{author}{\bibinfo{person}{Xiaoyu Cao}, \bibinfo{person}{Minghong
+  Fang}, \bibinfo{person}{Jia Liu}, {and} \bibinfo{person}{Neil~Zhenqiang
+  Gong}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{FLTrust}: Byzantine-robust Federated Learning via
+  Trust Bootstrapping}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2012.13995}}
+  (\bibinfo{year}{2020}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2012.13995}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Chen et~al\mbox{.}(2018)]%
+        {chen2018activation}
+\bibfield{author}{\bibinfo{person}{Bryant Chen}, \bibinfo{person}{Wilka
+  Carvalho}, \bibinfo{person}{Nathalie Baracaldo}, \bibinfo{person}{Heiko
+  Ludwig}, \bibinfo{person}{Benjamin Edwards}, \bibinfo{person}{Taesung Lee},
+  \bibinfo{person}{Ian Molloy}, {and} \bibinfo{person}{Biplav Srivastava}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Detecting Backdoor Attacks on Deep Neural Networks
+  by Activation Clustering}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1811.03728}}
+  (\bibinfo{year}{2018}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1811.03728}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Chen et~al\mbox{.}(2024a)]%
+        {chen2024struq}
+\bibfield{author}{\bibinfo{person}{Sizhe Chen}, \bibinfo{person}{Julien Piet},
+  \bibinfo{person}{Chawin Sitawarin}, {and} \bibinfo{person}{David Wagner}.}
+  \bibinfo{year}{2024}\natexlab{a}.
+\newblock \showarticletitle{{StruQ}: Defending Against Prompt Injection with
+  Structured Queries}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2402.06363}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2402.06363}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Chen et~al\mbox{.}(2017)]%
+        {chen2017targetedbackdoor}
+\bibfield{author}{\bibinfo{person}{Xinyun Chen}, \bibinfo{person}{Chang Liu},
+  \bibinfo{person}{Bo Li}, \bibinfo{person}{Kimberly Lu}, {and}
+  \bibinfo{person}{Dawn Song}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Targeted Backdoor Attacks on Deep Learning Systems
+  Using Data Poisoning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1712.05526}}
+  (\bibinfo{year}{2017}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1712.05526}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Chen et~al\mbox{.}(2024b)]%
+        {chen2024agentpoison}
+\bibfield{author}{\bibinfo{person}{Zhaorun Chen}, \bibinfo{person}{Zhen Xiang},
+  \bibinfo{person}{Chaowei Xiao}, \bibinfo{person}{Dawn Song}, {and}
+  \bibinfo{person}{Bo Li}.} \bibinfo{year}{2024}\natexlab{b}.
+\newblock \showarticletitle{AgentPoison: Red-teaming LLM Agents via Poisoning
+  Memory or Knowledge Bases}. In \bibinfo{booktitle}{\emph{Advances in Neural
+  Information Processing Systems}}, Vol.~\bibinfo{volume}{37}.
+\newblock
+\href{https://doi.org/10.52202/079017-4136}{doi:\nolinkurl{10.52202/079017-4136}}
+
+
+\bibitem[Debenedetti et~al\mbox{.}(2024)]%
+        {debenedetti2024agentdojo}
+\bibfield{author}{\bibinfo{person}{Edoardo Debenedetti}, \bibinfo{person}{Jie
+  Zhang}, \bibinfo{person}{Mislav Balunovi{\'c}}, \bibinfo{person}{Luca
+  Beurer-Kellner}, \bibinfo{person}{Marc Fischer}, {and}
+  \bibinfo{person}{Florian Tram{\`e}r}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{AgentDojo}: A Dynamic Environment to Evaluate
+  Prompt Injection Attacks and Defenses for {LLM} Agents}. In
+  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{37}.
+\newblock
+\href{https://doi.org/10.52202/079017-2636}{doi:\nolinkurl{10.52202/079017-2636}}
+
+
+\bibitem[Dettmers et~al\mbox{.}(2023)]%
+        {dettmers2023qlora}
+\bibfield{author}{\bibinfo{person}{Tim Dettmers}, \bibinfo{person}{Artidoro
+  Pagnoni}, \bibinfo{person}{Ari Holtzman}, {and} \bibinfo{person}{Luke
+  Zettlemoyer}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{QLoRA}: Efficient Finetuning of Quantized {LLM}s}.
+  In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{36}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2305.14314}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Dong et~al\mbox{.}(2025)]%
+        {dong2025minja}
+\bibfield{author}{\bibinfo{person}{Shen Dong}, \bibinfo{person}{Shaochen Xu},
+  \bibinfo{person}{Pengfei He}, \bibinfo{person}{Yige Li},
+  \bibinfo{person}{Jiliang Tang}, \bibinfo{person}{Tianming Liu},
+  \bibinfo{person}{Hui Liu}, {and} \bibinfo{person}{Zhen Xiang}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Memory Injection Attacks on LLM Agents via
+  Query-Only Interaction}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2503.03704}}
+  (\bibinfo{year}{2025}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2503.03704}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Dong et~al\mbox{.}(2026)]%
+        {dong2026gap}
+\bibfield{author}{\bibinfo{person}{Yueyan Dong}, \bibinfo{person}{Minghui Xu},
+  \bibinfo{person}{Qin Hu}, \bibinfo{person}{Yinhao Xiao}, \bibinfo{person}{Qi
+  Luo}, \bibinfo{person}{Yechao Zhang}, \bibinfo{person}{Yue Zhang}, {and}
+  \bibinfo{person}{Xiuzhen Cheng}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Low Rank Comes with Low Security: Gradient Assembly
+  Poisoning Attacks against Distributed {LoRA}-based {LLM} Systems}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2601.00566}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2601.00566}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Eldan and Russinovich(2023)]%
+        {eldan2023harry}
+\bibfield{author}{\bibinfo{person}{Ronen Eldan} {and} \bibinfo{person}{Mark
+  Russinovich}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Who's {Harry Potter}? Approximate Unlearning in
+  {LLM}s}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.02238}}
+  (\bibinfo{year}{2023}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2310.02238}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Fung et~al\mbox{.}(2018)]%
+        {fung2018sybil}
+\bibfield{author}{\bibinfo{person}{Clement Fung}, \bibinfo{person}{Chris J.~M.
+  Yoon}, {and} \bibinfo{person}{Ivan Beschastnikh}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Mitigating Sybils in Federated Learning Poisoning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1808.04866}}
+  (\bibinfo{year}{2018}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1808.04866}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Gao et~al\mbox{.}(2026)]%
+        {gao2026spore}
+\bibfield{author}{\bibinfo{person}{Xinyu Gao}, \bibinfo{person}{Wenyu Chen},
+  \bibinfo{person}{Xiangtao Meng}, \bibinfo{person}{Li Wang},
+  \bibinfo{person}{Chuanchao Zang}, \bibinfo{person}{Jianing Wang},
+  \bibinfo{person}{Zheng Li}, {and} \bibinfo{person}{Shanqing Guo}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Isolated but Exposed: Persistence-Based Memory
+  Extraction Attack on {LLM} Agents}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2607.23444}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2607.23444}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Gao et~al\mbox{.}(2019)]%
+        {gao2019strip}
+\bibfield{author}{\bibinfo{person}{Yansong Gao}, \bibinfo{person}{Chang Xu},
+  \bibinfo{person}{Derui Wang}, \bibinfo{person}{Shiping Chen},
+  \bibinfo{person}{Damith~C. Ranasinghe}, {and} \bibinfo{person}{Surya Nepal}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{STRIP}: A Defence Against Trojan Attacks on Deep
+  Neural Networks}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1902.06531}}
+  (\bibinfo{year}{2019}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1902.06531}
+\showURL{%
+\tempurl}
+
+
+\bibitem[{Gemma Team}(2025)]%
+        {gemma2025gemma}
+\bibfield{author}{\bibinfo{person}{{Gemma Team}}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{Gemma 3} Technical Report}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2503.19786}}
+  (\bibinfo{year}{2025}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2503.19786}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Geng et~al\mbox{.}(2025)]%
+        {geng2025mobilefinetuner}
+\bibfield{author}{\bibinfo{person}{Jiaxiang Geng}, \bibinfo{person}{Lunyu
+  Zhao}, \bibinfo{person}{Yiyi Lu}, {and} \bibinfo{person}{Bing Luo}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{MobileFineTuner}: A Mobile-Native Framework for
+  On-Device {LLM} Fine-Tuning in Real-World Embedded {AI} Applications}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2512.08211}}
+  (\bibinfo{year}{2025}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2512.08211}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Geva et~al\mbox{.}(2021)]%
+        {geva2021strategyqa}
+\bibfield{author}{\bibinfo{person}{Mor Geva}, \bibinfo{person}{Daniel
+  Khashabi}, \bibinfo{person}{Elad Segal}, \bibinfo{person}{Tushar Dou},
+  \bibinfo{person}{Jonathan Berant}, {and} \bibinfo{person}{Dan Roth}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Did Aristotle Use a Laptop? A Question Answering
+  Benchmark with Implicit Reasoning Strategies}.
+\newblock \bibinfo{journal}{\emph{Transactions of the Association for
+  Computational Linguistics}}  \bibinfo{volume}{9} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{346--361}.
+\newblock
+
+
+\bibitem[Goel et~al\mbox{.}(2022)]%
+        {goel2022adversarialunlearning}
+\bibfield{author}{\bibinfo{person}{Shashwat Goel}, \bibinfo{person}{Ameya
+  Prabhu}, \bibinfo{person}{Amartya Sanyal}, \bibinfo{person}{Ser-Nam Lim},
+  \bibinfo{person}{Philip Torr}, {and} \bibinfo{person}{Ponnurangam
+  Kumaraguru}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Towards Adversarial Evaluations for Inexact Machine
+  Unlearning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2201.06640}}
+  (\bibinfo{year}{2022}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2201.06640}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Gu et~al\mbox{.}(2017)]%
+        {gu2017badnets}
+\bibfield{author}{\bibinfo{person}{Tianyu Gu}, \bibinfo{person}{Brendan
+  Dolan-Gavitt}, {and} \bibinfo{person}{Siddharth Garg}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{{BadNets}: Identifying Vulnerabilities in the
+  Machine Learning Model Supply Chain}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1708.06733}}
+  (\bibinfo{year}{2017}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1708.06733}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Guo et~al\mbox{.}(2020)]%
+        {guo2020certified}
+\bibfield{author}{\bibinfo{person}{Chuan Guo}, \bibinfo{person}{Tom Goldstein},
+  \bibinfo{person}{Awni Hannun}, {and} \bibinfo{person}{Laurens van~der
+  Maaten}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Certified Data Removal from Machine Learning
+  Models}. In \bibinfo{booktitle}{\emph{Proceedings of the 37th International
+  Conference on Machine Learning}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1911.03030}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hines et~al\mbox{.}(2024)]%
+        {hines2024spotlighting}
+\bibfield{author}{\bibinfo{person}{Keegan Hines}, \bibinfo{person}{Gary Lopez},
+  \bibinfo{person}{Matthew Hall}, \bibinfo{person}{Federico Zarfati},
+  \bibinfo{person}{Yonatan Zunger}, {and} \bibinfo{person}{Emre Kiciman}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Defending Against Indirect Prompt Injection Attacks
+  With Spotlighting}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2403.14720}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2403.14720}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hu et~al\mbox{.}(2022)]%
+        {hu2021lora}
+\bibfield{author}{\bibinfo{person}{Edward~J. Hu}, \bibinfo{person}{Yelong
+  Shen}, \bibinfo{person}{Phillip Wallis}, \bibinfo{person}{Zeyuan Allen-Zhu},
+  \bibinfo{person}{Yuanzhi Li}, \bibinfo{person}{Shean Wang},
+  \bibinfo{person}{Lu Wang}, {and} \bibinfo{person}{Weizhu Chen}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{{LoRA}: Low-Rank Adaptation of Large Language
+  Models}. In \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2106.09685}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Karpukhin et~al\mbox{.}(2020)]%
+        {karpukhin2020dpr}
+\bibfield{author}{\bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Barlas
+  Oguz}, \bibinfo{person}{Sewon Min}, \bibinfo{person}{Patrick Lewis},
+  \bibinfo{person}{Ledell Wu}, \bibinfo{person}{Sergey Edunov},
+  \bibinfo{person}{Danqi Chen}, {and} \bibinfo{person}{Wen-tau Yih}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Dense Passage Retrieval for Open-Domain Question
+  Answering}. In \bibinfo{booktitle}{\emph{Proceedings of EMNLP}}.
+\newblock
+
+
+\bibitem[Koh and Liang(2017)]%
+        {koh2017influence}
+\bibfield{author}{\bibinfo{person}{Pang~Wei Koh} {and} \bibinfo{person}{Percy
+  Liang}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Understanding Black-box Predictions via Influence
+  Functions}. In \bibinfo{booktitle}{\emph{Proceedings of the 34th
+  International Conference on Machine Learning}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1703.04730}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Kurita et~al\mbox{.}(2020)]%
+        {kurita2020weightpoison}
+\bibfield{author}{\bibinfo{person}{Keita Kurita}, \bibinfo{person}{Paul
+  Michel}, {and} \bibinfo{person}{Graham Neubig}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Weight Poisoning Attacks on Pre-trained Models}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2004.06660}}
+  (\bibinfo{year}{2020}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2004.06660}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Lelle(2026)]%
+        {lelle2026token}
+\bibfield{author}{\bibinfo{person}{Travis Lelle}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Token-Level Generalization in {LoRA} Adapter
+  Backdoors: Attack Characterization and Behavioral Detection}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2605.30189}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2605.30189}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Lewis et~al\mbox{.}(2020)]%
+        {lewis2020rag}
+\bibfield{author}{\bibinfo{person}{Patrick Lewis}, \bibinfo{person}{Ethan
+  Perez}, \bibinfo{person}{Aleksandra Piktus}, \bibinfo{person}{Fabio Petroni},
+  \bibinfo{person}{Vladimir Karpukhin}, \bibinfo{person}{Naman Goyal},
+  \bibinfo{person}{Heinrich K{\"u}ttler}, \bibinfo{person}{Mike Lewis},
+  \bibinfo{person}{Wen tau Yih}, \bibinfo{person}{Tim Rockt{\"a}schel},
+  \bibinfo{person}{Sebastian Riedel}, {and} \bibinfo{person}{Douwe Kiela}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Retrieval-Augmented Generation for
+  Knowledge-Intensive {NLP} Tasks}. In \bibinfo{booktitle}{\emph{Advances in
+  Neural Information Processing Systems}}, Vol.~\bibinfo{volume}{33}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2005.11401}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Liu et~al\mbox{.}(2024)]%
+        {liu2024loratk}
+\bibfield{author}{\bibinfo{person}{Hongyi Liu}, \bibinfo{person}{Shaochen
+  Zhong}, \bibinfo{person}{Xintong Sun}, \bibinfo{person}{Minghao Tian},
+  \bibinfo{person}{Mohsen Hariri}, \bibinfo{person}{Zirui Liu},
+  \bibinfo{person}{Ruixiang Tang}, \bibinfo{person}{Zhimeng Jiang},
+  \bibinfo{person}{Jiayi Yuan}, \bibinfo{person}{Yu-Neng Chuang},
+  \bibinfo{person}{Li Li}, \bibinfo{person}{Soo-Hyun Choi},
+  \bibinfo{person}{Rui Chen}, \bibinfo{person}{Vipin Chaudhary}, {and}
+  \bibinfo{person}{Xia Hu}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{LoRATK}: {LoRA} Once, Backdoor Everywhere in the
+  Share-and-Play Ecosystem}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2403.00108}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2403.00108}
+\showURL{%
+\tempurl}
+
+
+\bibitem[McMahan et~al\mbox{.}(2017)]%
+        {mcmahan2017fedavg}
+\bibfield{author}{\bibinfo{person}{H.~Brendan McMahan}, \bibinfo{person}{Eider
+  Moore}, \bibinfo{person}{Daniel Ramage}, \bibinfo{person}{Seth Hampson},
+  {and} \bibinfo{person}{Blaise~Ag{\"u}era y Arcas}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Communication-Efficient Learning of Deep Networks
+  from Decentralized Data}. In \bibinfo{booktitle}{\emph{Proceedings of
+  AISTATS}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1602.05629}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Mhamdi et~al\mbox{.}(2018)]%
+        {mhamdi2018bulyan}
+\bibfield{author}{\bibinfo{person}{El~Mahdi~El Mhamdi}, \bibinfo{person}{Rachid
+  Guerraoui}, {and} \bibinfo{person}{S{\'e}bastien Rouault}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{The Hidden Vulnerability of Distributed Learning in
+  Byzantium}. In \bibinfo{booktitle}{\emph{Proceedings of the 35th
+  International Conference on Machine Learning}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1802.07927}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Nguyen et~al\mbox{.}(2021)]%
+        {nguyen2021flame}
+\bibfield{author}{\bibinfo{person}{Thien~Duc Nguyen}, \bibinfo{person}{Phillip
+  Rieger}, \bibinfo{person}{Huili Chen}, \bibinfo{person}{Hossein Yalame},
+  \bibinfo{person}{Helen M{\"o}llering}, \bibinfo{person}{Hossein Fereidooni},
+  \bibinfo{person}{Samuel Marchal}, \bibinfo{person}{Markus Miettinen},
+  \bibinfo{person}{Azalia Mirhoseini}, \bibinfo{person}{Shaza Zeitouni},
+  \bibinfo{person}{Farinaz Koushanfar}, \bibinfo{person}{Ahmad-Reza Sadeghi},
+  {and} \bibinfo{person}{Thomas Schneider}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{FLAME}: Taming Backdoors in Federated Learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2101.02281}}
+  (\bibinfo{year}{2021}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2101.02281}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Packer et~al\mbox{.}(2023)]%
+        {packer2023memgpt}
+\bibfield{author}{\bibinfo{person}{Charles Packer}, \bibinfo{person}{Sarah
+  Wooders}, \bibinfo{person}{Kevin Lin}, \bibinfo{person}{Vivian Fang},
+  \bibinfo{person}{Shishir~G. Patil}, \bibinfo{person}{Ion Stoica}, {and}
+  \bibinfo{person}{Joseph~E. Gonzalez}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{MemGPT}: Towards {LLM}s as Operating Systems}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2310.08560}}
+  (\bibinfo{year}{2023}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2310.08560}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Park et~al\mbox{.}(2023)]%
+        {park2023generativeagents}
+\bibfield{author}{\bibinfo{person}{Joon~Sung Park}, \bibinfo{person}{Joseph~C.
+  O'Brien}, \bibinfo{person}{Carrie~J. Cai}, \bibinfo{person}{Meredith~Ringel
+  Morris}, \bibinfo{person}{Percy Liang}, {and} \bibinfo{person}{Michael~S.
+  Bernstein}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Generative Agents: Interactive Simulacra of Human
+  Behavior}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2304.03442}}
+  (\bibinfo{year}{2023}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2304.03442}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Pawelczyk et~al\mbox{.}(2025)]%
+        {pawelczyk2025unlearning}
+\bibfield{author}{\bibinfo{person}{Martin Pawelczyk}, \bibinfo{person}{Jimmy~Z.
+  Di}, \bibinfo{person}{Yiwei Lu}, \bibinfo{person}{Gautam Kamath},
+  \bibinfo{person}{Ayush Sekhari}, {and} \bibinfo{person}{Seth Neel}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Machine Unlearning Fails to Remove Data Poisoning
+  Attacks}. In \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations}}.
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.iclr.cc/paper_files/paper/2025/hash/7e810b2c75d69be186cadd2fe3febeab-Abstract-Conference.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Peng et~al\mbox{.}(2024)]%
+        {peng2024pocketllm}
+\bibfield{author}{\bibinfo{person}{Dan Peng}, \bibinfo{person}{Zhihui Fu},
+  {and} \bibinfo{person}{Jun Wang}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{PocketLLM}: Enabling On-Device Fine-Tuning for
+  Personalized {LLM}s}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2407.01031}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2407.01031}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Pillutla et~al\mbox{.}(2019)]%
+        {pillutla2019rfa}
+\bibfield{author}{\bibinfo{person}{Krishna Pillutla}, \bibinfo{person}{Sham~M.
+  Kakade}, {and} \bibinfo{person}{Zaid Harchaoui}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Robust Aggregation for Federated Learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1912.13445}}
+  (\bibinfo{year}{2019}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1912.13445}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Qi et~al\mbox{.}(2020)]%
+        {qi2020onion}
+\bibfield{author}{\bibinfo{person}{Fanchao Qi}, \bibinfo{person}{Yangyi Chen},
+  \bibinfo{person}{Mukai Li}, \bibinfo{person}{Yuan Yao},
+  \bibinfo{person}{Zhiyuan Liu}, {and} \bibinfo{person}{Maosong Sun}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{ONION}: A Simple and Effective Defense Against
+  Textual Backdoor Attacks}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2011.10369}}
+  (\bibinfo{year}{2020}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2011.10369}
+\showURL{%
+\tempurl}
+
+
+\bibitem[{Qwen Team}(2024)]%
+        {qwen2024qwen}
+\bibfield{author}{\bibinfo{person}{{Qwen Team}}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{Qwen2.5} Technical Report}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2412.15115}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2412.15115}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Salemi et~al\mbox{.}(2023)]%
+        {salemi2023lamp}
+\bibfield{author}{\bibinfo{person}{Alireza Salemi}, \bibinfo{person}{Sheshera
+  Mysore}, \bibinfo{person}{Michael Bendersky}, {and} \bibinfo{person}{Hamed
+  Zamani}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{LaMP}: When Large Language Models Meet
+  Personalization}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2304.11406}}
+  (\bibinfo{year}{2023}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2304.11406}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Shafahi et~al\mbox{.}(2018)]%
+        {shafahi2018poisonfrogs}
+\bibfield{author}{\bibinfo{person}{Ali Shafahi}, \bibinfo{person}{W.~Ronny
+  Huang}, \bibinfo{person}{Mahyar Najibi}, \bibinfo{person}{Octavian Suciu},
+  \bibinfo{person}{Christoph Studer}, \bibinfo{person}{Tudor Dumitras}, {and}
+  \bibinfo{person}{Tom Goldstein}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Poison Frogs! Targeted Clean-Label Poisoning
+  Attacks on Neural Networks}. In \bibinfo{booktitle}{\emph{Advances in Neural
+  Information Processing Systems}}, Vol.~\bibinfo{volume}{31}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1804.00792}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Shinn et~al\mbox{.}(2023)]%
+        {shinn2023reflexion}
+\bibfield{author}{\bibinfo{person}{Noah Shinn}, \bibinfo{person}{Federico
+  Cassano}, \bibinfo{person}{Edward Berman}, \bibinfo{person}{Ashwin Gopinath},
+  \bibinfo{person}{Karthik Narasimhan}, {and} \bibinfo{person}{Shunyu Yao}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Reflexion: Language Agents with Verbal
+  Reinforcement Learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2303.11366}}
+  (\bibinfo{year}{2023}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2303.11366}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Srivastava and He(2025)]%
+        {srivastava2025memorygraft}
+\bibfield{author}{\bibinfo{person}{Saksham~Sahai Srivastava} {and}
+  \bibinfo{person}{Haoyu He}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{MemoryGraft}: Persistent Compromise of {LLM}
+  Agents via Poisoned Experience Retrieval}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2512.16962}}
+  (\bibinfo{year}{2025}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2512.16962}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Sun et~al\mbox{.}(2020)]%
+        {sun2020mobilebert}
+\bibfield{author}{\bibinfo{person}{Zhiqing Sun}, \bibinfo{person}{Hongkun Yu},
+  \bibinfo{person}{Xiaodan Song}, \bibinfo{person}{Renjie Liu},
+  \bibinfo{person}{Yiming Yang}, {and} \bibinfo{person}{Denny Zhou}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{MobileBERT}: A Compact Task-Agnostic {BERT} for
+  Resource-Limited Devices}. In \bibinfo{booktitle}{\emph{Proceedings of ACL}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2004.02984}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Sunil et~al\mbox{.}(2026)]%
+        {sunil2026memorypoison}
+\bibfield{author}{\bibinfo{person}{Balachandra~Devarangadi Sunil},
+  \bibinfo{person}{Isheeta Sinha}, \bibinfo{person}{Piyush Maheshwari},
+  \bibinfo{person}{Shantanu Todmal}, \bibinfo{person}{Shreyan Mallik}, {and}
+  \bibinfo{person}{Shuchi Mishra}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Memory Poisoning Attack and Defense on Memory Based
+  {LLM}-Agents}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2601.05504}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2601.05504}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Tan et~al\mbox{.}(2026)]%
+        {tan2026dasguard}
+\bibfield{author}{\bibinfo{person}{Jiejun Tan}, \bibinfo{person}{Zhicheng Dou},
+  \bibinfo{person}{Xinyu Yang}, \bibinfo{person}{Yuyang Hu},
+  \bibinfo{person}{Yiruo Cheng}, \bibinfo{person}{Xiaoxi Li}, {and}
+  \bibinfo{person}{Ji-Rong Wen}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{From Prompt Injection to Persistent Control:
+  Defending Agentic Harness Against Trojan Backdoors}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2605.31042}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2605.31042}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Torres et~al\mbox{.}(2026)]%
+        {torres2026ghostwriter}
+\bibfield{author}{\bibinfo{person}{George Torres}, \bibinfo{person}{Sharad
+  Shrestha}, {and} \bibinfo{person}{Satyajayant Misra}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{When Agents Remember Too Much: Memory Poisoning
+  Attacks on Large Language Model Agents}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2607.06595}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2607.06595}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Tran et~al\mbox{.}(2018)]%
+        {tran2018spectral}
+\bibfield{author}{\bibinfo{person}{Brandon Tran}, \bibinfo{person}{Jerry Li},
+  {and} \bibinfo{person}{Aleksander Madry}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Spectral Signatures in Backdoor Attacks}. In
+  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{31}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1811.00636}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Vaswani et~al\mbox{.}(2017)]%
+        {vaswani2017attention}
+\bibfield{author}{\bibinfo{person}{Ashish Vaswani}, \bibinfo{person}{Noam
+  Shazeer}, \bibinfo{person}{Niki Parmar}, \bibinfo{person}{Jakob Uszkoreit},
+  \bibinfo{person}{Llion Jones}, \bibinfo{person}{Aidan~N. Gomez},
+  \bibinfo{person}{Lukasz Kaiser}, {and} \bibinfo{person}{Illia Polosukhin}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Attention Is All You Need}. In
+  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{30}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1706.03762}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Wang et~al\mbox{.}(2025)]%
+        {wang2025xpert}
+\bibfield{author}{\bibinfo{person}{Haoming Wang}, \bibinfo{person}{Boyuan
+  Yang}, \bibinfo{person}{Xiangyu Yin}, {and} \bibinfo{person}{Wei Gao}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Never Start from Scratch: Expediting On-Device
+  {LLM} Personalization via Explainable Model Selection}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2504.13938}}
+  (\bibinfo{year}{2025}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2504.13938}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Wei et~al\mbox{.}(2025)]%
+        {wei2025amemguard}
+\bibfield{author}{\bibinfo{person}{Qianshan Wei}, \bibinfo{person}{Tengchao
+  Yang}, \bibinfo{person}{Yaochen Wang}, \bibinfo{person}{Xinfeng Li},
+  \bibinfo{person}{Lijun Li}, \bibinfo{person}{Zhenfei Yin},
+  \bibinfo{person}{Yi Zhan}, \bibinfo{person}{Thorsten Holz},
+  \bibinfo{person}{Zhiqiang Lin}, {and} \bibinfo{person}{XiaoFeng Wang}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{A-MemGuard}: A Proactive Defense Framework for
+  {LLM}-Based Agent Memory}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2510.02373}}
+  (\bibinfo{year}{2025}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2510.02373}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Wen et~al\mbox{.}(2026)]%
+        {wen2026agentsys}
+\bibfield{author}{\bibinfo{person}{Ruoyao Wen}, \bibinfo{person}{Hao Li},
+  \bibinfo{person}{Chaowei Xiao}, {and} \bibinfo{person}{Ning Zhang}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{AgentSys}: Secure and Dynamic {LLM} Agents Through
+  Explicit Hierarchical Memory Management}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2602.07398}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2602.07398}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Yang et~al\mbox{.}(2021)]%
+        {yang2021rap}
+\bibfield{author}{\bibinfo{person}{Wenkai Yang}, \bibinfo{person}{Yankai Lin},
+  \bibinfo{person}{Peng Li}, \bibinfo{person}{Jie Zhou}, {and}
+  \bibinfo{person}{Xu Sun}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{RAP}: Robustness-Aware Perturbations for Defending
+  against Backdoor Attacks on {NLP} Models}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2110.07831}}
+  (\bibinfo{year}{2021}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2110.07831}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Yang et~al\mbox{.}(2026)]%
+        {yang2026zombie}
+\bibfield{author}{\bibinfo{person}{Xianglin Yang}, \bibinfo{person}{Yufei He},
+  \bibinfo{person}{Shuo Ji}, \bibinfo{person}{Bryan Hooi}, {and}
+  \bibinfo{person}{Jin~Song Dong}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Zombie Agents: Persistent Control of Self-Evolving
+  {LLM} Agents via Self-Reinforcing Injections}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2602.15654}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2602.15654}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Yao et~al\mbox{.}(2023)]%
+        {yao2023react}
+\bibfield{author}{\bibinfo{person}{Shunyu Yao}, \bibinfo{person}{Jeffrey Zhao},
+  \bibinfo{person}{Dian Yu}, \bibinfo{person}{Nan Du}, \bibinfo{person}{Izhak
+  Shafran}, \bibinfo{person}{Karthik Narasimhan}, {and} \bibinfo{person}{Yuan
+  Cao}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{ReAct: Synergizing Reasoning and Acting in Language
+  Models}. In \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations (ICLR)}}.
+\newblock
+
+
+\bibitem[Yin et~al\mbox{.}(2018)]%
+        {yin2018byzantine}
+\bibfield{author}{\bibinfo{person}{Dong Yin}, \bibinfo{person}{Yudong Chen},
+  \bibinfo{person}{Kannan Ramchandran}, {and} \bibinfo{person}{Peter
+  Bartlett}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Byzantine-Robust Distributed Learning: Towards
+  Optimal Statistical Rates}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  35th International Conference on Machine Learning}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1803.01498}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Ying et~al\mbox{.}(2026)]%
+        {ying2026skilljack}
+\bibfield{author}{\bibinfo{person}{Zonghao Ying}, \bibinfo{person}{Xiangfan
+  Wu}, \bibinfo{person}{Huiyu Wu}, \bibinfo{person}{Xing Zheng},
+  \bibinfo{person}{Huangsheng Cheng}, \bibinfo{person}{Xiaorong Shi}, {and}
+  \bibinfo{person}{Jing Guo}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{{SkillJack}: Persistent Skill Backdoors in
+  Self-Evolving Agents}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2608.03509}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2608.03509}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2024b)]%
+        {zhang2024npo}
+\bibfield{author}{\bibinfo{person}{Ruiqi Zhang}, \bibinfo{person}{Licong Lin},
+  \bibinfo{person}{Yu Bai}, {and} \bibinfo{person}{Song Mei}.}
+  \bibinfo{year}{2024}\natexlab{b}.
+\newblock \showarticletitle{Negative Preference Optimization: From Catastrophic
+  Collapse to Effective Unlearning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2404.05868}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2404.05868}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang and Tetreault(2019)]%
+        {zhang2019aeslc}
+\bibfield{author}{\bibinfo{person}{Rui Zhang} {and} \bibinfo{person}{Joel
+  Tetreault}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{This Email Could Save Your Life: Introducing the
+  Task of Email Subject Line Generation}. In
+  \bibinfo{booktitle}{\emph{Proceedings of ACL}}.
+\newblock
+\urldef\tempurl%
+\url{https://aclanthology.org/P19-1043/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2018)]%
+        {zhang2018personachat}
+\bibfield{author}{\bibinfo{person}{Saizheng Zhang}, \bibinfo{person}{Emily
+  Dinan}, \bibinfo{person}{Jack Urbanek}, \bibinfo{person}{Arthur Szlam},
+  \bibinfo{person}{Douwe Kiela}, {and} \bibinfo{person}{Jason Weston}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Personalizing Dialogue Agents: I Have a Dog, Do You
+  Have Pets Too?}. In \bibinfo{booktitle}{\emph{Proceedings of ACL}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1801.07243}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2026)]%
+        {zhang2026memghost}
+\bibfield{author}{\bibinfo{person}{Yechao Zhang}, \bibinfo{person}{Shiqian
+  Zhao}, \bibinfo{person}{Jiawen Zhang}, \bibinfo{person}{Jie Zhang},
+  \bibinfo{person}{Gelei Deng}, \bibinfo{person}{Xiaogeng Liu},
+  \bibinfo{person}{Chaowei Xiao}, {and} \bibinfo{person}{Tianwei Zhang}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{When Claws Remember but Do Not Tell: Stealthy
+  Memory Injection in Persistent Personal Agents}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2607.05189}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2607.05189}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2024a)]%
+        {zhang2024memorysurvey}
+\bibfield{author}{\bibinfo{person}{Zeyu Zhang}, \bibinfo{person}{Xiaohe Bo},
+  \bibinfo{person}{Chen Ma}, \bibinfo{person}{Rui Li}, \bibinfo{person}{Xu
+  Chen}, \bibinfo{person}{Quanyu Dai}, \bibinfo{person}{Jieming Zhu},
+  \bibinfo{person}{Zhenhua Dong}, {and} \bibinfo{person}{Ji-Rong Wen}.}
+  \bibinfo{year}{2024}\natexlab{a}.
+\newblock \showarticletitle{A Survey on the Memory Mechanism of Large Language
+  Model based Agents}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2404.13501}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2404.13501}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhang et~al\mbox{.}(2021)]%
+        {zhang2021neuba}
+\bibfield{author}{\bibinfo{person}{Zhengyan Zhang}, \bibinfo{person}{Guangxuan
+  Xiao}, \bibinfo{person}{Yongwei Li}, \bibinfo{person}{Tian Lv},
+  \bibinfo{person}{Fanchao Qi}, \bibinfo{person}{Zhiyuan Liu},
+  \bibinfo{person}{Yasheng Wang}, \bibinfo{person}{Xin Jiang}, {and}
+  \bibinfo{person}{Maosong Sun}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Red Alarm for Pre-trained Models: Universal
+  Vulnerability to Neuron-Level Backdoor Attacks}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2101.06969}}
+  (\bibinfo{year}{2021}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2101.06969}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhao et~al\mbox{.}(2026)]%
+        {zhao2026fedbit}
+\bibfield{author}{\bibinfo{person}{Haodong Zhao}, \bibinfo{person}{Jinming Hu},
+  {and} \bibinfo{person}{Gongshen Liu}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Revisiting Backdoor Threat in Federated Instruction
+  Tuning from a Signal Aggregation Perspective}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2602.15671}}
+  (\bibinfo{year}{2026}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2602.15671}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zhong et~al\mbox{.}(2023)]%
+        {zhong2023memorybank}
+\bibfield{author}{\bibinfo{person}{Wanjun Zhong}, \bibinfo{person}{Lianghong
+  Guo}, \bibinfo{person}{Qiqi Gao}, \bibinfo{person}{He Ye}, {and}
+  \bibinfo{person}{Yanlin Wang}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{{MemoryBank}: Enhancing Large Language Models with
+  Long-Term Memory}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2305.10250}}
+  (\bibinfo{year}{2023}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2305.10250}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Zou et~al\mbox{.}(2024)]%
+        {zou2024poisonedrag}
+\bibfield{author}{\bibinfo{person}{Wei Zou}, \bibinfo{person}{Runpeng Geng},
+  \bibinfo{person}{Binghui Wang}, {and} \bibinfo{person}{Jinyuan Jia}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{PoisonedRAG}: Knowledge Corruption Attacks to
+  Retrieval-Augmented Generation of Large Language Models}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2402.07867}}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2402.07867}
+\showURL{%
+\tempurl}
+
+
+\end{thebibliography}

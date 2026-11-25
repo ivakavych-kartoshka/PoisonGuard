@@ -1,24 +1,29 @@
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[node distance=6mm]
-  \node[honest, text width=20mm] (s1) {Capture\\OS origin};
-  \node[defense, text width=20mm, right=of s1] (s2) {Select per\\sink};
-  \node[honest, text width=20mm, right=of s2] (s3) {Memory and\\window};
-  \node[infra, text width=20mm, right=of s3] (s4) {Train in\\quarantine};
-  \node[defense, text width=20mm, right=of s4] (s5) {Audit then\\promote};
-  \node[stage] at ($(s1.north west)+(1mm,-1mm)$) {1};
-  \node[stage] at ($(s2.north west)+(1mm,-1mm)$) {2};
-  \node[stage] at ($(s3.north west)+(1mm,-1mm)$) {3};
-  \node[stage] at ($(s4.north west)+(1mm,-1mm)$) {4};
-  \node[stage] at ($(s5.north west)+(1mm,-1mm)$) {5};
-  \draw[dataflow] (s1.east)--(s2.west);
-  \draw[dataflow] (s2.east)--(s3.west);
-  \draw[dataflow] (s3.east)--(s4.west);
-  \draw[dataflow] (s4.east)--(s5.west);
+\begin{tikzpicture}[
+  hnode/.style={honest, font=\small, text width=31mm, minimum height=10mm, inner sep=3pt},
+  dnode/.style={defense, font=\small, text width=31mm, minimum height=10mm, inner sep=3pt},
+  inode/.style={infra, font=\small, text width=31mm, minimum height=10mm, inner sep=3pt},
+  anode/.style={attack, font=\small, text width=31mm, minimum height=10mm, inner sep=3pt}
+]
+  % Row 1: Ingress & Policy Selection (y = 0)
+  \node[hnode] (s1) at (0, 0) {\textbf{1. Capture OS Origin}\\[0.3mm]\scriptsize Provenance envelope binding};
+  \node[dnode] (s2) at (5.2, 0) {\textbf{2. Select per Sink}\\[0.3mm]\scriptsize Policy rules ($\pi_{\text{mem}}, \pi_{\text{train}}$)};
 
-  \node[attack, text width=26mm, below=12mm of s2] (revoke) {Later verdict or\\deletion};
-  \node[defense, text width=33mm, below=12mm of s4] (rollback) {Invalidate descendants,\\rollback, clean replay};
-  \node[stage] at ($(rollback.north west)+(1mm,-1mm)$) {6};
-  \draw[attackflow] (revoke.east)--(rollback.west);
-  \draw[controlflow] (s5.south) |- (rollback.north);
-\end{tikzpicture}%
-}
+  % Row 2: Sink Ingestion & Isolated Training (y = -2.0) -> Vertical gap = 10mm!
+  \node[hnode] (s3) at (0, -2.0) {\textbf{3. Buffer in Memory}\\[0.3mm]\scriptsize Memory records \& windows};
+  \node[inode] (s4) at (5.2, -2.0) {\textbf{4. Quarantine Train}\\[0.3mm]\scriptsize Isolated LoRA adapter};
+
+  % Row 3: Audit Promotion & Rollback Remediation (y = -4.0) -> Vertical gap = 10mm!
+  \node[dnode] (s5) at (0, -4.0) {\textbf{5. Audit \& Promote}\\[0.3mm]\scriptsize Lineage closure gate};
+  \node[dnode] (s6) at (5.2, -4.0) {\textbf{6. Lineage Rollback}\\[0.3mm]\scriptsize Causal rollback \& replay};
+
+  % Long, prominent 21mm horizontal arrows & 10mm vertical arrows (Matching Fig 2 style)
+  \draw[dataflow] (s1.east) -- (s2.west);
+  \draw[dataflow] (s1.south) -- (s3.north);
+  \draw[dataflow] (s2.south) -- (s4.north);
+  \draw[dataflow] (s3.east) -- (s4.west);
+  \draw[controlflow] (s3.south) -- (s5.north);
+  \draw[controlflow] (s4.south) -- (s6.north);
+
+  % 21mm long revocation trigger arrow with matching Fig 2 compact orange style
+  \draw[attackflow] (s6.west) -- node[midway,above=1mm,font=\scriptsize\bfseries,text=pgorange,fill=white,inner sep=1.2pt,rounded corners=1pt]{on revocation} (s5.east);
+\end{tikzpicture}

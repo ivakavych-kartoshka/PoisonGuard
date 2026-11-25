@@ -67,3 +67,15 @@ The delivered run used seed 17 and configuration `configs/synthetic_demo.yaml`. 
 - Aggregation config `outputs/aggregate_systems_config.yaml` requires only systems fields; output `outputs/aggregate_systems/real_metrics_aggregate.json`.
 - Aggregated median step time `3919 ms` (IQR `9.5`, n=3); median peak RSS `2174692 kB` (IQR `2010`, n=3). No energy, ASR, utility, or rollback value exists in these files (`count: 0`).
 - Trainer workload remains synthetic token ids; these numbers are device systems evidence only.
+
+## AgentPoison attack ASR pilot (not a paper result)
+
+- Pinned AgentPoison repository `D:\NCKH\MobileSYS\attack_baselines\AgentPoison` at commit `7b02e28f` (clean tree; smoke patch restored, `git status` clean). Upstream `trigger_optimization.py` patched at runtime for Windows timestamp and restored; `PYTHONUTF8=1` required.
+- Bridge script `PoisonGuard/scripts/run_agentpoison_bridge.py` runs upstream verbatim with local Ollama endpoint `http://localhost:11434/v1`, model `qwen2.5:7b-instruct` (placeholder credential `OPENAI_API_KEY=ollama`). Config uses `cuda:0`, `num_iter=50`, `num_grad_iter=5`, `num_cand=32`, batch sizes 4/2/1/2 (pilot scale, not paper-grade `1000/100`).
+- Three seeds (1,2,3) produced trigger artifacts `outputs/agentpoison_run_seed{1,2,3}_v2/attacks/agentpoison.json`; triggers differ per seed (e.g. seed1 "bai cheney d rao ti politics traditionally nm ale topography").
+- ASR measured via `PoisonGuard/scripts/run_agentpoison_asr_bridge.py` running the pinned upstream `ReAct/run_strategyqa_gpt3.5.py` evaluator (benign + adv, 40 instances/seed) with local Qwen backbone. Outputs: `outputs/measured_agentpoison_seed{1,2,3}.json`, labelled `not a paper result`.
+- Measured (per seed, n=40): ASR before (abstention target "I don't know" under trigger) = 1.00, 0.95, 0.95; clean utility (exact match) = 0.70 all seeds; FQR = 0.00 all seeds; adv exact match = 0.00, 0.05, 0.025.
+- Aggregate `outputs/aggregate_agentpoison/real_metrics_aggregate.json` (config `outputs/aggregate_agentpoison_config.yaml`): ASR before median 0.95 (IQR 0.025, n=3); clean utility median 0.70 (IQR 0.0); FQR median 0.00 (IQR 0.0). Energy, ASR after, rollback, utility delta all absent (`count: 0`).
+- Backbone substitution: published setup used GPT-3.5-turbo-instruct; this pilot uses Qwen2.5-7B-Instruct via Ollama. Must be disclosed as a limitation; not directly comparable to published numbers.
+- Not yet measured: ASR after defense, false admission, utility after, rollback equality/storage/time, laundering persistence, defense policy metrics. These require the PoisonGuard policy pipeline on poisoned events and a working device trainer (seed 2 trainer probe failed due to transient ADB disconnect; device reconnected).
+- Code commit updated to `958bfec773d19e01da2d4c303aa8fd57cecebb77` (pushed to origin/main).

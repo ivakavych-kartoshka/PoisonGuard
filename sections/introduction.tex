@@ -27,9 +27,9 @@ Revocation therefore becomes graph invalidation followed by rollback-and-replay.
 
 \paragraph{Road map.} \Cref{sec:related} positions the work. \Cref{sec:preliminaries,sec:system} define notation and the system. \Cref{sec:problem} formalizes laundering and objectives. \Cref{sec:method} presents the design, \cref{sec:theory} analyzes it, and \cref{sec:algorithms} gives executable procedures. \Cref{sec:experiments} specifies the evaluation; \cref{sec:discussion,sec:limitations} discuss deployment and limitations.
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
-  \input{figures/tikz_architecture}
+  \resizebox{0.95\textwidth}{!}{\input{figures/tikz_architecture}}
   \caption{PoisonGuard architecture. Blue solid arrows carry ordinary data, orange dashed arrows show potential adversarial flow, and green double-line arrows denote policy or recovery control. Provenance remains attached across both memory and adapter sinks.}
   \label{fig:architecture}
-\end{figure}
+\end{figure*}

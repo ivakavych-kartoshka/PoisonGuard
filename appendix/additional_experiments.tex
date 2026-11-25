@@ -1,12 +1,20 @@
 \section{Additional Experimental Protocols}
 \label{app:experiments}
 
+\begin{figure}[t]
+  \centering
+  \input{figures/tikz_experimental_setup}
+  \caption{Experimental setup from channel payloads to metrics. Each attack is replayed through each feasible channel while holding text constant, enabling provenance-policy effects to be separated from content detection.}
+  \label{fig:experimental-setup}
+\end{figure}
+
 \subsection{Factorial design}
 
 A full factorial is expensive, so experiments proceed in stages. Stage A fixes one model/device and crosses six channels with four attacks and two poison budgets. Stage B carries the strongest two attacks across devices, models, and LoRA ranks. Stage C evaluates recovery intervals and replay horizons. Stage D evaluates adaptive retyping with a controlled human or scripted confirmation study. Each stage freezes its analysis plan before inspecting final outcomes.
 
 \begin{table}[h]
 \centering
+\small
 \caption{Planned experimental factors. Values are protocol settings, not results.}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{lll}

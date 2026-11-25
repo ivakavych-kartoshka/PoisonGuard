@@ -1,0 +1,53 @@
+\section{Detailed Algorithmic Specifications}
+\label{app:algorithms}
+
+This appendix provides the full algorithmic listings for \PG{}'s provenance-aware admission, candidate auditing, atomic promotion, and lineage rollback-and-replay procedures.
+
+\begin{algorithm}[t]
+\caption{Provenance-Aware Admission and Quarantine}
+\label{alg:admission}
+\begin{algorithmic}[1]
+\Require Raw item $x$, OS context $o$, active checkpoint $c$, policy epoch $r$
+\State $e\gets\textsc{CaptureAndBind}(x,o)$; append source vertex $e$
+\For{$z\in\{\mathsf{mem},\mathsf{train}\}$}
+  \State $d_z\gets\pi_z(e,\sigma_r)$; append decision vertex $(e,d_z,r)$
+\EndFor
+\If{$d_{\mathsf{mem}}=\Allow$}
+  \State $m\gets f_M(e)$; atomically append $e\rightarrow m$ and commit $m$
+\ElsIf{$d_{\mathsf{mem}}=\Quarantine$}
+  \State store $e$ in non-retrievable quarantine
+\EndIf
+\If{$d_{\mathsf{train}}\ne\Deny$}
+  \State add $e$ to an eligible or quarantined training pool according to $d_{\mathsf{train}}$
+\EndIf
+\State \textbf{When} training budget permits, form $W_k$ from eligible events and their closures
+\State $q_k\gets T(c,W_k;v_k,\rho_k)$ in candidate namespace
+\State $a_k\gets\textsc{Audit}(q_k,c,W_k)$
+\If{$a_k=\mathsf{pass}$ and policy epoch still equals $r$}
+  \State atomically commit lineage and compare-and-swap active pointer from $c$ to $q_k$
+\Else
+  \State retain $q_k$ as quarantined evidence or garbage-collect under policy
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[t]
+\caption{Lineage Rollback-and-Replay}
+\label{alg:rollback}
+\begin{algorithmic}[1]
+\Require Revoked vertices $R$, active head $c_h$, lineage graph $\Graph$
+\State acquire recovery barrier; durably queue new arrivals
+\State $D\gets\operatorname{Desc}_{\Graph}(R)$
+\State mark memory, window, candidate, audit, and checkpoint vertices in $D$ invalid
+\State $c_j\gets$ newest retained checkpoint on active ancestry with $\operatorname{Anc}(c_j)\cap D=\varnothing$
+\If{no such checkpoint exists}
+  \State $c_j\gets$ pristine base state
+\EndIf
+\State verify hashes for $c_j$, code, tokenizer, optimizer, policy, and randomness records
+\State $E'\gets$ later events not in $D$ that pass the selected remediation policy
+\State restore $c_j$; replay $E'$ in original logical order into a recovery namespace
+\State validate graph completeness and post-recovery behavioral probes
+\State atomically install recovered head; append recovery certificate
+\State release barrier; process queued arrivals after the recovered suffix
+\end{algorithmic}
+\end{algorithm}

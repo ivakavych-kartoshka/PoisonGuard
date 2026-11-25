@@ -83,12 +83,7 @@ The worst case is important: checkpoint frequency alone does not cap recovery if
 Under the recovery barrier and compare-and-swap promotion rule, concurrent arrivals can be ordered after the recovered suffix so that clients observe either the pre-recovery active checkpoint or the completely installed recovered checkpoint, but never a partially replayed state.
 \end{theorem}
 
-\begin{figure}[t]
-  \centering
-  \input{figures/tikz_theory_diagram}
-  \caption{Dependency structure of the formal results. Purple nodes are assumptions/results; green nodes are operational consequences. Routed arrows avoid implying that detector quality is a premise of exact rollback.}
-  \label{fig:theory}
-\end{figure}
+The dependency structure connecting our formal assumptions, lemmas, and operational theorems is detailed in \cref{app:proofs} (\cref{fig:theory}).
 
 \subsection{Failure cases}
 

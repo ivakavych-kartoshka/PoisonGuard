@@ -1,16 +1,35 @@
-\begin{tikzpicture}[node distance=7mm and 9mm]
-  \node[honest, text width=22mm] (user) {\tikz\draw[pgblue] (0,.16) circle (.12) (-.2,-.3) arc (180:0:.2 and .18);\\User-typed};
-  \node[attack, text width=22mm, below=of user] (attacker) {\tikz\draw[pgorange] (0,.16) circle (.12) (-.22,-.3)--(0,-.05)--(.22,-.3);\\Remote/app attacker};
-  \node[defense, text width=24mm, right=14mm of user, yshift=-8mm] (guard) {Origin binding\\and policy};
-  \node[honest, text width=20mm, above right=8mm and 12mm of guard] (mem) {Memory};
-  \node[infra, text width=20mm, below right=8mm and 12mm of guard] (lora) {LoRA};
-  \node[defense, text width=23mm, right=12mm of guard] (lineage) {Shared lineage\\shield};
+\begin{tikzpicture}[
+  hnode/.style={honest, font=\small, text width=32mm, minimum height=9.5mm, inner sep=3pt},
+  anode/.style={attack, font=\small, text width=32mm, minimum height=9.5mm, inner sep=3pt},
+  dnode/.style={defense, font=\small, text width=72mm, minimum height=9.5mm, inner sep=3pt},
+  inode/.style={infra, font=\small, text width=32mm, minimum height=9.5mm, inner sep=3pt}
+]
+  % Tier 1: Ingress Sources (Side-by-side, y = 0)
+  \node[hnode] (user) at (0, 0) {\tikz\draw[pgblue,line width=.9pt] (0,.15) circle (.12) (-.2,-.25) arc (180:0:.2 and .18);\\\textbf{User-Typed Input}\\[0.3mm]\scriptsize Direct human entry};
+  \node[anode] (attacker) at (4.0, 0) {\tikz\draw[pgorange,line width=.9pt] (0,.15) circle (.12) (-.2,-.25)--(0,-.01)--(.2,-.25);\\\textbf{Remote / App Attacker}\\[0.3mm]\scriptsize Untrusted channels};
 
-  \draw[dataflow] (user.east) -| (guard.north west);
-  \draw[attackflow] (attacker.east) -| (guard.south west);
-  \draw[dataflow] (guard.east) -| (mem.west);
-  \draw[dataflow] (guard.east) -| (lora.west);
-  \draw[controlflow] (mem.south) -- (lineage.north);
-  \draw[controlflow] (lora.north) -- (lineage.south);
-  \draw[attackflow] (attacker.north) to[bend left=42] node[flowlabel,left]{induced action} (user.south);
+  % Tier 2: Policy & Mediation Gate (y = -2.0) -> Arrow length = 11mm!
+  \node[dnode] (guard) at (2.0, -2.0) {\textbf{Origin Binding \& Sink-Specific Policy Gate}\\[0.3mm]\scriptsize Complete OS mediation: binds cryptographic provenance to all events};
+
+  % Tier 3: Persistent Sinks (Side-by-side, y = -3.8) -> Arrow length = 9mm!
+  \node[hnode] (mem) at (0, -3.8) {\textbf{Agent Memory Store}\\[0.3mm]\scriptsize $\pi_{\text{mem}}$: allow / quarantine};
+  \node[inode] (lora) at (4.0, -3.8) {\textbf{LoRA Trainer}\\[0.3mm]\scriptsize $\pi_{\text{train}}$: quarantine / deny};
+
+  % Tier 4: Unified Defense Shield (y = -5.4) -> Arrow length = 9mm!
+  \node[dnode] (lineage) at (2.0, -5.4) {\textbf{Shared Lineage \& Rollback Shield}\\[0.3mm]\scriptsize Causal graph tracking, adapter quarantine, and deterministic rollback};
+
+  % Prominent, long arrows with clearly offset labels (NO OVERLAPPING!)
+  \draw[attackflow] (attacker.north) to[bend right=25] node[above=1.5mm,font=\scriptsize]{induced action (phishing)} (user.north);
+
+  % Ingress into Policy Gate: 11mm long vertical arrows!
+  \draw[dataflow] (user.south) -- (user.south |- guard.north) node[midway,left=2mm,font=\small\bfseries,text=pgblue]{trusted};
+  \draw[attackflow] (attacker.south) -- (attacker.south |- guard.north) node[midway,right=2mm,font=\small\bfseries,text=pgorange]{untrusted};
+
+  % Policy Gate into Sinks: 9mm long vertical arrows!
+  \draw[dataflow] (mem.north |- guard.south) -- (mem.north) node[midway,left=2mm,font=\small\bfseries,text=pgblue]{$\pi_{\text{mem}}$};
+  \draw[dataflow] (lora.north |- guard.south) -- (lora.north) node[midway,right=2mm,font=\small\bfseries,text=pggray]{$\pi_{\text{train}}$};
+
+  % Sinks into Lineage Shield: 9mm long vertical arrows!
+  \draw[controlflow] (mem.south) -- (mem.south |- lineage.north) node[midway,left=2mm,font=\small\bfseries,text=pggreen]{audit};
+  \draw[controlflow] (lora.south) -- (lora.south |- lineage.north) node[midway,right=2mm,font=\small\bfseries,text=pggreen]{commit};
 \end{tikzpicture}

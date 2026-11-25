@@ -37,22 +37,23 @@ Data provenance traditionally records where outputs came from and how they were 
 
 Federated averaging coordinates many clients through a server \cite{mcmahan2017fedavg}. Krum, coordinate-wise robust statistics, Bulyan, and geometric-median aggregation resist some Byzantine update models \cite{blanchard2017krum,yin2018byzantine,mhamdi2018bulyan,pillutla2019rfa}. FLTrust bootstraps trust from a server dataset \cite{cao2020fltrust}; FLAME clusters and clips updates before adding noise \cite{nguyen2021flame}; and FoolsGold addresses sybil-like similarity \cite{fung2018sybil}. Model-poisoning and backdoor studies illustrate the limits of aggregation \cite{bhagoji2018federated,bagdasaryan2020backdoorfl}. More recent federated instruction-tuning work shows that low-concentration poisoned data spread across nominally benign clients can evade defenses designed for malicious clients \cite{zhao2026fedbit}. These methods assume multiple updates to compare. A single phone learning from its own mixed-trust streams has neither that population nor a server root dataset. PoisonGuard cites them to delimit the problem, not as fair head-to-head baselines.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
-\caption{Novelty boundary. A checkmark means the cited family makes the object explicit, not that every implementation provides a guarantee.}
+\small
+\caption{Novelty boundary across related literature.}
 \label{tab:boundary}
-\resizebox{\textwidth}{!}{%
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
-Family & Persistent memory & Parameter adapter & Source provenance & Cross-sink lineage & Exact replay target \\
+Family & Memory & Adapter & Provenance & Cross-sink & Exact replay \\
 \midrule
 Memory/RAG attacks \cite{chen2024agentpoison,dong2025minja,zou2024poisonedrag} & \checkmark & -- & limited & -- & -- \\
-Persistent-agent attacks \cite{zhang2026memghost,ying2026skilljack} & \checkmark & skill artifact & motivates & partial & -- \\
+Persistent-agent attacks \cite{zhang2026memghost,ying2026skilljack} & \checkmark & skill & motivates & partial & -- \\
 Memory defenses \cite{sunil2026memorypoison,wei2025amemguard} & \checkmark & -- & trust signal & -- & -- \\
-Adapter/backdoor defenses \cite{tran2018spectral,lelle2026token} & -- & \checkmark & -- & -- & -- \\
+Adapter defenses \cite{tran2018spectral,lelle2026token} & -- & \checkmark & -- & -- & -- \\
 Approximate unlearning \cite{eldan2023harry,zhang2024npo} & -- & \checkmark & deletion set & limited & -- \\
 \PG{} (this work) & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
 \bottomrule
 \end{tabular}%
 }
-\end{table*}
+\end{table}
